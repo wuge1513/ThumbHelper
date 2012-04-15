@@ -1,0 +1,17 @@
+/* 
+  123.strings
+  Thumb Helper
+
+  Created by LiuLei on 12-4-11.
+  Copyright (c) 2012年 LiuLei. All rights reserved.
+*/
+"Master" = "大拇指助手en";
+
+
+//--------------闹铃设置页面-----------
+
+"Label" = "Label";
+"Time"  = "Time";
+"Repeat"= "Repeat";
+"Music" = "Music";
+"Later" = "Later";

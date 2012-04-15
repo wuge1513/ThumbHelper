@@ -1,0 +1,376 @@
+/* ==============================多语言==========================================*/
+
+
+/* 文本规范(重要,请参照规范修改和添加):*/
+/* 1.不可出现中文标点符号 */
+/* 2.注释中务必添加对应检索编号 */
+/* 3.每个键值务必空一行以方便查找 */
+/* 4.每条注释要有相应中文说明 */
+/* 5.添加多语言新键值时请放入相应的分类以利于查找检索 */
+/* 6.语法尽量使用被动语态和祈使句 */
+
+
+/* ==============================时间相关01==========================================*/
+"Master" = "大拇指助手-日语";
+/*01-01 January 一月 */
+"January" = "睦月";
+
+/*01-02 February 二月 */
+"February" = "如月";
+
+/*01-03 March 三月*/
+"March" = "弥生";
+
+/*01-04 April 四月*/
+"April" = "卯月";
+
+/*01-05 May 五月*/
+"May" = "皐月";
+
+/*01-06 June 六月*/
+"June" = "水無月";
+
+/*01-07 July 七月*/
+"July" = "文月";
+
+/*01-08 August 八月*/
+"August" = "葉月";
+
+/*01-09 September 九月*/
+"September" = "長月";
+
+/*01-10 October 十月*/
+"October" = "神無月";
+
+/*01-11 November 十一月 */
+"November" = "霜月";
+
+/*01-12 December 十二月 */
+"December" = "師走";
+
+
+/* ========================================== */
+
+/*01-13 Monday 周一*/
+"Monday" = "月耀日";
+
+/*01-14 Tuesday 周二 */
+"Tuesday" = "火耀日";
+
+/*01-15 Wednesday 周三*/
+"Wednesday" = "水耀日";
+
+/*01-16 Thursday 周四*/
+"Thursday" = "木耀日";
+
+/*01-17 Friday 周五 */
+"Friday" = "金耀日";
+
+/*01-18 Saturday 周六 */
+"Saturday" = "土耀日";
+
+/*01-19 Sunday 周日 */
+"Sunday" = "日耀日";
+
+/*01-20  Sun. 周日缩写,要红色 */
+"Sun" = "日";
+
+/*01-21  Mon. 周一缩写 */
+"Mon" = "月";
+
+/*01-22 Tues. 周二缩写 */
+"Tues" = "水";
+
+/*01-23  Wed. 周三缩写 */
+"Wed" = "火";
+
+/*01-24  Thurs. 周四缩写 */
+"Thurs" = "木";
+
+/*01-25   Fri. 周五缩写 */
+"Fri" = "金";
+
+/*01-26   Sat. 周六缩写,要红色 */
+"Sat" = "土";
+
+
+/* ===================================================================================*/
+/* =====================================密码相关提示02================================*/
+
+/*02-01 Your diary is password protected. 日记已经有密码保护 */
+"Your diary is password protected." = "パスワードが設定されました!";
+
+/*02-02 Error 错误或出错了*/
+"Error" = "エラー!";
+
+/*02-03 The password you entered is incorrect. Please try again.输入的密码不正确,请重试 */
+"The password you entered is incorrect. Please try again." = "パスワードが間違っています,改めてご入力ください!";
+
+/*02-04 Please set a password firstly.请先设置密码 */
+"Please set a password firstly." = "パスワードが未設定で!まず,パスワードをご設定ください!";
+
+/*02-05 Successfully 成功 */
+"Successfully" = "成功しました!";
+
+/*02-06 Your password updated successfully! 修改密码成功 */
+"Your password updated successfully!" = "パスワードの変更が成功しました!";
+
+/*02-07 Your password has been canceled.密码已经取消 */
+"Your password has been canceled." = "パスワードのキャンセルが成功しました!";
+
+/*02-08 You have set a password. 你已经设置过密码了*/
+"You have set a password." = "パスワードはもう設定されました!";
+
+/*02-09 The passwords you typed do not match, please try again.两次密码输入不一致,请重试 */
+"The passwords you typed do not match, please try again." = "入力されたパスワードがマッチしないので、改めてご入力ください!";
+
+/*02-10 The password should less than ten characters, please try again. 密码应该在10个字符以内,请重试 */
+"The password should less than ten characters, please try again." = "パスワードを10桁以内ご入力ください。（数字、アルファベット、常用記号もできる）";
+
+/*02-11 Please input the password. 请输入密码 */
+"Please input the password." = "パスワードをご入力ください。";
+
+/*02-13 The answer you entered is incorrect, please try again.输入的提示问题答案不对,请重试 */
+"The answer you entered is incorrect, please try again." = "間違った回答、改めてご入力ください。";
+
+/*====================================================================================*/
+/* =====================================邮件备份界面提示03============================*/
+
+
+/*03-01 Are you sure you want to delete all diaries and pictures (not include quick memo)? 批量删除日记 */
+"Are you sure you want to delete all diaries and pictures (not include quick memo)?" = "選んだ期日のうちにおける日記を削除しますか？（ノートと栞を以外に）";
+
+/*03-02 Congratulations 恭喜 */
+"Congratulations" = "おめでとうございます!";
+
+/*03-03 You have deleted diaries successfully. 日记已经被删除 */
+"You have deleted diaries successfully." = "大量的に削除済み!";
+
+/*03-04 Please set your mail account of the device firstly.请先设置你的邮箱账号 */
+"Please set your mail account of the device firstly." = "予め設備でメールのアドレスをご設定ください。";
+
+/*03-05 Backup your diaries successfully. 备份成功 */
+"Backup your diaries successfully." = "バックアップに成功しました!";
+
+
+/* =============================================================================================*/
+/* =============(导入和导出)==============WIFI备份界面提示04=======（iTune Sharing接着编）======*/
+
+
+/*04-01 Wifi not found. Please check Wifi connection. 没有发现WiFi，请检查WiFi连接 */
+"Wifi not found. Please check Wifi connection." = "WIFIを見つけなかったのです。WIFIの接続をご確認ください!";
+
+/*04-02 Make sure that the computer has been connected to the same local network with your device.确保WiFi和电脑在一个局域网 */
+"Make sure that the computer has been connected to the same local network with your device." = "設備とコンピューターとは同じLANで接続されていることをご確認ください!";
+
+/*04-03 Loading,please wait 加载中，请稍候  */
+"Loading,please wait"="ローディング...お待ちください。";
+
+/*04-04 WiFi txt wifi提示*/
+"wifi txt"="PCのウェブブラウザを通じて次のウェブアドレスに接続してからバックアップファイルをPCのハードドライブにダウンロードしてください。";
+
+
+/* =========================================================================================*/
+/* ===============（同步）=================GoogleDoc界面提示05(以后Evernote,Dropbox接着编号)*/
+
+/*05-01 Files including images could not be exported because the file exceeds the 500KB limit of Google Documents.（这个有问题，google限制单个文件，代码有无问题） */
+"Files including images could not be exported because the file exceeds the 500KB limit of Google Documents." = "ドキュメントの大きさはに規定した制限を超え、導出できません。";
+
+/*05-02 Sorry 抱歉*/
+"Sorry" = "申し訳ございません";
+
+/*05-03 Failed to connect to the Google Docs service.\nPlease check your WiFi/3G.连接Google Docs失败，请检查WiFi/3G连接(可复用)*/
+"Failed to connect to the Google Docs service.\nPlease check your WiFi/3G." = "接続に失敗しましたので、wifi/3Gの接続をご確認ください!";
+
+/*05-04 Your diaries have been successfully exported.日记被成功导出 */
+"Your diaries have been successfully exported." = "日記は、正常にエクスポートされています！";
+
+/*05-05 There are no records in this period. 此期间无日记数据 */
+"There are no records in this period." = "この時期における日記の記録が検索されていないです";
+
+/*05-06 Please enter your Google account and password firstly. 请先输入用户名和密码(可复用) */
+"Please enter your Google account and password firstly." = "アカウントの情報をご入力ください。";
+
+/*05-07 The passwrods you typed do not match,please check your ID and password. 密码和用户名不匹配 */
+"The password you typed does not match,please check your ID and password." = "パスワードがマッチしないので、IDとパスワードをごチェックください!";
+
+/*05-08 Please sign in your Google account firstly. 登录您的账号(可复用于Google/Evernote/Dropbox)*/
+"Please sign in your Google account firstly." = "先に、アカウントにご登録ください!";
+
+
+/*05-09 Google docs text提示*/
+"Google text"="項目をGoogle Docsと同期したり、Google Docsに転送するには、Googleアカウントが必要です。Google Docsのウェブサービスを利用して、データを安全にオンラインで保管できます。";
+
+/* ==================================================================================*/
+/* =================================日历界面提示06=====(大风铃以后检索提示接着编)====*/
+
+
+/*06-01 Please choose a date to add note. 请选择添加笔记的日期 */
+"Please choose a date to add note." = "先に期日をお選び、それから、メモを追加するには";
+
+/*06-02 Are you sure you want to delete this note? 删除当前笔记 */
+"Are you sure you want to delete this note?" = "このメモを削除しますか?";
+
+
+
+
+/* =================================================================================*/
+/* =====================================日记界面提示07==============================*/
+
+/*07-01 Are you sure you want to delete this diary? 删除这篇日记吗？*/
+"Are you sure you want to delete this diary?" = "確かにこの日記を削除しますか?";
+
+/*07-02 You have deleted the diary successfully.日记已经被成功删除 */
+"You have deleted the diary successfully." = "削除に成功しました!";
+
+/*07-03 Your microphone isn't available. 没有检测到麦克风 */
+"Your microphone isn't available." = "録音機を使用できないのです、マイクをご挿入ください!";
+
+/*07-04 we should only contain six images 每篇日记最多插入6张图片 */
+"The diary only can contain six images!" = "単独の日記には６枚画面しか添加しません!";
+
+/*07-05 Are you sure you want to delete the recording? 删除语音备忘录吗? */
+"Are you sure you want to delete the recording?" = "確かにこの録音を削除しますか?";
+
+/*07-06 You have deleted the recording successfully.语音备忘录删除成功 */
+"You have deleted the recording successfully." = "録音を削除済み!";
+
+/*07-07  Remove this picture? 删除这张图片吗? */
+"Are you sure you want to delete this photo?" = "この画像削除しますか?";
+
+
+
+
+/* =================================================================================*/
+/* ===================================花房提示08====================================*/
+
+
+/*08-01 You have moved this flower to greenhouse. 花已经被移植到温室 */
+"You have moved this flower to greenhouse." = "花は既に温室へ移動されました。";
+
+/*08-02 Flowers will be abandoned.放弃这盆花么? */
+"Flowers will be abandoned" = "花は捨てられます!";
+
+/*08-03 Recommend to friends then get more seeds  推荐给朋友就可以获得更多种子 */
+"Recommend to friends then get more seeds" = "Windbell Diaryを友達に紹介したら、もっと多くの種を手に入れる!";
+
+/*08-04 Please come back to take care your flower after 1hr. 一小时后再来照看您的花 */
+"Please come back to take care your flower after 1hr." = "１時間後お花をご育成ください";
+
+/*08-05 Your flower has grown up. 花都开好了 */
+"Your flower has grown up." = "花が熟しています!";
+
+/*08-06 Save to Photo Ablums 存入相册 */
+"Save to Photo Ablums" = "フォトアルバムに保存されました。";
+
+
+/* ==================================================================================*/
+/* ==========(Review)===============周末评论提示09===================================*/
+
+/*09-01 Review 写评论 */
+"Review"="コメント";
+
+/*09-02 What do you think about Windbell-Diary? Your idea is important to us. 风铃日记怎么样啊，给个评论吧，亲*/
+"What do you think about Windbell-Diary? Your idea is important to us."="Windbell-diaryへの評価、意見は重要なものです。";
+
+/*09-03 No thanks*/
+"No thanks"="延期した";
+
+/*09-04 Rate 打星 (有这个提示么?)*/
+"Rate"="コメント";
+
+/* ===================================================================================*/
+/* ==================================PLUS版用提示10===================================*/
+
+
+/*10-01 Update to full version? 升级到正式版 */
+"Update to Full Version?"="完全版にアップデートしますか?";
+
+/*10-02 You've reached the maximum number of diaries allowed in Trial version.达到了试用版本的最高篇数限制 */
+"You've reached the maximum number of diaries allowed in Trial version."="完全版にアップグレードする前に許可される最多日記数に達しましたので、新規日記を添加したければ、既存日記を削除する必要があります。";
+
+/*10-03 Update to full version 购买完整版本 */
+"Update to Full Version"="完全版";
+
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+
+/* ===================================================================================*/
+/* ===================================公用提示11======================================*/
+
+/*11-00 Info 提示 */
+"Info" = "メッセージは";
+
+/*11-01 Alert 注意 */
+"Alert" = "注意";
+
+/*11-02 Warning 警告 */
+"Warning" = "警告";
+
+/*11-03 Ok 好 */
+"Ok" = "確認";
+
+/*11-04 Now 现在 */
+"Now" = "即時";
+
+/*11-05 Cancel 取消 */
+"Cancel" = "キャンセル";
+
+/*11-06 Confirm 确认 */
+"Confirm" = "確認";
+
+/*11-07 Successfully Saved 成功保存 */
+"Successfully Saved" = "セーブ済み!";
+
+
+
+/* ====================================================================================*/
+/* ===================================IAP提示12========================================*/
+
+/*12-01 No Connection 没有网络连接 */
+"No Connection"="接続に失敗しましたので";
+
+/*12-02 Please check the internet connection 检查您的网络连接 */
+"Please check the internet connection !"="WiFi/3Gの接続をご確認ください!";
+
+/* ===================================================================================*/
+/* ===================================画笔和手写界面13================================*/
+
+/*13-01 Save image successfully! 绘画已经保存 */
+"Save image successfully!"="絵画が保存されています!";
+
+/*13-02 Abandon this drawing 放弃这张绘画 */
+"Abandon this drawing?"="あなたの絵画を放棄する?";
+
+/* ===================================================================================*/
+/* ==========(地图与定位)==================GoogleMap界面14============================*/
+
+/* 14-01 Map and address have been saved 地图和位置已经保存 */
+"Map and address have been saved!"="マップと場所は、が正常に保存!";
+
+/* 14-02 Cannot obtain address 无法获取你的地址 */
+"Cannot obtain address."="あなたの位置を見つけることができません。";
+
+
+/* ===================================================================================*/
+/* ==========(提醒和闹铃)==================布谷钟提醒界面15===========================*/
+
+/* 15-01 Time 闹铃时间 */
+"Time" = "タイム";
+
+/* 15-02 Title 闹铃标题 */
+"Title" = "タイトル";
+
+
+/* ========================================END========================================*/
+
+
+
+
+
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+
+/* ========================================== 备用分割辅助线2 */

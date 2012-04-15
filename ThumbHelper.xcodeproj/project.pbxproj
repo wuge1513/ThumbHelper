@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE5600AC1539F941005E2E36 /* SetClockTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5600AA1539F941005E2E36 /* SetClockTimeController.m */; };
+		CE5600AD1539F941005E2E36 /* SetClockTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */; };
+		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
+		CE5600B61539FDF1005E2E36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B51539FDF1005E2E36 /* QuartzCore.framework */; };
+		CE5600B91539FEA4005E2E36 /* SetClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5600B81539FEA4005E2E36 /* SetClockController.m */; };
+		CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A711535D94200C67344 /* UIKit.framework */; };
+		CEC66A741535D94200C67344 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A731535D94200C67344 /* Foundation.framework */; };
+		CEC66A761535D94200C67344 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A751535D94200C67344 /* CoreGraphics.framework */; };
+		CEC66A7E1535D94200C67344 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66A7D1535D94200C67344 /* main.m */; };
+		CEC66A821535D94200C67344 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66A811535D94200C67344 /* AppDelegate.m */; };
+		CEC66A9A1535D97100C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66A9C1535D97900C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66A9E1535D98100C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66AA01535D98C00C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66AA21535D99500C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66AA41535D9A300C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66AA61535D9AC00C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66AA81535D9B600C67344 /* ThumbHelper-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A791535D94200C67344 /* ThumbHelper-Info.plist */; };
+		CEC66AAA1535D9BF00C67344 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC66A981535D97100C67344 /* Localizable.strings */; };
+		CEC66AB71535DBFE00C67344 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66AB21535DBFE00C67344 /* AlarmViewController.m */; };
+		CEC66AB91535DBFE00C67344 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66AB51535DBFE00C67344 /* MasterViewController.m */; };
+		CEC66ABA1535DBFE00C67344 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AB61535DBFE00C67344 /* MasterViewController.xib */; };
+		CEC66B091535E6BD00C67344 /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AED1535E6BD00C67344 /* 001.png */; };
+		CEC66B0A1535E6BD00C67344 /* 002.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AEE1535E6BD00C67344 /* 002.png */; };
+		CEC66B0B1535E6BD00C67344 /* 003.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AEF1535E6BD00C67344 /* 003.png */; };
+		CEC66B0C1535E6BD00C67344 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF01535E6BD00C67344 /* Add.png */; };
+		CEC66B0D1535E6BD00C67344 /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF11535E6BD00C67344 /* Bar.png */; };
+		CEC66B0E1535E6BD00C67344 /* Delete.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF21535E6BD00C67344 /* Delete.png */; };
+		CEC66B0F1535E6BD00C67344 /* Done.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF31535E6BD00C67344 /* Done.png */; };
+		CEC66B101535E6BD00C67344 /* Mode1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF41535E6BD00C67344 /* Mode1.png */; };
+		CEC66B111535E6BD00C67344 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF61535E6BD00C67344 /* end.png */; };
+		CEC66B121535E6BD00C67344 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF71535E6BD00C67344 /* forward.png */; };
+		CEC66B131535E6BD00C67344 /* hight.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF81535E6BD00C67344 /* hight.png */; };
+		CEC66B141535E6BD00C67344 /* low.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AF91535E6BD00C67344 /* low.png */; };
+		CEC66B151535E6BD00C67344 /* rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AFA1535E6BD00C67344 /* rewind.png */; };
+		CEC66B161535E6BD00C67344 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AFB1535E6BD00C67344 /* start.png */; };
+		CEC66B171535E6BD00C67344 /* SetMode.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AFC1535E6BD00C67344 /* SetMode.png */; };
+		CEC66B181535E6BD00C67344 /* SetMusic.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AFD1535E6BD00C67344 /* SetMusic.png */; };
+		CEC66B191535E6BD00C67344 /* SetScene.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AFE1535E6BD00C67344 /* SetScene.png */; };
+		CEC66B1A1535E6BD00C67344 /* SetTime.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66AFF1535E6BD00C67344 /* SetTime.png */; };
+		CEC66B1B1535E6BD00C67344 /* index0.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B011535E6BD00C67344 /* index0.png */; };
+		CEC66B1C1535E6BD00C67344 /* index1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B021535E6BD00C67344 /* index1.png */; };
+		CEC66B1D1535E6BD00C67344 /* index2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B031535E6BD00C67344 /* index2.png */; };
+		CEC66B1E1535E6BD00C67344 /* index3.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B041535E6BD00C67344 /* index3.png */; };
+		CEC66B1F1535E6BD00C67344 /* index4.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B051535E6BD00C67344 /* index4.png */; };
+		CEC66B201535E6BD00C67344 /* index5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B061535E6BD00C67344 /* index5.png */; };
+		CEC66B211535E6BD00C67344 /* index6.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B071535E6BD00C67344 /* index6.png */; };
+		CEC66B221535E6BD00C67344 /* index7.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B081535E6BD00C67344 /* index7.png */; };
+		CEC66B371535E9E100C67344 /* UIColor_Random.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66B361535E9E000C67344 /* UIColor_Random.m */; };
+		CEC69E0915369F2D00D6FA02 /* ClockCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC69E0715369F2D00D6FA02 /* ClockCell.m */; };
+		CEC69E0A15369F2D00D6FA02 /* ClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC69E0815369F2D00D6FA02 /* ClockCell.xib */; };
+		CEC69E0E1536A06000D6FA02 /* AddClockViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC69E0C1536A06000D6FA02 /* AddClockViewCell.m */; };
+		CEC69E0F1536A06000D6FA02 /* AddClockViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC69E0D1536A06000D6FA02 /* AddClockViewCell.xib */; };
+		CED91CAA1536BA7D007BC76D /* AddClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED91CA81536BA7D007BC76D /* AddClockViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE5600A91539F941005E2E36 /* SetClockTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetClockTimeController.h; path = AlarmClock/SetClockTimeController.h; sourceTree = "<group>"; };
+		CE5600AA1539F941005E2E36 /* SetClockTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetClockTimeController.m; path = AlarmClock/SetClockTimeController.m; sourceTree = "<group>"; };
+		CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetClockTimeController.xib; path = AlarmClock/SetClockTimeController.xib; sourceTree = "<group>"; };
+		CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		CE5600B51539FDF1005E2E36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CE5600B71539FEA4005E2E36 /* SetClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetClockController.h; path = AlarmClock/SetClockController.h; sourceTree = "<group>"; };
+		CE5600B81539FEA4005E2E36 /* SetClockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetClockController.m; path = AlarmClock/SetClockController.m; sourceTree = "<group>"; };
+		CEC66A6D1535D94200C67344 /* ThumbHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThumbHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC66A711535D94200C67344 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CEC66A731535D94200C67344 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEC66A751535D94200C67344 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CEC66A791535D94200C67344 /* ThumbHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThumbHelper-Info.plist"; sourceTree = "<group>"; };
+		CEC66A7D1535D94200C67344 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEC66A7F1535D94200C67344 /* ThumbHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ThumbHelper-Prefix.pch"; sourceTree = "<group>"; };
+		CEC66A801535D94200C67344 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEC66A811535D94200C67344 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CEC66A991535D97100C67344 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66A9B1535D97900C67344 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66A9D1535D98100C67344 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66A9F1535D98C00C67344 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66AA11535D99500C67344 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66AA31535D9A300C67344 /* Portuguese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Portuguese; path = Portuguese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66AA51535D9AC00C67344 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEC66AA71535D9B600C67344 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CEC66AA91535D9BF00C67344 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CEC66AB11535DBFE00C67344 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmViewController.h; path = ViewController/AlarmViewController.h; sourceTree = "<group>"; };
+		CEC66AB21535DBFE00C67344 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmViewController.m; path = ViewController/AlarmViewController.m; sourceTree = "<group>"; };
+		CEC66AB41535DBFE00C67344 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ViewController/MasterViewController.h; sourceTree = "<group>"; };
+		CEC66AB51535DBFE00C67344 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ViewController/MasterViewController.m; sourceTree = "<group>"; };
+		CEC66AB61535DBFE00C67344 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MasterViewController.xib; path = ViewController/MasterViewController.xib; sourceTree = "<group>"; };
+		CEC66ABF1535DE9600C67344 /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
+		CEC66AED1535E6BD00C67344 /* 001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 001.png; path = Resource/images/001.png; sourceTree = "<group>"; };
+		CEC66AEE1535E6BD00C67344 /* 002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 002.png; path = Resource/images/002.png; sourceTree = "<group>"; };
+		CEC66AEF1535E6BD00C67344 /* 003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 003.png; path = Resource/images/003.png; sourceTree = "<group>"; };
+		CEC66AF01535E6BD00C67344 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = Resource/images/Add.png; sourceTree = "<group>"; };
+		CEC66AF11535E6BD00C67344 /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bar.png; path = Resource/images/Bar.png; sourceTree = "<group>"; };
+		CEC66AF21535E6BD00C67344 /* Delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Delete.png; path = Resource/images/Delete.png; sourceTree = "<group>"; };
+		CEC66AF31535E6BD00C67344 /* Done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Done.png; path = Resource/images/Done.png; sourceTree = "<group>"; };
+		CEC66AF41535E6BD00C67344 /* Mode1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Mode1.png; path = Resource/images/Mode1.png; sourceTree = "<group>"; };
+		CEC66AF61535E6BD00C67344 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
+		CEC66AF71535E6BD00C67344 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
+		CEC66AF81535E6BD00C67344 /* hight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hight.png; sourceTree = "<group>"; };
+		CEC66AF91535E6BD00C67344 /* low.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = low.png; sourceTree = "<group>"; };
+		CEC66AFA1535E6BD00C67344 /* rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind.png; sourceTree = "<group>"; };
+		CEC66AFB1535E6BD00C67344 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
+		CEC66AFC1535E6BD00C67344 /* SetMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SetMode.png; path = Resource/images/SetMode.png; sourceTree = "<group>"; };
+		CEC66AFD1535E6BD00C67344 /* SetMusic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SetMusic.png; path = Resource/images/SetMusic.png; sourceTree = "<group>"; };
+		CEC66AFE1535E6BD00C67344 /* SetScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SetScene.png; path = Resource/images/SetScene.png; sourceTree = "<group>"; };
+		CEC66AFF1535E6BD00C67344 /* SetTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SetTime.png; path = Resource/images/SetTime.png; sourceTree = "<group>"; };
+		CEC66B011535E6BD00C67344 /* index0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index0.png; sourceTree = "<group>"; };
+		CEC66B021535E6BD00C67344 /* index1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index1.png; sourceTree = "<group>"; };
+		CEC66B031535E6BD00C67344 /* index2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index2.png; sourceTree = "<group>"; };
+		CEC66B041535E6BD00C67344 /* index3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index3.png; sourceTree = "<group>"; };
+		CEC66B051535E6BD00C67344 /* index4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index4.png; sourceTree = "<group>"; };
+		CEC66B061535E6BD00C67344 /* index5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index5.png; sourceTree = "<group>"; };
+		CEC66B071535E6BD00C67344 /* index6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index6.png; sourceTree = "<group>"; };
+		CEC66B081535E6BD00C67344 /* index7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index7.png; sourceTree = "<group>"; };
+		CEC66B351535E9DF00C67344 /* UIColor_Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Random.h; sourceTree = "<group>"; };
+		CEC66B361535E9E000C67344 /* UIColor_Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor_Random.m; sourceTree = "<group>"; };
+		CEC69E0615369F2D00D6FA02 /* ClockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockCell.h; path = AlarmClock/ClockCell.h; sourceTree = "<group>"; };
+		CEC69E0715369F2D00D6FA02 /* ClockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockCell.m; path = AlarmClock/ClockCell.m; sourceTree = "<group>"; };
+		CEC69E0815369F2D00D6FA02 /* ClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockCell.xib; path = AlarmClock/ClockCell.xib; sourceTree = "<group>"; };
+		CEC69E0B1536A06000D6FA02 /* AddClockViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddClockViewCell.h; path = AlarmClock/AddClockViewCell.h; sourceTree = "<group>"; };
+		CEC69E0C1536A06000D6FA02 /* AddClockViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddClockViewCell.m; path = AlarmClock/AddClockViewCell.m; sourceTree = "<group>"; };
+		CEC69E0D1536A06000D6FA02 /* AddClockViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddClockViewCell.xib; path = AlarmClock/AddClockViewCell.xib; sourceTree = "<group>"; };
+		CED91CA71536BA7D007BC76D /* AddClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddClockViewController.h; path = AlarmClock/AddClockViewController.h; sourceTree = "<group>"; };
+		CED91CA81536BA7D007BC76D /* AddClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddClockViewController.m; path = AlarmClock/AddClockViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEC66A6A1535D94200C67344 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE5600B61539FDF1005E2E36 /* QuartzCore.framework in Frameworks */,
+				CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */,
+				CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */,
+				CEC66A741535D94200C67344 /* Foundation.framework in Frameworks */,
+				CEC66A761535D94200C67344 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEC66A621535D94200C67344 = {
+			isa = PBXGroup;
+			children = (
+				CE5600B51539FDF1005E2E36 /* QuartzCore.framework */,
+				CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */,
+				CEC66A771535D94200C67344 /* ThumbHelper */,
+				CEC66A701535D94200C67344 /* Frameworks */,
+				CEC66A6E1535D94200C67344 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEC66A6E1535D94200C67344 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66A6D1535D94200C67344 /* ThumbHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEC66A701535D94200C67344 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66A711535D94200C67344 /* UIKit.framework */,
+				CEC66A731535D94200C67344 /* Foundation.framework */,
+				CEC66A751535D94200C67344 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEC66A771535D94200C67344 /* ThumbHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66AC91535E5FC00C67344 /* AlarmClock */,
+				CEC66ABF1535DE9600C67344 /* Consts.h */,
+				CEC66B351535E9DF00C67344 /* UIColor_Random.h */,
+				CEC66B361535E9E000C67344 /* UIColor_Random.m */,
+				CEC66A801535D94200C67344 /* AppDelegate.h */,
+				CEC66A811535D94200C67344 /* AppDelegate.m */,
+				CEC66AB01535DBEC00C67344 /* ViewController */,
+				CEC66A781535D94200C67344 /* Supporting Files */,
+				CEC66AEB1535E61B00C67344 /* Resource */,
+			);
+			path = ThumbHelper;
+			sourceTree = "<group>";
+		};
+		CEC66A781535D94200C67344 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66A791535D94200C67344 /* ThumbHelper-Info.plist */,
+				CEC66A981535D97100C67344 /* Localizable.strings */,
+				CEC66A7D1535D94200C67344 /* main.m */,
+				CEC66A7F1535D94200C67344 /* ThumbHelper-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEC66AB01535DBEC00C67344 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66AB41535DBFE00C67344 /* MasterViewController.h */,
+				CEC66AB51535DBFE00C67344 /* MasterViewController.m */,
+				CEC66AB61535DBFE00C67344 /* MasterViewController.xib */,
+				CEC66AB11535DBFE00C67344 /* AlarmViewController.h */,
+				CEC66AB21535DBFE00C67344 /* AlarmViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		CEC66AC91535E5FC00C67344 /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				CE5600B71539FEA4005E2E36 /* SetClockController.h */,
+				CE5600B81539FEA4005E2E36 /* SetClockController.m */,
+				CE5600A91539F941005E2E36 /* SetClockTimeController.h */,
+				CE5600AA1539F941005E2E36 /* SetClockTimeController.m */,
+				CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */,
+				CED91CA71536BA7D007BC76D /* AddClockViewController.h */,
+				CED91CA81536BA7D007BC76D /* AddClockViewController.m */,
+				CEC69E0B1536A06000D6FA02 /* AddClockViewCell.h */,
+				CEC69E0C1536A06000D6FA02 /* AddClockViewCell.m */,
+				CEC69E0D1536A06000D6FA02 /* AddClockViewCell.xib */,
+				CEC69E0615369F2D00D6FA02 /* ClockCell.h */,
+				CEC69E0715369F2D00D6FA02 /* ClockCell.m */,
+				CEC69E0815369F2D00D6FA02 /* ClockCell.xib */,
+			);
+			name = AlarmClock;
+			sourceTree = "<group>";
+		};
+		CEC66AEB1535E61B00C67344 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66AEC1535E63200C67344 /* images */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		CEC66AEC1535E63200C67344 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66AED1535E6BD00C67344 /* 001.png */,
+				CEC66AEE1535E6BD00C67344 /* 002.png */,
+				CEC66AEF1535E6BD00C67344 /* 003.png */,
+				CEC66AF01535E6BD00C67344 /* Add.png */,
+				CEC66AF11535E6BD00C67344 /* Bar.png */,
+				CEC66AF21535E6BD00C67344 /* Delete.png */,
+				CEC66AF31535E6BD00C67344 /* Done.png */,
+				CEC66AF41535E6BD00C67344 /* Mode1.png */,
+				CEC66AFC1535E6BD00C67344 /* SetMode.png */,
+				CEC66AFD1535E6BD00C67344 /* SetMusic.png */,
+				CEC66AFE1535E6BD00C67344 /* SetScene.png */,
+				CEC66AFF1535E6BD00C67344 /* SetTime.png */,
+				CEC66AF51535E6BD00C67344 /* Music */,
+				CEC66B001535E6BD00C67344 /* zhishu */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		CEC66AF51535E6BD00C67344 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66AF61535E6BD00C67344 /* end.png */,
+				CEC66AF71535E6BD00C67344 /* forward.png */,
+				CEC66AF81535E6BD00C67344 /* hight.png */,
+				CEC66AF91535E6BD00C67344 /* low.png */,
+				CEC66AFA1535E6BD00C67344 /* rewind.png */,
+				CEC66AFB1535E6BD00C67344 /* start.png */,
+			);
+			name = Music;
+			path = Resource/images/Music;
+			sourceTree = "<group>";
+		};
+		CEC66B001535E6BD00C67344 /* zhishu */ = {
+			isa = PBXGroup;
+			children = (
+				CEC66B011535E6BD00C67344 /* index0.png */,
+				CEC66B021535E6BD00C67344 /* index1.png */,
+				CEC66B031535E6BD00C67344 /* index2.png */,
+				CEC66B041535E6BD00C67344 /* index3.png */,
+				CEC66B051535E6BD00C67344 /* index4.png */,
+				CEC66B061535E6BD00C67344 /* index5.png */,
+				CEC66B071535E6BD00C67344 /* index6.png */,
+				CEC66B081535E6BD00C67344 /* index7.png */,
+			);
+			name = zhishu;
+			path = Resource/images/zhishu;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEC66A6C1535D94200C67344 /* ThumbHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEC66A911535D94200C67344 /* Build configuration list for PBXNativeTarget "ThumbHelper" */;
+			buildPhases = (
+				CEC66A691535D94200C67344 /* Sources */,
+				CEC66A6A1535D94200C67344 /* Frameworks */,
+				CEC66A6B1535D94200C67344 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThumbHelper;
+			productName = ThumbHelper;
+			productReference = CEC66A6D1535D94200C67344 /* ThumbHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEC66A641535D94200C67344 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = LiuLei;
+			};
+			buildConfigurationList = CEC66A671535D94200C67344 /* Build configuration list for PBXProject "ThumbHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				English,
+				de,
+				French,
+				Japanese,
+				ko,
+				Portuguese,
+				Spanish,
+				"zh-Hans",
+				"zh-Hant",
+			);
+			mainGroup = CEC66A621535D94200C67344;
+			productRefGroup = CEC66A6E1535D94200C67344 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEC66A6C1535D94200C67344 /* ThumbHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEC66A6B1535D94200C67344 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC66A9A1535D97100C67344 /* Localizable.strings in Resources */,
+				CEC66A9C1535D97900C67344 /* Localizable.strings in Resources */,
+				CEC66A9E1535D98100C67344 /* Localizable.strings in Resources */,
+				CEC66AA01535D98C00C67344 /* Localizable.strings in Resources */,
+				CEC66AA21535D99500C67344 /* Localizable.strings in Resources */,
+				CEC66AA41535D9A300C67344 /* Localizable.strings in Resources */,
+				CEC66AA61535D9AC00C67344 /* Localizable.strings in Resources */,
+				CEC66AA81535D9B600C67344 /* ThumbHelper-Info.plist in Resources */,
+				CEC66AAA1535D9BF00C67344 /* Localizable.strings in Resources */,
+				CEC66ABA1535DBFE00C67344 /* MasterViewController.xib in Resources */,
+				CEC66B091535E6BD00C67344 /* 001.png in Resources */,
+				CEC66B0A1535E6BD00C67344 /* 002.png in Resources */,
+				CEC66B0B1535E6BD00C67344 /* 003.png in Resources */,
+				CEC66B0C1535E6BD00C67344 /* Add.png in Resources */,
+				CEC66B0D1535E6BD00C67344 /* Bar.png in Resources */,
+				CEC66B0E1535E6BD00C67344 /* Delete.png in Resources */,
+				CEC66B0F1535E6BD00C67344 /* Done.png in Resources */,
+				CEC66B101535E6BD00C67344 /* Mode1.png in Resources */,
+				CEC66B111535E6BD00C67344 /* end.png in Resources */,
+				CEC66B121535E6BD00C67344 /* forward.png in Resources */,
+				CEC66B131535E6BD00C67344 /* hight.png in Resources */,
+				CEC66B141535E6BD00C67344 /* low.png in Resources */,
+				CEC66B151535E6BD00C67344 /* rewind.png in Resources */,
+				CEC66B161535E6BD00C67344 /* start.png in Resources */,
+				CEC66B171535E6BD00C67344 /* SetMode.png in Resources */,
+				CEC66B181535E6BD00C67344 /* SetMusic.png in Resources */,
+				CEC66B191535E6BD00C67344 /* SetScene.png in Resources */,
+				CEC66B1A1535E6BD00C67344 /* SetTime.png in Resources */,
+				CEC66B1B1535E6BD00C67344 /* index0.png in Resources */,
+				CEC66B1C1535E6BD00C67344 /* index1.png in Resources */,
+				CEC66B1D1535E6BD00C67344 /* index2.png in Resources */,
+				CEC66B1E1535E6BD00C67344 /* index3.png in Resources */,
+				CEC66B1F1535E6BD00C67344 /* index4.png in Resources */,
+				CEC66B201535E6BD00C67344 /* index5.png in Resources */,
+				CEC66B211535E6BD00C67344 /* index6.png in Resources */,
+				CEC66B221535E6BD00C67344 /* index7.png in Resources */,
+				CEC69E0A15369F2D00D6FA02 /* ClockCell.xib in Resources */,
+				CEC69E0F1536A06000D6FA02 /* AddClockViewCell.xib in Resources */,
+				CE5600AD1539F941005E2E36 /* SetClockTimeController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEC66A691535D94200C67344 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC66A7E1535D94200C67344 /* main.m in Sources */,
+				CEC66A821535D94200C67344 /* AppDelegate.m in Sources */,
+				CEC66AB71535DBFE00C67344 /* AlarmViewController.m in Sources */,
+				CEC66AB91535DBFE00C67344 /* MasterViewController.m in Sources */,
+				CEC66B371535E9E100C67344 /* UIColor_Random.m in Sources */,
+				CEC69E0915369F2D00D6FA02 /* ClockCell.m in Sources */,
+				CEC69E0E1536A06000D6FA02 /* AddClockViewCell.m in Sources */,
+				CED91CAA1536BA7D007BC76D /* AddClockViewController.m in Sources */,
+				CE5600AC1539F941005E2E36 /* SetClockTimeController.m in Sources */,
+				CE5600B91539FEA4005E2E36 /* SetClockController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEC66A981535D97100C67344 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC66A991535D97100C67344 /* English */,
+				CEC66A9B1535D97900C67344 /* de */,
+				CEC66A9D1535D98100C67344 /* French */,
+				CEC66A9F1535D98C00C67344 /* Japanese */,
+				CEC66AA11535D99500C67344 /* ko */,
+				CEC66AA31535D9A300C67344 /* Portuguese */,
+				CEC66AA51535D9AC00C67344 /* Spanish */,
+				CEC66AA71535D9B600C67344 /* zh-Hans */,
+				CEC66AA91535D9BF00C67344 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEC66A8F1535D94200C67344 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CEC66A901535D94200C67344 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEC66A921535D94200C67344 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ThumbHelper/ThumbHelper-Prefix.pch";
+				INFOPLIST_FILE = "ThumbHelper/ThumbHelper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CEC66A931535D94200C67344 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ThumbHelper/ThumbHelper-Prefix.pch";
+				INFOPLIST_FILE = "ThumbHelper/ThumbHelper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEC66A671535D94200C67344 /* Build configuration list for PBXProject "ThumbHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC66A8F1535D94200C67344 /* Debug */,
+				CEC66A901535D94200C67344 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEC66A911535D94200C67344 /* Build configuration list for PBXNativeTarget "ThumbHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC66A921535D94200C67344 /* Debug */,
+				CEC66A931535D94200C67344 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEC66A641535D94200C67344 /* Project object */;
+}

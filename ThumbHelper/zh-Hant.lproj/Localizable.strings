@@ -1,0 +1,394 @@
+/* ==============================多語言================ ==========================*/
+
+
+/* 文本規範(重要,請參照規範修改和添加):*/
+/* 1.不可出現中文標點符號 */
+/* 2.註釋中務必添加對應檢索編號 */
+/* 3.每個鍵值務必空一行以方便查找*/
+/* 4.每條註釋要有相應中文說明 */
+/* 5.添加多語言新鍵值時請放入相應的分類以利於查找檢索*/
+/* 6.語法盡量使用被動語態和祈使句*/
+
+
+/* ==============================時間相關01=============== ===========================*/
+
+"Master" = "大拇指助手-繁体";
+
+//--------------闹铃设置页面-----------
+
+"Label" = "標題";
+"Time"  = "時間";
+"Repeat"= "重復";
+"Music" = "音樂";
+"Later" = "小睡";
+
+/*01-01 January 一月 */
+"January" = "一月";
+
+/*01-02 February 二月 */
+"February" = "二月";
+
+/*01-03 March 三月*/
+"March" = "三月";
+
+/*01-04 April 四月*/
+"April" = "四月";
+
+/*01-05 May 五月*/
+"May" = "五月";
+
+/*01-06 June 六月*/
+"June" = "六月";
+
+/*01-07 July 七月*/
+"July" = "七月";
+
+/*01-08 August 八月*/
+"August" = "八月";
+
+/*01-09 September 九月*/
+"September" = "九月";
+
+/*01-10 October 十月*/
+"October" = "十月";
+
+/*01-11 November 十一月 */
+"November" = "十一月";
+
+/*01-12 December 十二月 */
+"December" = "十二月 ";
+
+
+/* ========================================== */
+
+/*01-13 Monday 週一*/
+"Monday" = "週一";
+
+/*01-14 Tuesday 週二 */
+"Tuesday" = "週二";
+
+/*01-15 Wednesday 週三*/
+"Wednesday" = "週三";
+
+/*01-16 Thursday 週四*/
+"Thursday" = "週四";
+
+/*01-17 Friday 週五 */
+"Friday" = "週五";
+
+/*01-18 Saturday 週六 */
+"Saturday" = "週六";
+
+/*01-19 Sunday 週日 */
+"Sunday" = "週日";
+
+/*01-20 Sun. 週日縮寫,要紅色 */
+"Sun" = "日";
+
+/*01-21 Mon. 週一縮寫 */
+"Mon" = "一";
+
+/*01-22 Tues. 週二縮寫 */
+"Tues" = "二";
+
+/*01-23 Wed. 週三縮寫 */
+"Wed" = "三";
+
+/*01-24 Thurs. 週四縮寫 */
+"Thurs" = "四";
+
+/*01-25 Fri. 週五縮寫 */
+"Fri" = "五";
+
+/*01-26 Sat. 週六縮寫,要紅色 */
+"Sat" = "六";
+
+
+/* ================================================ ===================================*/
+/* =====================================密碼相關提示02======= =========================*/
+
+/*02-01 Your diary is password protected. 日記已經設置密碼保護*/
+"Your diary is password protected." = "日記已經設置密碼保護!";
+
+/*02-02 Error 錯誤或出錯了*/
+"Error" = "錯誤";
+
+/*02-03 The password you entered is incorrect. Please try again.輸入的密碼不正確,請重試*/
+"The password you entered is incorrect. Please try again." = "輸入的密碼不正確,請重試!";
+
+/*02-04 Please set a password firstly.請先設置密碼*/
+"Please set a password firstly." = "請先設置密碼!";
+
+/*02-05 Successfully 成功 */
+"Successfully" = "成功";
+
+/*02-06 Your password updated successfully! 修改密碼成功*/
+"Your password updated successfully!" = "修改密碼成功!";
+
+/*02-07 Your password has been canceled.密碼已經取消*/
+"Your password has been canceled." = "密碼已經取消!";
+
+/*02-08 You have set a password. 你已經設置過密碼了*/
+"You have set a password." = "你已經設置過密碼了";
+
+/*02-09 The passwords you typed do not match, please try again.兩次密碼輸入不一致,請重試*/
+"The passwords you typed do not match, please try again." = "兩次密碼輸入不一致,請重試";
+
+/*02-10 The password should less than ten characters, please try again. 密碼應該在10個字符以內,請重試 */
+"The password should less than ten characters, please try again." = "密碼應該在10個字符以內,請重試";
+
+/*02-11 Please input the password. 請輸入密碼*/
+"Please input the password." = "請輸入您的密碼!";
+
+/*02-13 The answer you entered is incorrect, please try again.輸入的提示問題答案不對,請重試
+
+*/
+"The answer you entered is incorrect, please try again." = "輸入的提示問題答案不對,請重試";
+
+/*================================================ ====================================*/
+/* =====================================郵件備份界面提示03====== ======================*/
+
+
+/*03-01 Are you sure you want to delete all diaries and pictures (not include quick memo)?
+
+批量刪除日記 */
+"Are you sure you want to delete all diaries and pictures (not include quick memo)?" = "確定刪除所選日記嗎?";
+
+/*03-02 Congratulations 恭喜 */
+"Congratulations" = "恭喜";
+
+/*03-03 You have deleted diaries successfully. 日記已經被刪除*/
+"You have deleted diaries successfully." = "日記已經被刪除!";
+
+/*03-04 Please set your mail account of the device firstly.請先設置你的郵箱賬號*/
+"Please set your mail account of the device firstly." = "請先在設備中預設置你的郵箱賬號";
+
+/*03-05 Backup your diaries successfully. 備份成功*/
+"Backup your diaries successfully." = "備份成功!";
+
+
+/*
+
+================================================== =========================================
+
+==*/
+/* =============(導入和導出)==============WIFI備份界面提示04=======（iTune Sharing接著編）
+
+======*/
+
+
+/*04-01 Wifi not found. Please check Wifi connection. 沒有發現WiFi，請檢查WiFi連接*/
+"Wifi not found. Please check Wifi connection." = "沒有檢測到WiFi，請檢查網絡連接!";
+
+/*04-02 Make sure that the computer has been connected to the same local network with your device.確保WiFi和電腦在一個局域網 */
+"Make sure that the computer has been connected to the same local network with your device." = "確保你的設備WiFi連接和電腦在一個局域網!";
+
+/*04-03 Loading,please wait 加載中，請稍候*/
+"Loading,please wait"="加載中，請稍候...";
+
+/*04-04 WiFi txt wifi提示*/
+"wifi txt"="請通過電腦web瀏覽器，訪問下述網址，將備份檔案下載到電腦硬盤。";
+/*
+
+================================================== =======================================*/
+/* ===============（同步）=================GoogleDoc界面提示05(以後Evernote,Dropbox接著編號
+
+)*/
+
+/*05-01 Files including images could not be exported because the file exceeds the 500KB
+
+limit of Google Documents.（這個有問題，google限制單個文件，代碼有無問題） */
+"Files including images could not be exported because the file exceeds the 500KB limit of
+
+Google Documents." = "傳輸文件包大於網絡服務器端的上限值，請分批同步";
+
+/*05-02 Sorry 抱歉*/
+"Sorry" = "抱歉";
+
+/*05-03 Failed to connect to the Google Docs service.\nPlease check your WiFi/3G.連接GoogleDocs失敗，請檢查WiFi/3G連接(可複用)*/
+"Failed to connect to the Google Docs service.\nPlease check your WiFi/3G." = "連接服務器失敗，請稍候重試!";
+
+/*05-04 Your diaries have been successfully exported.日記被成功導出*/
+"Your diaries have been successfully exported." = "日記被成功導出";
+
+/*05-05 There are no records in this period. 此期間無日記數據*/
+"There are no records in this period." = "此期間無日記數據";
+
+/*05-06 Please enter your Google account and password firstly. 請先輸入用戶名和密碼(可複用)*/
+"Please enter your Google account and password firstly." = "請先輸入用戶名和密碼";
+
+/*05-07 The passwrods you typed do not match,please check your ID and password. 密碼和用戶名不匹配 */
+"The password you typed does not match,please check your ID and password." = "密碼和用戶名不匹配，請重新輸入!";
+
+/*05-08 Please sign in your Google account firstly. 登錄您的賬號(可複用於Google/Evernote/Dropbox)*/
+"Please sign in your Google account firstly." = "請先登錄您的賬號";
+
+/*05-09 Google docs text提示*/
+"Google text"="若要將項目和 Google Docs 同步化，或將項目傳送至 Google Docs，您必須擁有 Google 帳戶。Google Docs 網路服務可讓您在線上安全地儲存資料。";
+
+
+/* ================================================ ==================================*/
+/* =================================日曆界面提示06=====(大風鈴以後檢索提示接著編)====*/
+
+
+/*06-01 Please choose a date to add note. 請選擇添加筆記的日期*/
+"Please choose a date to add note." = "請選擇添加快速筆記的日期";
+
+/*06-02 Are you sure you want to delete this note? 刪除當前筆記*/
+"Are you sure you want to delete this note?" = "刪除當前筆記嗎?";
+
+
+
+
+/* ================================================ =================================*/
+/* =====================================日記界面提示07======= =======================*/
+
+/*07-01 Are you sure you want to delete this diary? 刪除這篇日記嗎？ */
+"Are you sure you want to delete this diary?" = "刪除這篇日記嗎?";
+
+/*07-02 You have deleted the diary successfully.日記已經被成功刪除*/
+"You have deleted the diary successfully." = "日記已經被成功刪除!";
+
+/*07-03 Your microphone isn't available. 沒有檢測到麥克風*/
+"Your microphone isn't available." = "沒有檢測到麥克風!";
+
+/*07-04 we should only contain six images 每篇日記最多插入6張圖片*/
+"The diary only can contain six images!" = "每篇日記最多插入6張圖片";
+
+/*07-05 Are you sure you want to delete the recording? 刪除語音備忘錄嗎? */
+"Are you sure you want to delete the recording?" = "刪除此語音備忘錄嗎?";
+
+/*07-06 You have deleted the recording successfully.語音備忘錄刪除成功*/
+"You have deleted the recording successfully." = "語音備忘錄刪除成功!";
+
+/*07-07 Remove this picture? 刪除這張圖片嗎? */
+"Are you sure you want to delete this photo?" = "移除這張圖片嗎?";
+
+
+
+
+/* ================================================ =================================*/
+/* ===================================花房提示08========== ==========================*/
+
+
+/*08-01 You have moved this flower to greenhouse. 花已經被移植到溫室*/
+"You have moved this flower to greenhouse." = "花已經被移植到溫室";
+
+/*08-02 Flowers will be abandoned.放棄這盆花麼? */
+"Flowers will be abandoned" = "放棄這盆花麼?";
+
+/*08-03 Recommend to friends then get more seeds 推薦給朋友就可以獲得更多種子*/
+"Recommend to friends then get more seeds" = "推薦Windbell Diary給朋友就可以獲得更多種子!";
+
+/*08-04 Please come back to take care your flower after 1hr. 一小時後再來照看您的花*/
+"Please come back to take care your flower after 1hr." = "請在一小時之後再來照看您的花!";
+
+/*08-05 Your flower has grown up. 花都開好了*/
+"Your flower has grown up." = "花都開好了!";
+
+/*08-06 Save to Photo Ablums 存入相冊 */
+"Save to Photo Ablums" = "存入相冊";
+
+
+/* ================================================ ==================================*/
+/* ==========(Review)===============週末評論提示09================ ===================*/
+
+/*09-01 Review 寫評論 */
+"Review"="使用心得";
+
+/*09-02 What do you think about Windbell-Diary? Your idea is important to us. 風鈴日記怎麼樣啊，給個評論吧，親*/
+"What do you think about Windbell-Diary? Your idea is important to us."="請告訴我們您的意見和建議和不滿,採納後加以改進!";
+
+/*09-03 No thanks*/
+"No thanks"="以後再說";
+
+/*09-04 Rate 打星 (有這個提示麼?)*/
+"Rate"="我有話說";
+
+/* ================================================ ===================================*/
+/* ==================================PLUS版用提示10========= ==========================*/
+
+
+/*10-01 Update to full version? 升級到正式版*/
+"Update to Full Version?"="升級到正式版,功能更加強大?";
+
+/*10-02 You've reached the maximum number of diaries allowed in Trial version.達到了試用版本的最高篇數限制 */
+"You've reached the maximum number of diaries allowed in Trial version."="達到了升級前試用的最高篇數限制";
+
+/*10-03 Update to full version 購買完整版本*/
+"Update to Full Version"="完整版";
+
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 備用缺失輔助線1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 備用缺失輔助線1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 備用缺失輔助線1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 備用缺失輔助線1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 備用缺失輔助線1 */
+
+/* ================================================ ===================================*/
+/* ===================================公用提示11========== ============================*/
+
+/*11-00 Info 提示 */
+"Info" = "提示";
+
+/*11-01 Alert 注意 */
+"Alert" = "注意";
+
+/*11-02 Warning 警告 */
+"Warning" = "警告";
+
+/*11-03 Ok 好 */
+"Ok" = "好";
+
+/*11-04 Now 現在 */
+"Now" = "立刻";
+
+/*11-05 Cancel 取消 */
+"Cancel" = "取消";
+
+/*11-06 Confirm 確認 */
+"Confirm" = "確認";
+
+/*11-07 Successfully Saved 成功保存 */
+"Successfully Saved" = "保存成功!";
+
+
+
+/* ================================================ ====================================*/
+/* ===================================IAP提示12========== ==============================*/
+
+/*12-01 No Connection 沒有網絡連接 */
+"No Connection"="沒有網絡連接或網速太慢!";
+
+/*12-02 Please check the internet connection 檢查您的網絡連接*/
+"Please check the internet connection !"="請檢查您的網路連接狀態!";
+
+/* ================================================ ===================================*/
+/* ===================================畫筆和手寫界面13======== ========================*/
+
+/*13-01 Save image successfully! 繪畫已經保存*/
+"Save image successfully!"="塗鴉/手寫已經保存!";
+
+/*13-02 Abandon this drawing 放棄這張塗鴉/繪畫*/
+"Abandon this drawing?"="放棄這張塗鴉/繪畫?";
+
+/* ================================================ ===================================*/
+/* ==========(地圖與定位)==================GoogleMap界面14============ ================*/
+
+/* 14-01 Map and address have been saved 地圖和位置已經保存*/
+"Map and address have been saved!"="地圖和位置已經保存!";
+
+/* 14-02 Cannot obtain address 無法獲取你的地址*/
+"Cannot obtain address."="無法獲取你的地址,請稍候重試";
+
+
+/* ================================================ ===================================*/
+/* ==========(提醒和鬧鈴)==================布穀鐘提醒界面15========= ==================*/
+
+/* 15-01 Time 鬧鈴時間 */
+"Time" = "時間";
+
+/* 15-02 Title 鬧鈴標題 */
+"Title" = "標題";
+
+
+/* ========================================END======= =================================*/

@@ -1,0 +1,378 @@
+/* ==============================多语言==========================================*/
+
+
+/* 文本规范(重要,请参照规范修改和添加):*/
+/* 1.不可出现中文标点符号 */
+/* 2.注释中务必添加对应检索编号 */
+/* 3.每个键值务必空一行以方便查找 */
+/* 4.每条注释要有相应中文说明 */
+/* 5.添加多语言新键值时请放入相应的分类以利于查找检索 */
+/* 6.语法尽量使用被动语态和祈使句 */
+
+
+/* ==============================时间相关01==========================================*/
+"Master" = "大拇指助手-西班牙";
+/*01-01 January 一月 */
+"January" = "Ene.";
+
+/*01-02 February 二月 */
+"February" = "Feb.";
+
+/*01-03 March 三月*/
+"March" = "Mar.";
+
+/*01-04 April 四月*/
+"April" = "Abr.";
+
+/*01-05 May 五月*/
+"May" = "May.";
+
+/*01-06 June 六月*/
+"June" = "Jun.";
+
+/*01-07 July 七月*/
+"July" = "Jul.";
+
+/*01-08 August 八月*/
+"August" = "Ago.";
+
+/*01-09 September 九月*/
+"September" = "Sep.";
+
+/*01-10 October 十月*/
+"October" = "Oct.";
+
+/*01-11 November 十一月 */
+"November" = "Nov.";
+
+/*01-12 December 十二月 */
+"December" = "Dic.";
+
+
+/* ========================================== */
+
+/*01-13 Monday 周一*/
+"Monday" = "Lunes";
+
+/*01-14 Tuesday 周二 */
+"Tuesday" = "Martes";
+
+/*01-15 Wednesday 周三*/
+"Wednesday" = "Miércoles";
+
+/*01-16 Thursday 周四*/
+"Thursday" = "Jueves";
+
+/*01-17 Friday 周五 */
+"Friday" = "Viernes";
+
+/*01-18 Saturday 周六 */
+"Saturday" = "Sábado";
+
+/*01-19 Sunday 周日 */
+"Sunday" = "Domingo";
+
+/*01-20  Sun. 周日缩写,要红色 */
+"Sun" = "Dom";
+
+/*01-21  Mon. 周一缩写 */
+"Mon" = "Lun";
+
+/*01-22 Tues. 周二缩写 */
+"Tues" = "Mié";
+
+/*01-23  Wed. 周三缩写 */
+"Wed" = "Mer";
+
+/*01-24  Thurs. 周四缩写 */
+"Thurs" = "Jue";
+
+/*01-25   Fri. 周五缩写 */
+"Fri" = "Vie";
+
+/*01-26   Sat. 周六缩写,要红色 */
+"Sat" = "Sáb";
+
+
+/* ===================================================================================*/
+/* =====================================密码相关提示02================================*/
+
+/*02-01 Your diary is password protected. 日记已经设置密码保护 */
+"Your diary is password protected." = "Su diario está protegido por la contraseña.";
+
+/*02-02 Error 错误或出错了*/
+"Error" = "¡Error!";
+
+/*02-03 The password you entered is incorrect. Please try again.输入的密码不正确,请重试 */
+"The password you entered is incorrect. Please try again." = "La contraseña que ha introducido no es correcta, por favor, inténtelo de nuevo.";
+
+/*02-04 Please set a password firstly.请先设置密码 */
+"Please set a password firstly." = "Por favor,establecer una contraseña primero.";
+
+/*02-05 Successfully 成功 */
+"Successfully" = "¡Con éxito!";
+
+/*02-06 Your password updated successfully! 修改密码成功 */
+"Your password updated successfully!" = "¡Su contraseña se ha actualizado con éxito!";
+
+/*02-07 Your password has been canceled.密码已经取消 */
+"Your password has been canceled." = "Su contraseña ha sido cancelada.";
+
+/*02-08 You have set a password. 你已经设置过密码了*/
+"You have set a password." = "Usted ha establecido una contraseña ya.";
+
+/*02-09 The passwords you typed do not match, please try again.两次密码输入不一致,请重试 */
+"The passwords you typed do not match, please try again." = "La contraseña que ha introducido no coincide, por favor, inténtelo de nuevo.";
+
+/*02-10 The password should less than ten characters, please try again. 密码应该在10个字符以内,请重试 */
+"The password should less than ten characters, please try again." = "La contraseña debe tener menos de 10 caracteres, por favor, inténtelo de nuevo.";
+
+/*02-11 Please input the password. 请输入密码 */
+"Please input the password." = "Por favor introduzca la contraseña.";
+
+/*02-13 The answer you entered is incorrect, please try again.输入的提示问题答案不对,请重试 */
+"The answer you entered is incorrect, please try again." = "La respuesta que ha introducido no es correcta, por favor, inténtelo de nuevo.";
+
+/*====================================================================================*/
+/* =====================================邮件备份界面提示03============================*/
+
+
+/*03-01 Are you sure you want to delete all diaries and pictures (not include quick memo)? 批量删除日记 */
+"Are you sure you want to delete all diaries and pictures (not include quick memo)?" = "¿Es seguro que desea eliminar todos los diarios y imágenes?";
+
+/*03-02 Congratulations 恭喜 */
+"Congratulations" = "¡Felicitaciones!";
+
+/*03-03 You have deleted diaries successfully. 日记已经被删除 */
+"You have deleted diaries successfully." = "Han eliminado los diarios con éxito.";
+
+/*03-04 Please set your mail account of the device firstly.请先设置你的邮箱账号 */
+"Please set your mail account of the device firstly." = "Por favor establecer su cuenta de correo electrónico en primer lugar.";
+
+/*03-05 Backup your diaries successfully. 备份成功 */
+"Backup your diaries successfully." = "¡Copia de seguridad terminada con éxito!";
+
+
+/* =============================================================================================*/
+/* =============(导入和导出)==============WIFI备份界面提示04=======（iTune Sharing接着编）======*/
+
+
+/*04-01 Wifi not found. Please check Wifi connection. 没有发现WiFi，请检查WiFi连接 */
+"Wifi not found. Please check Wifi connection." = "Wi-Fi no se encuentra. Por favor, compruebe la conexión de WiFi.";
+
+/*04-02 Make sure that the computer has been connected to the same local network with your device.确保WiFi和电脑在一个局域网 */
+"Make sure that the computer has been connected to the same local network with your device." = "Por favor asegurarse de que el ordenador se ha conectado a la misma red local con su aparato.";
+
+/*04-03 Loading,please wait 加载中，请稍候  */
+"Loading,please wait"="Está cargando, espere por favor.
+";
+/*04-04 WiFi txt wifi提示*/
+"wifi txt"="Descargue un archivo de copia de seguridad en el disco duro tras acceder a la dirección web siguiente mediante el explorador web en el ordenador.";
+
+
+
+/* =========================================================================================*/
+/* ===============（同步）=================GoogleDoc界面提示05(以后Evernote,Dropbox接着编号)*/
+
+/*05-01 Files including images could not be exported because the file exceeds the 500KB limit of Google Documents.（这个有问题，google限制单个文件，代码有无问题） */
+"Files including images could not be exported because the file exceeds the 500KB limit of Google Documents." = "Archivos con imagenes no se pueden exportar porque supera el límite de Google Documents.";
+
+/*05-02 Sorry 抱歉*/
+"Sorry" = "Lo sentimos.";
+
+/*05-03 Failed to connect to the Google Docs service.\nPlease check your WiFi/3G.连接Google Docs失败，请检查WiFi/3G连接(可复用)*/
+"Failed to connect to the Google Docs service.\nPlease check your WiFi/3G." = "No se puede conectar al servicio. Por favor comprobar su WiFi/3G.";
+
+/*05-04 Your diaries have been successfully exported.日记被成功导出 */
+"Your diaries have been successfully exported." = "Sus diarios han sido exportado con éxito.";
+
+/*05-05 There are no records in this period. 此期间无日记数据 */
+"There are no records in this period." = "No hay registros en este período.";
+
+/*05-06 Please enter your Google account and password firstly. 请先输入用户名和密码(可复用) */
+"Please enter your Google account and password firstly." = "Por favor introduzca su cuenta y contraseña de en primer lugar.";
+
+/*05-07 The passwrods you typed do not match,please check your ID and password. 密码和用户名不匹配 */
+"The password you typed does not match,please check your ID and password." = "La contraseña introducida no coincide,por favor comprobar su ID y contraseña.";
+
+/*05-08 Please sign in your Google account firstly. 登录您的账号(可复用于Google/Evernote/Dropbox)*/
+"Please sign in your Google account firstly." = "Por favor inicie  su cuenta de  en primer lugar.";
+
+/*05-09 Google docs text提示*/
+"Google text"="Para sincronizar o transferir elementos a Google Docs, debe tener una cuenta de Google. El servicio de Google Docs le permite almacenar sus datos en línea de forma segura.";
+
+
+/* ==================================================================================*/
+/* =================================日历界面提示06=====(大风铃以后检索提示接着编)====*/
+
+
+/*06-01 Please choose a date to add note. 请选择添加笔记的日期 */
+"Please choose a date to add note." = "Por favor eleja una fecha para agregar memo/nota.";
+
+/*06-02 Are you sure you want to delete this note? 删除当前笔记 */
+"Are you sure you want to delete this note?" = "¿Eliminar esta memo/nota?";
+
+
+
+
+/* =================================================================================*/
+/* =====================================日记界面提示07==============================*/
+
+/*07-01 Are you sure you want to delete this diary? 删除这篇日记吗？*/
+"Are you sure you want to delete this diary?" = "¿Es seguro que desea eliminar el diario?";
+
+/*07-02 You have deleted the diary successfully.日记已经被成功删除 */
+"You have deleted the diary successfully." = "¡Eliminado con éxito!";
+
+/*07-03 Your microphone isn't available. 没有检测到麦克风 */
+"Your microphone isn't available." = "Su micrófono no está disponible";
+
+/*07-04 we should only contain six images 每篇日记最多插入6张图片 */
+"The diary only can contain six images!" = "Sólo puede insertar 6 imágenes en un diario.";
+
+/*07-05 Are you sure you want to delete the recording? 删除语音备忘录吗? */
+"Are you sure you want to delete the recording?" = "¿Eliminar este memo de voz?";
+
+/*07-06 You have deleted the recording successfully.语音备忘录删除成功 */
+"You have deleted the recording successfully." = "El memo de voz ha sido eliminado con éxito.";
+
+/*07-07  Remove this picture? 删除这张图片吗? */
+"Are you sure you want to delete this photo?" = "¿Eliminar esta imagen?";
+
+
+
+
+/* =================================================================================*/
+/* ===================================花房提示08====================================*/
+
+
+/*08-01 You have moved this flower to greenhouse. 花已经被移植到温室 */
+"You have moved this flower to greenhouse." = "Las flores se han movido al invernadero.";
+
+/*08-02 Flowers will be abandoned.放弃这盆花么? */
+"Flowers will be abandoned" = "Las flores serán abandonadas.";
+
+/*08-03 Recommend to friends then get more seeds  推荐给朋友就可以获得更多种子 */
+"Recommend to friends then get more seeds" = "Recomendar Windbell Diary a amigos para conseguir más semillas.";
+
+/*08-04 Please come back to take care your flower after 1hr. 一小时后再来照看您的花 */
+"Please come back to take care your flower after 1hr." = "Por favor vuelva y cuide sus flores después de una hora.";
+
+/*08-05 Your flower has grown up. 花都开好了 */
+"Your flower has grown up." = "Las flores han crecido.";
+
+/*08-06 Save to Photo Ablums 存入相册 */
+"Save to Photo Ablums" = "Guardar al Photo Album.";
+
+
+/* ==================================================================================*/
+/* ==========(Review)===============周末评论提示09===================================*/
+
+/*09-01 Review 写评论 */
+"Review"="Comentario";
+
+/*09-02 What do you think about Windbell-Diary? Your idea is important to us. 风铃日记怎么样啊，给个评论吧，亲*/
+"What do you think about Windbell-Diary? Your idea is important to us."="¿Qué piensa sobre Windbell-Diary? Tu opinión es importante para nosotros";
+
+
+/*09-03 No thanks*/
+"No thanks"="Más tarde";
+
+/*09-04 Rate 打星 (有这个提示么?)*/
+"Rate"="Comentario";
+
+/* ===================================================================================*/
+/* ==================================PLUS版用提示10===================================*/
+
+
+/*10-01 Update to full version? 升级到正式版 */
+"Update to Full Version?"="¿Hora para actualizar?";
+
+/*10-02 You've reached the maximum number of diaries allowed in Trial version.达到了试用版本的最高篇数限制 */
+"You've reached the maximum number of diaries allowed in Trial version."="Se han alcanzado el número máximo de diarios, elimine alguno para agregar un nuevo.";
+
+/*10-03 Update to full version 购买完整版本 */
+"Update to Full Version"="Versión Completa";
+
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+
+/* ===================================================================================*/
+/* ===================================公用提示11======================================*/
+
+/*11-00 Info 说明 */
+"Info" = "Información";
+
+/*11-01 Alert 注意 */
+"Alert" = "Alerta";
+
+/*11-02 Warning 警告 */
+"Warning" = "¡Advertencia!";
+
+/*11-03 Ok 好 */
+"Ok" = "OK";
+
+/*11-04 Now 现在 */
+"Now" = "Ahora";
+
+/*11-05 Cancel 取消 */
+"Cancel" = "Cancelar";
+
+/*11-06 Confirm 确认 */
+"Confirm" = "Confirmar";
+
+/*11-07 Successfully Saved 成功保存 */
+"Successfully Saved" = "¡Archivado con éxito!";
+
+
+
+/* ====================================================================================*/
+/* ===================================IAP提示12========================================*/
+
+/*12-01 No Connection 没有网络连接 */
+"No Connection"="No se puede conectar al servicio.";
+
+/*12-02 Please check the internet connection 检查您的网络连接 */
+"Please check the internet connection !"="Por favor comprobar su WiFi/3G.";
+
+/* ===================================================================================*/
+/* ===================================画笔和手写界面13================================*/
+
+/*13-01 Save image successfully! 绘画已经保存 */
+"Save image successfully!"="La pintura se ha guardado.";
+
+/*13-02 Abandon this drawing 放弃这张绘画 */
+"Abandon this drawing?"="¿Renunciar a su dibujo existente?";
+
+/* ===================================================================================*/
+/* ==========(地图与定位)==================GoogleMap界面14============================*/
+
+/* 14-01 Map and address have been saved 地图和位置已经保存 */
+"Map and address have been saved!"="Los mapas y ubicación han sido salvados";
+
+/* 14-02 Cannot obtain address 无法获取你的地址 */
+"Cannot obtain address."="No se puede obtener la dirección de su ubicación.";
+
+
+/* ===================================================================================*/
+/* ==========(提醒和闹铃)==================布谷钟提醒界面15===========================*/
+
+/* 15-01 Time 闹铃时间 */
+"Time" = "Tiempo";
+
+/* 15-02 Title 闹铃标题 */
+"Title" = "Título";
+
+
+/* ========================================END========================================*/
+
+
+
+
+
+/* +++++++++++++++++++++=缺=+++++++++++++++++++++ 备用缺失辅助线1 */
+
+/* ========================================== 备用分割辅助线2 */
