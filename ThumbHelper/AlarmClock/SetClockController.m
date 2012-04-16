@@ -28,7 +28,6 @@
 {
 	[self saveData];
 	[delegate saveClockData];
-	[delegate restoreGUI];
 //	CATransition *animation = [CATransition animation];
 //	animation.duration = 0.4f;
 //	animation.delegate = self;

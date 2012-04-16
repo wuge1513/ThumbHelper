@@ -47,32 +47,23 @@ UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 
 //UISwitch
 @property (strong, nonatomic) UISwitch *swLater;
+@property (nonatomic) NSInteger alarmClockID;
+@property (nonatomic) BOOL *blAlarmClockState;
+@property (nonatomic) BOOL isKeyboardShowFlag;
 
-
-@property (strong, nonatomic) UILabel *clockState;
-@property (strong, nonatomic) UILabel *clockTime;
-@property (strong, nonatomic) UILabel *clockMode;
-@property (strong, nonatomic) UILabel *clockScene;
-@property (strong, nonatomic) UILabel *clockMusic;
 @property (strong, nonatomic) UITextView *rememberTextView;
-@property (nonatomic) NSInteger clockID;
-//@property (nonatomic) BOOL isKeyboardShowFlag;
+
+
 
 - (void)saveClockData;
-- (void)restoreGUI;
 - (void)backToMainUI:(id)sender;
-- (void)backToMainUIByDirection:(int)directionTag;
 
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillHidden:(NSNotification *)notification;
-
-- (IBAction)setClockBtn:(UIButton *)sender;
 
 - (void)showSetClockTimeController;
 - (void)showSetClockModeController;
 - (void)showSetClockMusicController;
 - (void)showSetClockSceneController;
-
-- (void)setUIFontAndColor;
 
 @end

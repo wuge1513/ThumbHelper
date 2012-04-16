@@ -57,8 +57,8 @@
 	leftBarButtonItem.target = self;
 	[self restoreNavigationBar];
 	
-	self.timeLabel.text = delegate.clockTime.text;
-	NSArray *array = [delegate.clockTime.text componentsSeparatedByString:@":"];
+	self.timeLabel.text = delegate.lblTimeText.text;
+	NSArray *array = [delegate.lblTimeText.text componentsSeparatedByString:@":"];
 
 	NSTimeInterval interval = [[array objectAtIndex:0] intValue] * 3600 + [[array objectAtIndex:1] intValue] * 60;
     self.datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
@@ -98,7 +98,7 @@
 
 - (void)saveData
 {
-	delegate.clockTime.text = timeLabel.text;
+	delegate.lblTimeText.text = timeLabel.text;
 }
 
 //- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

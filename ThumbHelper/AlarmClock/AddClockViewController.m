@@ -2,8 +2,8 @@
 //  AddClockViewController.m
 //  GeiniableClock
 //
-//  Created by yuan jun on 11-8-5.
-//  Copyright 2011 the9. All rights reserved.
+//  Created by liu lei on 12-4-16.
+//  Copyright 2012. All rights reserved.
 //
 
 #import "AddClockViewController.h"
@@ -15,7 +15,6 @@
 #import "SetClockSceneController.h"
 #import "SetClockMusicController.h"
 
-#define BARBUTTON(TITLE, SELECTOR) [[UIBarButtonItem alloc] initWithTitle:TITLE style:UIBarButtonItemStyleBordered target:self action:SELECTOR] 
 
 @implementation AddClockViewController
 
@@ -25,12 +24,10 @@
 @synthesize lblLabelName, lblTimeName, lblRepeatName, lblMusicName, lblLaterName, lblContentName;
 @synthesize lblLabelText, lblTimeText, lblRepeatText, lblMusicText;
 @synthesize swLater;
-
-
-@synthesize clockState, clockTime, clockMode, clockScene, clockMusic;
+@synthesize alarmClockID;
+@synthesize blAlarmClockState, isKeyboardShowFlag;
 @synthesize rememberTextView;
 
-@synthesize clockID;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
@@ -39,6 +36,12 @@
     if (self) {
         // Custom initialization.
 		self.title = NSLocalizedString(@"Set AlarmClock", nil);
+        
+        //left button go back
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backToClockUI:)]; 
+
+        //right button save data
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveClockData)];
     }
     return self;
 }
@@ -106,38 +109,17 @@
     self.swLater = [[UISwitch alloc] initWithFrame:swRect];
 
     
-    
-	[self setUIFontAndColor];
+    //hidden keyboard
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
-	
-	[self restoreGUI];
     
 }
 
-- (void)setUIFontAndColor
-{
-	UIFont *font = [UIFont fontWithName:@"DB LCD Temp" size:14.0f];
-	self.clockState.font = font;
-	self.clockTime.font = font;
-	self.clockMode.font = font;
-	self.clockScene.font = font;
-	self.clockMusic.font = font;
-	self.rememberTextView.font = font;
-	
-	self.clockState.textColor = [UIColor randomColor];
-	self.clockTime.textColor = [UIColor randomColor];
-	self.clockMode.textColor = [UIColor randomColor];
-	self.clockScene.textColor = [UIColor randomColor];
-	self.clockMusic.textColor = [UIColor randomColor];
-	self.rememberTextView.textColor = [UIColor randomColor];
-}
 
 - (void)keyboardWillShow:(NSNotification *)notification
 {
-	
 	 if ([rememberTextView isFirstResponder] == NO) {
-	 return;
+         return;
 	 }
     
 	 //获取键盘的大小
@@ -174,97 +156,43 @@
 }
 
 
-///  
-//UI数据持久化
-///
+/**
+ * UI数据持久化 储存闹钟
+ */
 - (void)saveClockData
 {
-	NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:6];
-	[clockDictionary setObject:self.clockState.text forKey:@"ClockState"];
-	[clockDictionary setObject:self.clockTime.text forKey:@"ClockTime"];
-	[clockDictionary setObject:self.clockMode.text forKey:@"ClockMode"];
-	[clockDictionary setObject:self.clockScene.text forKey:@"ClockScene"];
-	[clockDictionary setObject:self.clockMusic.text forKey:@"ClockMusic"];
-	[clockDictionary setObject:self.rememberTextView.text forKey:@"ClockRemember"];
-	
+	NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:4];
+	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
+    [clockDictionary setObject:self.lblLabelText.text forKey:@"ClockLabel"];
+	[clockDictionary setObject:self.lblRepeatText.text forKey:@"ClockRepeat"];
+	//[clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
+	//[clockDictionary setObject:self.rememberTextView.text forKey:@"ClockText"];
+    //NSLog(@"clockDic = %@", clockDictionary);
+    
 	NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-
-	[userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.clockID]];
-	if (self.clockID > self.alarmViewCopntroller.alarmClockCount)
+	[userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
+    
+	if (self.alarmClockID > self.alarmViewCopntroller.alarmClockCount)
 		++self.alarmViewCopntroller.alarmClockCount;
+    
 	[userDefault setObject:[NSNumber numberWithInt:self.alarmViewCopntroller.alarmClockCount] forKey:@"ClockCount"];
 	
-	if ([self.clockState.text isEqualToString:@"开启"]) {
-		[self.alarmViewCopntroller startClock:self.clockID];
+	if (self.blAlarmClockState) {
+		[self.alarmViewCopntroller startClock:self.alarmClockID];
 	}
 	[userDefault synchronize];
 }
 
-- (void)restoreGUI
-{
-	//self.delegate.mainNavigationBar.topItem.leftBarButtonItem = BARBUTTON(@"Back", @selector(backToMainUI:));
-    
-}
-
+/**
+ * 返回
+ */
 - (void)backToMainUI:(id)sender
 {
-	[self backToMainUIByDirection:0];
+    [self.navigationController popViewControllerAnimated:YES];
+    [self saveClockData];
+    [self.alarmViewCopntroller restoreMainGUI];
 }
 
-- (void)backToMainUIByDirection:(int)directionTag
-{
-	[self.navigationController popViewControllerAnimated:YES];
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	switch (directionTag) {
-//		case 0:
-//			animation.subtype = kCATransitionFromRight;
-//			break;
-//		case 1:
-//			animation.subtype = kCATransitionFromLeft;
-//			break;
-//		case 2:
-//			animation.subtype = kCATransitionFromTop;
-//			break;
-//		case 3:
-//			animation.subtype = kCATransitionFromBottom;
-//            if (isKeyboardShowFlag) {
-//                [self.rememberTextView resignFirstResponder];
-//                return;
-//            }
-//			break;
-//		default:
-//			break;
-//	}
-//    [self saveClockData];
-//	[delegate restoreMainGUI];
-//	[[delegate.mainTableView layer] addAnimation:animation forKey:@"BackToMainUI"];
-//	[self.view removeFromSuperview];
-}
-
-- (IBAction)setClockBtn:(UIButton *)sender
-{
-	int index = [sender tag];
-	switch (index) {
-		case 100:
-			[self showSetClockTimeController];
-			break;
-		case 111:
-			[self showSetClockModeController];
-			break;
-		case 122:
-			[self showSetClockSceneController];
-			break;
-		case 133:
-			[self showSetClockMusicController];
-			break;
-		default:
-			break;
-	}
-}
 
 - (void)showSetClockTimeController
 {
@@ -355,29 +283,6 @@
 	lastTouchPoint = [touch locationInView:self.view];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	if ([[[touches allObjects] lastObject] tapCount] >= 2) {
-		[self.rememberTextView resignFirstResponder];
-		return;
-	}
-	if (lastTouchPoint.x == 0 && lastTouchPoint.y == 0)
-		return;
-	if (lastTouchPoint.x - firstTouchPoint.x > 60) {
-		[self backToMainUIByDirection:1];
-	}
-	else if(lastTouchPoint.x - firstTouchPoint.x < -60){
-		[self backToMainUIByDirection:0];
-	}
-	else if(lastTouchPoint.y - firstTouchPoint.y > 60){
-		[self backToMainUIByDirection:3];
-	}
-	else if(lastTouchPoint.y - firstTouchPoint.y < -60){
-		[self backToMainUIByDirection:2];
-	}
-	
-	
-}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -467,7 +372,25 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    switch (indexPath.row) {
+		case 0:
+			[self showSetClockTimeController];
+			break;
+		case 1:
+			[self showSetClockModeController];
+			break;
+		case 2:
+			[self showSetClockSceneController];
+			break;
+		case 3:
+			[self showSetClockMusicController];
+			break;
+        case 4:
+			[self showSetClockMusicController];
+			break;
+		default:
+			break;
+    }
 }
 
 

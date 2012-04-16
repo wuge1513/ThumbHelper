@@ -7,8 +7,6 @@
 //
 
 #import "AlarmViewController.h"
-#import "AddClockViewCell.h"
-#import "ClockCell.h"
 #import "AddClockViewController.h"
 
 @implementation AlarmViewController
@@ -17,13 +15,19 @@
 @synthesize addClockViewController;
 @synthesize alarmClockCount, activatyClockCount;
 
+//Cell content
+@synthesize lblAlarmClockTime, lblAlarmClockLabel, lblAlarmClockRepeat;
+@synthesize strAlarnClockTime, strAlarmClockLabel, strAlarmClockRepeat;
+@synthesize numberID, alarmClockSwitch;
+@synthesize arrAlarmClock, arrAlarmTime, arrAlarmLabel, arrAlarmRepeat;
+
 #pragma mark - Managing the detail item
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Set Alarm", @"Set Alarm");
+        self.title = NSLocalizedString(@"Add Alarm", @"Add Alarm");
         
         //the add btn for alarm
         UIBarButtonItem *selectButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddClockView)];
@@ -41,12 +45,21 @@
 
 #pragma mark - View lifecycle
 
+-(void)initData
+{
+    self.arrAlarmClock = [[NSMutableArray alloc] initWithCapacity:1];
+    self.arrAlarmTime = [[NSMutableArray alloc] initWithCapacity:1];
+    self.arrAlarmLabel = [[NSMutableArray alloc] initWithCapacity:1];
+    self.arrAlarmRepeat = [[NSMutableArray alloc] initWithCapacity:1];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
+    [self initData];
     [self initClockCount];
 	[self updateActivityClockCount];
     
@@ -55,6 +68,21 @@
     self.tbAlarmView.delegate = self;
     self.tbAlarmView.dataSource = self;
     [self.view addSubview:self.tbAlarmView];
+    
+    //Cell content
+    UIColor *lblbbColor = [UIColor orangeColor];
+    
+    CGRect lblRectTime = CGRectMake(10.0, 0.0, 40.0, 44.0);
+    self.lblAlarmClockTime = [[UILabel alloc] initWithFrame:lblRectTime];
+    self.lblAlarmClockTime.backgroundColor = lblbbColor;
+    
+    CGRect lblRectLabel = CGRectMake(50.0, 0.0, 50.0, 20.0);
+    self.lblAlarmClockLabel = [[UILabel alloc] initWithFrame:lblRectLabel];
+    self.lblAlarmClockLabel.backgroundColor = lblbbColor;
+    
+    CGRect lblRectRepeat = CGRectMake(50.0, 22.0, 50.0, 20.0);
+    self.lblAlarmClockRepeat = [[UILabel alloc] initWithFrame:lblRectRepeat];
+    self.lblAlarmClockRepeat.backgroundColor = lblbbColor;
 }
 
 - (void)viewDidUnload
@@ -91,6 +119,9 @@
 }
 
 #pragma mark - action methods
+
+
+
 - (void)setActivityClockCount:(int)count
 {
 	self.activatyClockCount = count;
@@ -100,7 +131,6 @@
 
 - (void)restoreMainGUI
 {
-	//self.mainNavigationBar.topItem.leftBarButtonItem = nil;
 	[self.tbAlarmView setScrollEnabled:YES];
 	[self.tbAlarmView reloadData];
 }
@@ -113,12 +143,12 @@
 		self.alarmClockCount = 0;
 	else
 		self.alarmClockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
-	self.activityClockCount = [[UIApplication sharedApplication] applicationIconBadgeNumber];
+	self.activatyClockCount = [[UIApplication sharedApplication] applicationIconBadgeNumber];
 	
-	if (![userDefault objectForKey:@"ActivityClockCount"])
-		self.activityClockCount = 0;
+	if (![userDefault objectForKey:@"ActivatyClockCount"])
+		self.activatyClockCount = 0;
 	else
-		self.activityClockCount = [[userDefault objectForKey:@"ActivityClockCount"] intValue];
+		self.activatyClockCount = [[userDefault objectForKey:@"ActivatyClockCount"] intValue];
 }
 
 - (NSString *)updateHeaderTitle
@@ -130,13 +160,15 @@
 {
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:self.activatyClockCount];
 }
+
 - (void)showAddClockView
 {
     [self showAddClockView:nil];
 }
-- (void)showAddClockView:(ClockCell *)sender
+
+- (void)showAddClockView:(NSInteger)index
 {
-	if (self.alarmClockCount == MAXCLOCKCOUNT && sender == nil) {
+	if (self.alarmClockCount == MAXCLOCKCOUNT) {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Clock Warning!" message:[NSString stringWithFormat:@"You can not add clock more than %d!", MAXCLOCKCOUNT] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alertView show];
 		return;
@@ -152,15 +184,16 @@
 	addClockViewController.view.center = point;
 	[self.tbAlarmView setScrollEnabled:NO];
     
-	addClockViewController.clockID = self.alarmClockCount + 1;
-	if (sender) {
-		addClockViewController.clockState.text = (sender.clockSwitch.on == YES ? @"开启" : @"关闭");
-		addClockViewController.clockTime.text = sender.clockTimeLabel.text;
-		addClockViewController.clockMode.text = sender.clockModeLabel.text;
-		addClockViewController.clockScene.text = sender.clockSceneLabel.text;
-		addClockViewController.clockMusic.text = sender.clockMusic;
-		addClockViewController.rememberTextView.text = sender.clockRemember;
-		addClockViewController.clockID = sender.numberID;
+	addClockViewController.alarmClockID = self.alarmClockCount + 1;
+	if (index) {
+        
+		//addClockViewController.alarmClockID = self.alarmClockSwitch.on == YES;
+		addClockViewController.lblTimeText.text = self.lblAlarmClockTime.text;
+		addClockViewController.lblRepeatText.text = self.lblAlarmClockRepeat.text;
+		addClockViewController.lblLabelText.text = self.lblAlarmClockLabel.text;
+		//addClockViewController.lblMusicText.text = sender.clockMusic;
+		//addClockViewController.rememberTextView.text = sender.clockRemember;
+		addClockViewController.alarmClockID = self.numberID;
 	}
 }
 
@@ -170,8 +203,7 @@
 	//再重新发出新的本地通知
 	
 	[self shutdownClock:clockID];
-	
-	NSString *clockIDString = [NSString stringWithFormat:@"%d", clockID];
+	//NSString *clockIDString = [NSString stringWithFormat:@"%d", clockID];
 //	[(GeiniableClockAppDelegate *)[[UIApplication sharedApplication] delegate] postLocalNotification:clockIDString isFirst:YES];
     
 }
@@ -181,7 +213,7 @@
 	NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
 	for(UILocalNotification *notification in localNotifications)
 	{
-		if ([[[notification userInfo] objectForKey:@"ActivityClock"] intValue] == clockID) {
+		if ([[[notification userInfo] objectForKey:@"ActivatyClock"] intValue] == clockID) {
 			NSLog(@"Shutdown localNotification:%@", [notification fireDate]);
 			[[UIApplication sharedApplication] cancelLocalNotification:notification];
 		}
@@ -207,32 +239,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell;
-//	if (indexPath.row == 0) {
-//		cell = (AddClockViewCell *)[tableView dequeueReusableCellWithIdentifier:@"AddClockViewCell"];
-//		if (!cell) {
-//			cell = [[[NSBundle mainBundle] loadNibNamed:@"AddClockViewCell" owner:self options:nil] lastObject];
-//		}
-//		((AddClockViewCell *)cell).alarmViewController = self;
-//	}
-//	else {
-		cell = (ClockCell *)[tableView dequeueReusableCellWithIdentifier:@"ClockCell"];
-		if (!cell) {
-			cell =[[[NSBundle mainBundle] loadNibNamed:@"ClockCell" owner:self options:nil] lastObject];
-		}
-		((ClockCell *)cell).alarmViewController = self;
-		
-		NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-		NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
-		((ClockCell *)cell).clockSwitch.on = [[clockDictionary objectForKey:@"ClockState"] isEqualToString:@"开启"] ? YES : NO;
-		((ClockCell *)cell).clockTimeLabel.text = [clockDictionary objectForKey:@"ClockTime"];
-		((ClockCell *)cell).clockModeLabel.text = [clockDictionary objectForKey:@"ClockMode"];
-		((ClockCell *)cell).clockSceneLabel.text = [clockDictionary objectForKey:@"ClockScene"];
-		((ClockCell *)cell).clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
-		((ClockCell *)cell).clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
-		((ClockCell *)cell).numberID = indexPath.row;
-		[((ClockCell *)cell) setUIFontAndColor];
-	//}
+    static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+	
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+							 SimpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:SimpleTableIdentifier];
+    }
+    
+    
 	return cell;
 }
 
@@ -249,6 +266,16 @@
 //{
 //	return [self updateHeaderTitle];
 //}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dic = [self.arrAlarmClock objectAtIndex:indexPath.row];
+    self.lblAlarmClockTime.text = [dic objectForKey:@"ClockTime"];
+    self.lblAlarmClockLabel.text = [dic objectForKey:@"ClockLabel"];
+    self.lblAlarmClockRepeat.text = [dic objectForKey:@"ClockRepeat"];
+    
+    [self showAddClockView:indexPath.row];
+}
 
 
 							

@@ -56,10 +56,6 @@
 		CEC66B211535E6BD00C67344 /* index6.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B071535E6BD00C67344 /* index6.png */; };
 		CEC66B221535E6BD00C67344 /* index7.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B081535E6BD00C67344 /* index7.png */; };
 		CEC66B371535E9E100C67344 /* UIColor_Random.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66B361535E9E000C67344 /* UIColor_Random.m */; };
-		CEC69E0915369F2D00D6FA02 /* ClockCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC69E0715369F2D00D6FA02 /* ClockCell.m */; };
-		CEC69E0A15369F2D00D6FA02 /* ClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC69E0815369F2D00D6FA02 /* ClockCell.xib */; };
-		CEC69E0E1536A06000D6FA02 /* AddClockViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC69E0C1536A06000D6FA02 /* AddClockViewCell.m */; };
-		CEC69E0F1536A06000D6FA02 /* AddClockViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC69E0D1536A06000D6FA02 /* AddClockViewCell.xib */; };
 		CED91CAA1536BA7D007BC76D /* AddClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED91CA81536BA7D007BC76D /* AddClockViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -123,12 +119,6 @@
 		CEC66B081535E6BD00C67344 /* index7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index7.png; sourceTree = "<group>"; };
 		CEC66B351535E9DF00C67344 /* UIColor_Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Random.h; sourceTree = "<group>"; };
 		CEC66B361535E9E000C67344 /* UIColor_Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor_Random.m; sourceTree = "<group>"; };
-		CEC69E0615369F2D00D6FA02 /* ClockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockCell.h; path = AlarmClock/ClockCell.h; sourceTree = "<group>"; };
-		CEC69E0715369F2D00D6FA02 /* ClockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockCell.m; path = AlarmClock/ClockCell.m; sourceTree = "<group>"; };
-		CEC69E0815369F2D00D6FA02 /* ClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockCell.xib; path = AlarmClock/ClockCell.xib; sourceTree = "<group>"; };
-		CEC69E0B1536A06000D6FA02 /* AddClockViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddClockViewCell.h; path = AlarmClock/AddClockViewCell.h; sourceTree = "<group>"; };
-		CEC69E0C1536A06000D6FA02 /* AddClockViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddClockViewCell.m; path = AlarmClock/AddClockViewCell.m; sourceTree = "<group>"; };
-		CEC69E0D1536A06000D6FA02 /* AddClockViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddClockViewCell.xib; path = AlarmClock/AddClockViewCell.xib; sourceTree = "<group>"; };
 		CED91CA71536BA7D007BC76D /* AddClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddClockViewController.h; path = AlarmClock/AddClockViewController.h; sourceTree = "<group>"; };
 		CED91CA81536BA7D007BC76D /* AddClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddClockViewController.m; path = AlarmClock/AddClockViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,12 +217,6 @@
 				CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */,
 				CED91CA71536BA7D007BC76D /* AddClockViewController.h */,
 				CED91CA81536BA7D007BC76D /* AddClockViewController.m */,
-				CEC69E0B1536A06000D6FA02 /* AddClockViewCell.h */,
-				CEC69E0C1536A06000D6FA02 /* AddClockViewCell.m */,
-				CEC69E0D1536A06000D6FA02 /* AddClockViewCell.xib */,
-				CEC69E0615369F2D00D6FA02 /* ClockCell.h */,
-				CEC69E0715369F2D00D6FA02 /* ClockCell.m */,
-				CEC69E0815369F2D00D6FA02 /* ClockCell.xib */,
 			);
 			name = AlarmClock;
 			sourceTree = "<group>";
@@ -392,8 +376,6 @@
 				CEC66B201535E6BD00C67344 /* index5.png in Resources */,
 				CEC66B211535E6BD00C67344 /* index6.png in Resources */,
 				CEC66B221535E6BD00C67344 /* index7.png in Resources */,
-				CEC69E0A15369F2D00D6FA02 /* ClockCell.xib in Resources */,
-				CEC69E0F1536A06000D6FA02 /* AddClockViewCell.xib in Resources */,
 				CE5600AD1539F941005E2E36 /* SetClockTimeController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,8 +392,6 @@
 				CEC66AB71535DBFE00C67344 /* AlarmViewController.m in Sources */,
 				CEC66AB91535DBFE00C67344 /* MasterViewController.m in Sources */,
 				CEC66B371535E9E100C67344 /* UIColor_Random.m in Sources */,
-				CEC69E0915369F2D00D6FA02 /* ClockCell.m in Sources */,
-				CEC69E0E1536A06000D6FA02 /* AddClockViewCell.m in Sources */,
 				CED91CAA1536BA7D007BC76D /* AddClockViewController.m in Sources */,
 				CE5600AC1539F941005E2E36 /* SetClockTimeController.m in Sources */,
 				CE5600B91539FEA4005E2E36 /* SetClockController.m in Sources */,
