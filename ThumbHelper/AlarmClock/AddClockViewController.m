@@ -38,7 +38,7 @@
 		self.title = NSLocalizedString(@"Set AlarmClock", nil);
         
         //left button go back
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backToClockUI:)]; 
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backToMainUI:)]; 
 
         //right button save data
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveClockData)];
@@ -95,7 +95,7 @@
     
     self.lblTimeText = [[UILabel alloc] initWithFrame:lblRectText];
     self.lblTimeText.backgroundColor = lblColor;
-    self.lblTimeText.text = @"08:00";
+    self.lblTimeText.text = @"10:00";
     
     self.lblRepeatText = [[UILabel alloc] initWithFrame:lblRectText];
     self.lblRepeatText.backgroundColor = lblColor;
@@ -155,6 +155,14 @@
     isKeyboardShowFlag = NO;
 }
 
+/**
+ * 返回
+ */
+- (void)backToMainUI:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.alarmViewCopntroller restoreMainGUI];
+}
 
 /**
  * UI数据持久化 储存闹钟
@@ -162,36 +170,32 @@
 - (void)saveClockData
 {
 	NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:4];
-	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
     [clockDictionary setObject:self.lblLabelText.text forKey:@"ClockLabel"];
+	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
 	[clockDictionary setObject:self.lblRepeatText.text forKey:@"ClockRepeat"];
-	//[clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
-	//[clockDictionary setObject:self.rememberTextView.text forKey:@"ClockText"];
-    //NSLog(@"clockDic = %@", clockDictionary);
+    [clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
+    
+    NSLog(@"clockDic = %@", clockDictionary);
     
 	NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
 	[userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
+    NSLog(@"self.alarmClockID = %d", self.alarmClockID);
     
 	if (self.alarmClockID > self.alarmViewCopntroller.alarmClockCount)
 		++self.alarmViewCopntroller.alarmClockCount;
+    NSLog(@"self.alarmViewCopntroller.alarmClockCount = %d", self.alarmViewCopntroller.alarmClockCount);
     
 	[userDefault setObject:[NSNumber numberWithInt:self.alarmViewCopntroller.alarmClockCount] forKey:@"ClockCount"];
 	
-	if (self.blAlarmClockState) {
-		[self.alarmViewCopntroller startClock:self.alarmClockID];
-	}
+//	if (self.blAlarmClockState) {
+//		[self.alarmViewCopntroller startClock:self.alarmClockID];
+//	}
 	[userDefault synchronize];
+    
+    [self backToMainUI:nil];
 }
 
-/**
- * 返回
- */
-- (void)backToMainUI:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    [self saveClockData];
-    [self.alarmViewCopntroller restoreMainGUI];
-}
+
 
 
 - (void)showSetClockTimeController
@@ -268,20 +272,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	UITouch *touch = [[touches allObjects] lastObject];
-	firstTouchPoint = [touch locationInView:self.view];
-	lastTouchPoint = CGPointZero;
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	UITouch *touch = [[touches allObjects] lastObject];
-	lastTouchPoint = [touch locationInView:self.view];
-}
 
 
 - (void)didReceiveMemoryWarning {

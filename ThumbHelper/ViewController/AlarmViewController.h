@@ -17,7 +17,7 @@
 @property (strong, nonatomic) UITableView *tbAlarmView;
 @property (strong, nonatomic) AddClockViewController *addClockViewController; //add alarm clock
 
-
+@property (nonatomic) BOOL doneState;
 @property (assign, nonatomic) NSInteger alarmClockCount; //alarm clock tatal count
 @property (assign, nonatomic) NSInteger activatyClockCount;// activaty count
 
