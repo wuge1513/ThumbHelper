@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SetClockTimeController.h"
+#import "SetRepeatViewController.h"
+
 #import "SetClockModeController.h"
 #import "SetClockSceneController.h"
 #import "SetClockMusicController.h"
@@ -19,10 +21,12 @@
 @implementation AddClockViewController
 
 @synthesize alarmViewCopntroller;
+@synthesize setRepeatViewController;
 
 @synthesize tbAlarmContent;
 @synthesize lblLabelName, lblTimeName, lblRepeatName, lblMusicName, lblLaterName, lblContentName;
 @synthesize lblLabelText, lblTimeText, lblRepeatText, lblMusicText;
+@synthesize tfLabelText;
 @synthesize swLater;
 @synthesize alarmClockID;
 @synthesize blAlarmClockState, isKeyboardShowFlag;
@@ -107,6 +111,13 @@
     
     CGRect swRect = CGRectMake(180.0, (ADDALARM_CELL_HEIGHT - 27.0) / 2.0 , 0.0, 0.0);
     self.swLater = [[UISwitch alloc] initWithFrame:swRect];
+    
+    //UITextFeild
+    CGRect tfRect = CGRectMake(150.0, 2.0, 100.0, ADDALARM_CELL_HEIGHT - 2);
+    self.tfLabelText = [[UITextField alloc] initWithFrame:tfRect];
+    self.tfLabelText.backgroundColor = [UIColor clearColor];
+    self.tfLabelText.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+
 
     
     //hidden keyboard
@@ -170,7 +181,7 @@
 - (void)saveClockData
 {
 	NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:4];
-    [clockDictionary setObject:self.lblLabelText.text forKey:@"ClockLabel"];
+    [clockDictionary setObject:self.tfLabelText.text forKey:@"ClockLabel"];
 	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
 	[clockDictionary setObject:self.lblRepeatText.text forKey:@"ClockRepeat"];
     [clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
@@ -202,35 +213,14 @@
 {
 	setClockTimeController = [[SetClockTimeController alloc] initWithNibName:@"SetClockTimeController" bundle:nil];
 	setClockTimeController.delegate = self;
-	
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	animation.subtype = kCATransitionFromLeft;
-//	[[self.view layer] addAnimation:animation forKey:@"ShowSetTime"];
-	
-    
-    //[self.view addSubview:setClockTimeController.view];
 	[self.navigationController pushViewController:setClockTimeController animated:YES];
     self.alarmViewCopntroller.tbAlarmView.scrollEnabled = NO;
 }
 
-- (void)showSetClockModeController
+- (void)showSetClockRepeatController
 {
-//	setClockModeController = [[SetClockModeController alloc] initWithNibName:@"SetClockModeController" bundle:nil];
-//	setClockModeController.delegate = self;
-//	
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	animation.subtype = kCATransitionFromLeft;
-//	[[self.view layer] addAnimation:animation forKey:@"ShowSetMode"];
-//	[self.view addSubview:setClockModeController.view];
-//	delegate.mainTableView.scrollEnabled = NO;
+    self.setRepeatViewController = [[SetRepeatViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:self.setRepeatViewController animated:YES];
 }
 
 - (void)showSetClockMusicController
@@ -335,6 +325,7 @@
         case 0:
             [cell.contentView addSubview:self.lblLabelName];
             [cell.contentView addSubview:self.lblLabelText];
+            [cell.contentView addSubview:self.tfLabelText];
             break;
         case 1:
             [cell.contentView addSubview:self.lblTimeName];
@@ -364,19 +355,18 @@
 {
     switch (indexPath.row) {
 		case 0:
-			[self showSetClockTimeController];
+			
 			break;
 		case 1:
-			[self showSetClockModeController];
+			[self showSetClockTimeController];
 			break;
 		case 2:
-			[self showSetClockSceneController];
+			[self showSetClockRepeatController];
 			break;
 		case 3:
 			[self showSetClockMusicController];
 			break;
         case 4:
-			[self showSetClockMusicController];
 			break;
 		default:
 			break;

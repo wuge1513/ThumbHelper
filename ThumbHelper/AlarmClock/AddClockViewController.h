@@ -10,6 +10,8 @@
 
 @class AlarmViewController;
 @class SetClockTimeController;
+@class SetRepeatViewController;
+
 @class SetClockModeController;
 @class SetClockSceneController;
 @class SetClockMusicController;
@@ -27,7 +29,8 @@ UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 	SetClockMusicController *setClockMusicController;
 }
 
-@property (nonatomic, assign) AlarmViewController *alarmViewCopntroller;
+@property (strong, nonatomic) AlarmViewController *alarmViewCopntroller;
+@property (strong, nonatomic) SetRepeatViewController *setRepeatViewController;
 
 @property (strong, nonatomic) UITableView *tbAlarmContent;
 
@@ -44,6 +47,9 @@ UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 @property (strong, nonatomic) UILabel *lblTimeText;
 @property (strong, nonatomic) UILabel *lblRepeatText;
 @property (strong, nonatomic) UILabel *lblMusicText;
+
+//textFeild
+@property (strong, nonatomic) UITextField *tfLabelText;
 
 //UISwitch
 @property (strong, nonatomic) UISwitch *swLater;
@@ -62,7 +68,7 @@ UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 - (void)keyboardWillHidden:(NSNotification *)notification;
 
 - (void)showSetClockTimeController;
-- (void)showSetClockModeController;
+- (void)showSetClockRepeatController;
 - (void)showSetClockMusicController;
 - (void)showSetClockSceneController;
 

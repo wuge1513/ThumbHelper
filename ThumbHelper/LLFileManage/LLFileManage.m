@@ -19,10 +19,6 @@
 	return self;
 }
 
--(void) dealloc{
-	[super dealloc];
-}
-
 
 #pragma mark- 沙盒文件管理
 
@@ -81,8 +77,6 @@
 	//然后将数据写入本地文件中
 	[rootData writeToFile:[self createFilePath:fileName] atomically:NO];
 	
-	[rootData release];
-    [fileNameArray release];
 }
 
 
@@ -97,7 +91,7 @@
 	
     //NSData *data;
 	if ( [[NSFileManager defaultManager] fileExistsAtPath:tmpFilePath ]) {
-		return [[[NSData alloc] initWithContentsOfFile:tmpFilePath] autorelease];
+		return [[NSData alloc] initWithContentsOfFile:tmpFilePath];
 	}
     
 	return nil;

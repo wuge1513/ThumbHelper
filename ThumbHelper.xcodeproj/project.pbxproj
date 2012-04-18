@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE1BC2E9153F17ED000613C7 /* LLFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC2E8153F17ED000613C7 /* LLFileManage.m */; };
+		CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */; };
 		CE5600AC1539F941005E2E36 /* SetClockTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5600AA1539F941005E2E36 /* SetClockTimeController.m */; };
 		CE5600AD1539F941005E2E36 /* SetClockTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */; };
 		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
@@ -63,6 +64,8 @@
 /* Begin PBXFileReference section */
 		CE1BC2E7153F17ED000613C7 /* LLFileManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LLFileManage.h; path = LLFileManage/LLFileManage.h; sourceTree = "<group>"; };
 		CE1BC2E8153F17ED000613C7 /* LLFileManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LLFileManage.m; path = LLFileManage/LLFileManage.m; sourceTree = "<group>"; };
+		CE1BC2EE153F1F8D000613C7 /* SetRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetRepeatViewController.h; path = AlarmClock/SetRepeatViewController.h; sourceTree = "<group>"; };
+		CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetRepeatViewController.m; path = AlarmClock/SetRepeatViewController.m; sourceTree = "<group>"; };
 		CE5600A91539F941005E2E36 /* SetClockTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetClockTimeController.h; path = AlarmClock/SetClockTimeController.h; sourceTree = "<group>"; };
 		CE5600AA1539F941005E2E36 /* SetClockTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetClockTimeController.m; path = AlarmClock/SetClockTimeController.m; sourceTree = "<group>"; };
 		CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetClockTimeController.xib; path = AlarmClock/SetClockTimeController.xib; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				CE5600A91539F941005E2E36 /* SetClockTimeController.h */,
 				CE5600AA1539F941005E2E36 /* SetClockTimeController.m */,
 				CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */,
+				CE1BC2EE153F1F8D000613C7 /* SetRepeatViewController.h */,
+				CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */,
 				CED91CA71536BA7D007BC76D /* AddClockViewController.h */,
 				CED91CA81536BA7D007BC76D /* AddClockViewController.m */,
 			);
@@ -409,6 +414,7 @@
 				CE5600AC1539F941005E2E36 /* SetClockTimeController.m in Sources */,
 				CE5600B91539FEA4005E2E36 /* SetClockController.m in Sources */,
 				CE1BC2E9153F17ED000613C7 /* LLFileManage.m in Sources */,
+				CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
