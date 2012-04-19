@@ -150,22 +150,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    
-<<<<<<< HEAD
-    //多选
-    UITableViewCell *Cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (Cell.accessoryType != UITableViewCellAccessoryCheckmark) {
-        Cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
-        [self.arrSelectedWeek addObject:[self.arrWeeks objectAtIndex:indexPath.row]];
-        
-        NSLog(@"selec = %@", self.arrSelectedWeek);
-    }else{
-        Cell.accessoryType = UITableViewCellAccessoryNone;
-        [self.arrSelectedWeek removeObjectAtIndex:indexPath.row];
-        NSLog(@"selec2 = %@", self.arrSelectedWeek);
-    }
-=======
+
 
         //多选
         UITableViewCell *Cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -194,7 +179,7 @@
             
             NSLog(@"self.arrselect2 = %@", self.arrSelectedWeek);
         }
->>>>>>> 更新 repeat
+
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
