@@ -176,7 +176,18 @@
     
     //多选
     UITableViewCell *Cell = [tableView cellForRowAtIndexPath:indexPath];
-    Cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if (Cell.accessoryType != UITableViewCellAccessoryCheckmark) {
+        Cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        [self.arrSelectedWeek addObject:[self.arrWeeks objectAtIndex:indexPath.row]];
+        
+        NSLog(@"selec = %@", self.arrSelectedWeek);
+    }else{
+        Cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.arrSelectedWeek removeObjectAtIndex:indexPath.row];
+        NSLog(@"selec2 = %@", self.arrSelectedWeek);
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //单选
