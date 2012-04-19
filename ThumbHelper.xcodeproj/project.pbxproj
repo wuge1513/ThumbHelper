@@ -58,6 +58,7 @@
 		CEC66B211535E6BD00C67344 /* index6.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B071535E6BD00C67344 /* index6.png */; };
 		CEC66B221535E6BD00C67344 /* index7.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC66B081535E6BD00C67344 /* index7.png */; };
 		CEC66B371535E9E100C67344 /* UIColor_Random.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC66B361535E9E000C67344 /* UIColor_Random.m */; };
+		CED8C5431540709900B78F12 /* SetMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED8C5421540709900B78F12 /* SetMusicViewController.m */; };
 		CED91CAA1536BA7D007BC76D /* AddClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED91CA81536BA7D007BC76D /* AddClockViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,8 @@
 		CEC66B081535E6BD00C67344 /* index7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index7.png; sourceTree = "<group>"; };
 		CEC66B351535E9DF00C67344 /* UIColor_Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Random.h; sourceTree = "<group>"; };
 		CEC66B361535E9E000C67344 /* UIColor_Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor_Random.m; sourceTree = "<group>"; };
+		CED8C5411540709900B78F12 /* SetMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetMusicViewController.h; path = AlarmClock/SetMusicViewController.h; sourceTree = "<group>"; };
+		CED8C5421540709900B78F12 /* SetMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetMusicViewController.m; path = AlarmClock/SetMusicViewController.m; sourceTree = "<group>"; };
 		CED91CA71536BA7D007BC76D /* AddClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddClockViewController.h; path = AlarmClock/AddClockViewController.h; sourceTree = "<group>"; };
 		CED91CA81536BA7D007BC76D /* AddClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddClockViewController.m; path = AlarmClock/AddClockViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +236,8 @@
 				CE5600AB1539F941005E2E36 /* SetClockTimeController.xib */,
 				CE1BC2EE153F1F8D000613C7 /* SetRepeatViewController.h */,
 				CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */,
+				CED8C5411540709900B78F12 /* SetMusicViewController.h */,
+				CED8C5421540709900B78F12 /* SetMusicViewController.m */,
 				CED91CA71536BA7D007BC76D /* AddClockViewController.h */,
 				CED91CA81536BA7D007BC76D /* AddClockViewController.m */,
 			);
@@ -415,6 +420,7 @@
 				CE5600B91539FEA4005E2E36 /* SetClockController.m in Sources */,
 				CE1BC2E9153F17ED000613C7 /* LLFileManage.m in Sources */,
 				CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */,
+				CED8C5431540709900B78F12 /* SetMusicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

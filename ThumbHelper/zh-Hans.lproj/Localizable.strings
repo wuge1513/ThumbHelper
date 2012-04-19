@@ -62,27 +62,28 @@
 /* ========================================== */
 
 "Weeking Day" = "工作日";
+"Custom" = "自定义";
 
 /*01-13 Monday 周一*/
-"Monday" = "周一";
+"Monday" = "星期一";
 
 /*01-14 Tuesday 周二 */
-"Tuesday" = "周二";
+"Tuesday" = "星期二";
 
 /*01-15 Wednesday 周三*/
-"Wednesday" = "周三";
+"Wednesday" = "星期三";
 
 /*01-16 Thursday 周四*/
-"Thursday" = "周四";
+"Thursday" = "星期四";
 
 /*01-17 Friday 周五 */
-"Friday" = "周五";
+"Friday" = "星期五";
 
 /*01-18 Saturday 周六 */
-"Saturday" = "周六";
+"Saturday" = "星期六";
 
 /*01-19 Sunday 周日 */
-"Sunday" = "周日";
+"Sunday" = "星期日";
 
 /*01-20  Sun. 周日缩写,要红色 */
 "Sun" = "日";

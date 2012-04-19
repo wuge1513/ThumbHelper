@@ -18,3 +18,26 @@
 
 //工作日
 "Weeking Day" = "Weeking Day";
+
+"Custom" = "Custom";
+
+/*01-13 Monday 週一*/
+"Monday" = "Monday";
+
+/*01-14 Tuesday 週二 */
+"Tuesday" = "Tuesday";
+
+/*01-15 Wednesday 週三*/
+"Wednesday" = "Wednesday";
+
+/*01-16 Thursday 週四*/
+"Thursday" = "Thursday";
+
+/*01-17 Friday 週五 */
+"Friday" = "Friday";
+
+/*01-18 Saturday 週六 */
+"Saturday" = "Saturday";
+
+/*01-19 Sunday 週日 */
+"Sunday" = "Sunday";

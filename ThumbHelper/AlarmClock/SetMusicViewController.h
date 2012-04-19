@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetRepeatViewController : UITableViewController
+@interface SetMusicViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *arrSelectedWeek;
 @property (strong, nonatomic) NSArray *arrWeeks;
