@@ -10,6 +10,8 @@
 
 
 @implementation SetRepeatViewController
+
+@synthesize delegate;
 @synthesize arrWeeks,arrSelectedWeek, arrWorkingDay;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -17,6 +19,9 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
+        //left button go back
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionBack)]; 
         
         self.arrSelectedWeek = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -89,6 +94,23 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)actionBack
+{
+    NSString *strSelectWeek = @"";
+    if ([self.arrSelectedWeek count] == 7) {
+        strSelectWeek = NSLocalizedString(@"Everyday", nil);
+    }else{
+        NSString *strTmp = @"";
+        for (NSString *str in self.arrSelectedWeek) {
+            strTmp = [strTmp stringByAppendingFormat:str];
+        }
+        strSelectWeek = strTmp;
+    }
+    [self.delegate setRepeat:strSelectWeek];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

@@ -34,7 +34,9 @@
         UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddClockView)];
         self.navigationItem.rightBarButtonItem = addButtonItem;//
         
-        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
+//        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
+        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionBack)];
+        
         self.navigationItem.leftBarButtonItem = editButtonItem;
 
     }
@@ -162,6 +164,11 @@
 - (void)showAddClockView
 {
     [self showAddClockView:-1];
+}
+
+- (void)actionBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)actionEdit

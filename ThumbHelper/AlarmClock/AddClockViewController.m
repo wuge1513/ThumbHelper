@@ -11,18 +11,17 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SetClockTimeController.h"
-#import "SetRepeatViewController.h"
 
-#import "SetClockModeController.h"
-#import "SetClockSceneController.h"
-#import "SetClockMusicController.h"
+
 
 
 @implementation AddClockViewController
 
 @synthesize alarmViewCopntroller;
 @synthesize setRepeatViewController;
+@synthesize setMusicViewController;
 
+@synthesize strMusic, strRepeat;
 @synthesize tbAlarmContent;
 @synthesize lblLabelName, lblTimeName, lblRepeatName, lblMusicName, lblLaterName, lblContentName;
 @synthesize lblLabelText, lblTimeText, lblRepeatText, lblMusicText;
@@ -50,7 +49,25 @@
     return self;
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+   [super viewWillAppear:animated];
+   
+    //重复设置参数
+    NSArray *arrRepeat = [[NSUserDefaults standardUserDefaults] objectForKey:@"Repeat"];
+    if ([arrRepeat count] == 7) {
+        self.lblRepeatText.text = NSLocalizedString(@"Everyday", nil);
+    }else{
+        NSString *strTmp = @"";
+        for (NSString *str in arrRepeat) {
+            strTmp = [strTmp stringByAppendingString:str];
+        }
+        
+        //self.lblRepeatText.text = strTmp;
+        self.strRepeat = strTmp;
+    }
+    
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -101,13 +118,15 @@
     self.lblTimeText.backgroundColor = lblColor;
     self.lblTimeText.text = @"10:00";
     
-    self.lblRepeatText = [[UILabel alloc] initWithFrame:lblRectText];
-    self.lblRepeatText.backgroundColor = lblColor;
+    CGRect lblRectRepeat = CGRectMake(80.0, 0.0, 200.0, ADDALARM_CELL_HEIGHT);
+    self.lblRepeatText = [[UILabel alloc] initWithFrame:lblRectRepeat];
+    self.lblRepeatText.backgroundColor = [UIColor orangeColor];
+    self.lblRepeatText.textAlignment = UITextAlignmentRight;
     self.lblRepeatText.text = @"每天";
     
     self.lblMusicText = [[UILabel alloc] initWithFrame:lblRectText];
     self.lblMusicText.backgroundColor = lblColor;
-    self.lblMusicText.text = @"竖琴";
+    self.lblMusicText.text = @"";
     
     CGRect swRect = CGRectMake(180.0, (ADDALARM_CELL_HEIGHT - 27.0) / 2.0 , 0.0, 0.0);
     self.swLater = [[UISwitch alloc] initWithFrame:swRect];
@@ -207,8 +226,9 @@
 }
 
 
-
-
+/**
+ *  设置闹铃时间
+ */
 - (void)showSetClockTimeController
 {
 	setClockTimeController = [[SetClockTimeController alloc] initWithNibName:@"SetClockTimeController" bundle:nil];
@@ -217,51 +237,25 @@
     self.alarmViewCopntroller.tbAlarmView.scrollEnabled = NO;
 }
 
+/**
+ *  设置闹铃重复
+ */
 - (void)showSetClockRepeatController
 {
     self.setRepeatViewController = [[SetRepeatViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.setRepeatViewController.delegate = self;
     [self.navigationController pushViewController:self.setRepeatViewController animated:YES];
 }
 
+/**
+ *  设置闹铃音乐
+ */
 - (void)showSetClockMusicController
 {
-//	setClockMusicController = [[SetClockMusicController alloc] initWithNibName:@"SetClockMusicController" bundle:nil];
-//	setClockMusicController.delegate = self;
-//	
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	animation.subtype = kCATransitionFromLeft;
-//	[[self.view layer] addAnimation:animation forKey:@"ShowSetMusic"];
-//	[self.view addSubview:setClockMusicController.view];
-//	delegate.mainTableView.scrollEnabled = NO;
+    self.setMusicViewController = [[SetMusicViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.setMusicViewController.delegate = self;
+    [self.navigationController pushViewController:self.setMusicViewController animated:YES];
 }
-
-- (void)showSetClockSceneController
-{
-//	setClockSceneController = [[SetClockSceneController alloc] initWithNibName:@"SetClockSceneController" bundle:nil];
-//	setClockSceneController.delegate = self;
-//	
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	animation.subtype = kCATransitionFromLeft;
-//	[[self.view layer] addAnimation:animation forKey:@"ShowSetScene"];
-//	[self.view addSubview:setClockSceneController.view];
-//	delegate.mainTableView.scrollEnabled = NO;
-}
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 
 - (void)didReceiveMemoryWarning {
@@ -274,6 +268,22 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+#pragma mark - Custom delegate
+//返回选择的音乐
+- (NSString *)setAlarmMusic:(NSString *)alarmMusic
+{
+    self.lblMusicText.text = alarmMusic;
+
+    return self.lblMusicText.text;
+}
+
+//返回设置的重复周期
+- (NSString *)setRepeat:(NSString *)strRepeats
+{
+    self.lblRepeatText.text = strRepeats;
+    return self.lblRepeatText.text;
 }
 
 #pragma mark - UITableView Delegate
@@ -334,6 +344,8 @@
         case 2:
             [cell.contentView addSubview:self.lblRepeatName];
             [cell.contentView addSubview:self.lblRepeatText];
+            //cell.textLabel.text = self.strRepeat;
+            //cell.textLabel.textAlignment = UITextAlignmentRight;
             break;
         case 3:
             [cell.contentView addSubview:self.lblMusicName];

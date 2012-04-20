@@ -42,7 +42,7 @@
 
 
 
-
+- (void)actionBack;
 - (void)restoreMainGUI;
 - (void)initClockCount;
 - (NSString *)updateHeaderTitle;

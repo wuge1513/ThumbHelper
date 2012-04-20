@@ -7,32 +7,34 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SetMusicViewController.h"
+#import "SetRepeatViewController.h"
 
 @class AlarmViewController;
 @class SetClockTimeController;
 @class SetRepeatViewController;
-
-@class SetClockModeController;
-@class SetClockSceneController;
-@class SetClockMusicController;
+@class SetMusicViewController;
 
 @interface AddClockViewController : UIViewController <UITextViewDelegate, 
-UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
+UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource,
+SetMusicDelegate, setRepeatDelegate> {
 
 	BOOL isKeyboardShowFlag;
 	CGPoint firstTouchPoint;
 	CGPoint lastTouchPoint;
 	
 	SetClockTimeController *setClockTimeController;
-	SetClockModeController *setClockModeController;
-	SetClockSceneController *setClockSceneController;
-	SetClockMusicController *setClockMusicController;
 }
 
 @property (strong, nonatomic) AlarmViewController *alarmViewCopntroller;
 @property (strong, nonatomic) SetRepeatViewController *setRepeatViewController;
+@property (strong, nonatomic) SetMusicViewController *setMusicViewController;
 
 @property (strong, nonatomic) UITableView *tbAlarmContent;
+
+//String
+@property (strong, nonatomic) NSString *strMusic;
+@property (strong, nonatomic) NSString *strRepeat;
 
 // label name
 @property (strong, nonatomic) UILabel *lblLabelName;
@@ -59,8 +61,6 @@ UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 
 @property (strong, nonatomic) UITextView *rememberTextView;
 
-
-
 - (void)saveClockData;
 - (void)backToMainUI:(id)sender;
 
@@ -70,6 +70,6 @@ UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 - (void)showSetClockTimeController;
 - (void)showSetClockRepeatController;
 - (void)showSetClockMusicController;
-- (void)showSetClockSceneController;
+
 
 @end
