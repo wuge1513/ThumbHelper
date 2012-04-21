@@ -42,7 +42,7 @@
 - (NSString *)updateHeaderTitle;
 - (void)updateActivityClockCount;
 
-- (void)showAddClockView:(NSDictionary *)dic;
+- (void)showAddClockView:(NSDictionary *)dic index:(NSInteger)idx;
 
 - (void)startClock:(int)clockID;
 - (void)shutdownClock:(int)clockID;

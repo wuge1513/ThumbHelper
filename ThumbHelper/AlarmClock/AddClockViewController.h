@@ -24,6 +24,7 @@ SetMusicDelegate>
 @property (nonatomic) BOOL isAddNewAlarm;
 @property (nonatomic) BOOL isFromAddAlarm;
 @property (nonatomic) BOOL *blAlarmClockState;
+@property (nonatomic) NSInteger intAlarmIndex;
 
 @property (strong, nonatomic) AlarmViewController *alarmViewCopntroller;
 @property (strong, nonatomic) SetRepeatViewController *setRepeatViewController;

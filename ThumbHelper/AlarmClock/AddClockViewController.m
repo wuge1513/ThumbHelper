@@ -35,6 +35,7 @@
 @synthesize dpTimePicker;
 @synthesize dicAlarmClock;
 @synthesize isAddNewAlarm, isFromAddAlarm;
+@synthesize intAlarmIndex;
 
 
 
@@ -280,24 +281,25 @@
  */
 - (void)saveClockData
 {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault removeObjectForKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
-    
-	NSMutableDictionary *clockDictionary = [[NSMutableDictionary alloc] initWithCapacity:4];
+    NSMutableDictionary *clockDictionary = [[NSMutableDictionary alloc] initWithCapacity:4];
     [clockDictionary setObject:self.tfLabelText.text forKey:@"ClockLabel"];
 	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
 	[clockDictionary setObject:self.lblRepeatText.text forKey:@"ClockRepeat"];
     [clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
-    
     NSLog(@"clockDic = %@", clockDictionary);
     
-	[userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
-    NSLog(@"self.alarmClockID = %d", self.alarmClockID);
-    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if (!self.isAddNewAlarm) {
+        [userDefault removeObjectForKey:[NSString stringWithFormat:@"%d", self.intAlarmIndex]];
+        [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.intAlarmIndex]];
+    }else{
+        [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
+        NSLog(@"self.alarmClockID = %d", self.alarmClockID);
+    }
+	
 	if (self.alarmClockID > self.alarmViewCopntroller.alarmClockCount)
 		++self.alarmViewCopntroller.alarmClockCount;
     NSLog(@"self.alarmViewCopntroller.alarmClockCount = %d", self.alarmViewCopntroller.alarmClockCount);
-    
 	[userDefault setObject:[NSNumber numberWithInt:self.alarmViewCopntroller.alarmClockCount] forKey:@"ClockCount"];
 	
 //	if (self.blAlarmClockState) {

@@ -161,7 +161,7 @@
 
 - (void)showAddClockView
 {
-    [self showAddClockView:nil];
+    [self showAddClockView:nil index:0];
 }
 
 - (void)actionBack
@@ -182,7 +182,7 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
     }
 }
-- (void)showAddClockView:(NSDictionary *)dic
+- (void)showAddClockView:(NSDictionary *)dic index:(NSInteger)idx
 {
     
     //判断闹铃个数是否达到最大值
@@ -196,6 +196,7 @@
     addClockViewController.isFromAddAlarm = YES;
     //更新闹铃
 	if ([dic count] > 0) {
+        addClockViewController.intAlarmIndex = idx;
         addClockViewController.alarmClockID = self.alarmClockCount;
         addClockViewController.dicAlarmClock = dic;
 	}else{//新建闹铃
@@ -308,7 +309,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = [self.arrAlarmClock objectAtIndex:indexPath.row];
-    [self showAddClockView:dic];
+    [self showAddClockView:dic index:indexPath.row + 1];
 }
 
 -(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
