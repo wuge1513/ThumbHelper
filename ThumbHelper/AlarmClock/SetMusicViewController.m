@@ -41,7 +41,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -50,12 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -119,6 +113,7 @@
     }
     
     cell.textLabel.text = [self.arrMusics objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
         
     return cell;
 }
@@ -146,8 +141,6 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    
-    //[[NSUserDefaults standardUserDefaults] setObject:self.strSelectedMusic forKey:@"MusicName"];
     [self.delegate setAlarmMusic:self.strSelectedMusic];
     [self.navigationController popViewControllerAnimated:YES];
 }

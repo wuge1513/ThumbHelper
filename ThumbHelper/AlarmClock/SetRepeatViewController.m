@@ -11,8 +11,7 @@
 
 @implementation SetRepeatViewController
 
-@synthesize delegate;
-@synthesize arrWeeks,arrSelectedWeek, arrWorkingDay;
+@synthesize arrWeeks, arrShortweeks, arrSelectedWeek, arrWorkingDay;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,6 +33,15 @@
         NSString *strSat = NSLocalizedString(@"Saturday", nil);
         self.arrWeeks = [[NSArray alloc] initWithObjects: strSun, strMon, strTues, strWed, strThurs, strFri, strSat, nil];
         
+        
+        NSString *strSuns = NSLocalizedString(@"Sun", nil);
+        NSString *strMons = NSLocalizedString(@"Mon", nil);
+        NSString *strTuess = NSLocalizedString(@"Tues", nil);
+        NSString *strWeds = NSLocalizedString(@"Wed", nil);
+        NSString *strThurss = NSLocalizedString(@"Thurs", nil);
+        NSString *strFris = NSLocalizedString(@"Fri", nil);
+        NSString *strSats = NSLocalizedString(@"Sat", nil);
+        self.arrShortweeks = [[NSArray alloc] initWithObjects:strSuns, strMons, strTuess, strWeds, strThurss, strFris, strSats, nil];
         //weeking day
         self.arrWorkingDay = [[NSArray alloc] initWithObjects:strSun, strSat, nil];
         
@@ -46,7 +54,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -55,12 +62,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -98,18 +99,6 @@
 
 - (void)actionBack
 {
-    NSString *strSelectWeek = @"";
-    if ([self.arrSelectedWeek count] == 7) {
-        strSelectWeek = NSLocalizedString(@"Everyday", nil);
-    }else{
-        NSString *strTmp = @"";
-        for (NSString *str in self.arrSelectedWeek) {
-            strTmp = [strTmp stringByAppendingFormat:str];
-        }
-        strSelectWeek = strTmp;
-    }
-    [self.delegate setRepeat:strSelectWeek];
-
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -123,10 +112,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-//    if (section == 0) {
-//        return 2;
-//    }
     return 7;
 }
 
@@ -143,26 +128,12 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    // Configure the cell...
-//    if (indexPath.section == 0) {
-//        if (indexPath.row == 0) {
-//            cell.textLabel.text = NSLocalizedString(@"Weeking Day", nil);
-//        }
-//        if (indexPath.row == 1) {
-//            cell.textLabel.text = NSLocalizedString(@"Custom", nil);
-//        }
-//    }
-//    else{
-        cell.textLabel.text = [self.arrWeeks objectAtIndex:indexPath.row];
-        
-        if (indexPath.row == 0 || indexPath.row == 6) {
-            cell.textLabel.textColor = [UIColor redColor];
-        }
-    //}
-    
 
-    
+    cell.textLabel.text = [self.arrWeeks objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    if (indexPath.row == 0 || indexPath.row == 6) {
+        cell.textLabel.textColor = [UIColor redColor];
+    }
     return cell;
 }
 
@@ -172,51 +143,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-
-
-        //多选
-        UITableViewCell *Cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *Cell = [tableView cellForRowAtIndexPath:indexPath];
         
-        if (Cell.accessoryType == UITableViewCellAccessoryNone) {
-            Cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//            if (indexPath.section == 0) {
-//                if (indexPath.row == 0) {
-//                    [self.arrSelectedWeek addObjectsFromArray:self.arrWorkingDay];
-//                }
-//            }else{
-                [self.arrSelectedWeek addObject:[self.arrWeeks objectAtIndex:indexPath.row]];
-            //}
-            
-            NSLog(@"self.arrselect1 = %@", self.arrSelectedWeek);
-        }else{
-            Cell.accessoryType = UITableViewCellAccessoryNone;
-//            if (indexPath.section == 0) {
-//                if (indexPath.row == 0) {
-//                    [self.arrSelectedWeek removeAllObjects];
-//                }
-//            }else{
-                NSString *strTmp = [self.arrWeeks objectAtIndex:indexPath.row];
-                [self.arrSelectedWeek removeObject:strTmp];
-            //}
-            
-            NSLog(@"self.arrselect2 = %@", self.arrSelectedWeek);
-        }
+    if (Cell.accessoryType == UITableViewCellAccessoryNone) {
+        Cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.arrSelectedWeek addObject:[self.arrShortweeks objectAtIndex:indexPath.row]];
+        NSLog(@"self.arrselect1 = %@", self.arrSelectedWeek);
+    }else{
+        Cell.accessoryType = UITableViewCellAccessoryNone;
+        NSString *strTmp = [self.arrShortweeks objectAtIndex:indexPath.row];
+        [self.arrSelectedWeek removeObject:strTmp];
+        NSLog(@"self.arrselect2 = %@", self.arrSelectedWeek);
+    }
 
-    
+    [[NSUserDefaults standardUserDefaults] setObject:self.arrSelectedWeek forKey:@"Repeat"];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    //单选
-//    int newRow = [indexPath row];
-//    int oldRow = (self.lastIndexPath != nil) ? [self.lastIndexPath row] : -1;
-//    if (newRow != oldRow) {
-//        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
-//        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-//		
-//        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath: self.lastIndexPath];
-//        oldCell.accessoryType = UITableViewCellAccessoryNone;
-//        lastIndexPath = indexPath;
-//    }
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
