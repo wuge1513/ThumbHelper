@@ -7,69 +7,66 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SetMusicViewController.h"
+#import "SetRepeatViewController.h"
+
+@class MyPicker;
+@class LLDatePickerView;
 
 @class AlarmViewController;
 @class SetClockTimeController;
 @class SetRepeatViewController;
+@class SetMusicViewController;
 
-@class SetClockModeController;
-@class SetClockSceneController;
-@class SetClockMusicController;
+@interface AddClockViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, 
+SetMusicDelegate>
 
-@interface AddClockViewController : UIViewController <UITextViewDelegate, 
-UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
-
-	BOOL isKeyboardShowFlag;
-	CGPoint firstTouchPoint;
-	CGPoint lastTouchPoint;
-	
-	SetClockTimeController *setClockTimeController;
-	SetClockModeController *setClockModeController;
-	SetClockSceneController *setClockSceneController;
-	SetClockMusicController *setClockMusicController;
-}
+@property (nonatomic) BOOL isAddNewAlarm;
+@property (nonatomic) BOOL isFromAddAlarm;
+@property (nonatomic) BOOL *blAlarmClockState;
+@property (nonatomic) NSInteger intAlarmIndex;
 
 @property (strong, nonatomic) AlarmViewController *alarmViewCopntroller;
 @property (strong, nonatomic) SetRepeatViewController *setRepeatViewController;
+@property (strong, nonatomic) SetMusicViewController *setMusicViewController;
 
 @property (strong, nonatomic) UITableView *tbAlarmContent;
 
-// label name
+@property (strong, nonatomic) NSDictionary *dicAlarmClock;
+//UIButton
+@property (strong, nonatomic) UIButton *btnHidden;
+//String
+@property (strong, nonatomic) NSString *strMusic;
+
+//label name
 @property (strong, nonatomic) UILabel *lblLabelName;
 @property (strong, nonatomic) UILabel *lblTimeName;
 @property (strong, nonatomic) UILabel *lblRepeatName;
 @property (strong, nonatomic) UILabel *lblMusicName;
 @property (strong, nonatomic) UILabel *lblLaterName;
-@property (strong, nonatomic) UILabel *lblContentName;
 
 //label content
-@property (strong, nonatomic) UILabel *lblLabelText;
 @property (strong, nonatomic) UILabel *lblTimeText;
 @property (strong, nonatomic) UILabel *lblRepeatText;
 @property (strong, nonatomic) UILabel *lblMusicText;
-
 //textFeild
 @property (strong, nonatomic) UITextField *tfLabelText;
 
 //UISwitch
 @property (strong, nonatomic) UISwitch *swLater;
 @property (nonatomic) NSInteger alarmClockID;
-@property (nonatomic) BOOL *blAlarmClockState;
-@property (nonatomic) BOOL isKeyboardShowFlag;
-
-@property (strong, nonatomic) UITextView *rememberTextView;
 
 
+@property (strong, nonatomic) LLDatePickerView *dpTimePicker;
 
 - (void)saveClockData;
 - (void)backToMainUI:(id)sender;
 
-- (void)keyboardWillShow:(NSNotification *)notification;
-- (void)keyboardWillHidden:(NSNotification *)notification;
+- (void)actionShowDatepicker;
+- (void)actionHiddenDatepicker;
 
-- (void)showSetClockTimeController;
 - (void)showSetClockRepeatController;
 - (void)showSetClockMusicController;
-- (void)showSetClockSceneController;
+
 
 @end

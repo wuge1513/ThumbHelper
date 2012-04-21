@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface SetRepeatViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *arrSelectedWeek;
 @property (strong, nonatomic) NSArray *arrWeeks;
+@property (strong, nonatomic) NSArray *arrShortweeks;
+
 @property (strong, nonatomic) NSArray *arrWorkingDay;
+
+- (void)actionBack;
+
 @end

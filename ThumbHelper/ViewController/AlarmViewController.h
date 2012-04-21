@@ -22,9 +22,6 @@
 @property (assign, nonatomic) NSInteger activatyClockCount;// activaty count
 
 @property (strong, nonatomic) NSMutableArray *arrAlarmClock;
-@property (strong, nonatomic) NSMutableArray *arrAlarmTime;
-@property (strong, nonatomic) NSMutableArray *arrAlarmLabel;
-@property (strong, nonatomic) NSMutableArray *arrAlarmRepeat;
 
 //Cell content
 @property (nonatomic) NSInteger numberID;
@@ -39,16 +36,13 @@
 @property (strong, nonatomic) NSString *strAlarmClockRepeat;
 
 
-
-
-
-
+- (void)actionBack;
 - (void)restoreMainGUI;
 - (void)initClockCount;
 - (NSString *)updateHeaderTitle;
 - (void)updateActivityClockCount;
 
-- (void)showAddClockView:(NSInteger)index;
+- (void)showAddClockView:(NSDictionary *)dic index:(NSInteger)idx;
 
 - (void)startClock:(int)clockID;
 - (void)shutdownClock:(int)clockID;

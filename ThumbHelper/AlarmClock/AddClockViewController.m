@@ -9,28 +9,34 @@
 #import "AddClockViewController.h"
 #import "AlarmViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LLDatePickerView.h"
 
-#import "SetClockTimeController.h"
-#import "SetRepeatViewController.h"
-
-#import "SetClockModeController.h"
-#import "SetClockSceneController.h"
-#import "SetClockMusicController.h"
+#define kBTN_DATEPICKER_WIDTH       60.0
+#define kBTN_DATEPICKER_HEIGHT      40.0
+#define kDATPICKER_WIDTH            320.0
+#define kDATEPICKER_HEIGHT          216.0
 
 
 @implementation AddClockViewController
 
 @synthesize alarmViewCopntroller;
 @synthesize setRepeatViewController;
+@synthesize setMusicViewController;
 
+@synthesize btnHidden;
+@synthesize strMusic;
 @synthesize tbAlarmContent;
-@synthesize lblLabelName, lblTimeName, lblRepeatName, lblMusicName, lblLaterName, lblContentName;
-@synthesize lblLabelText, lblTimeText, lblRepeatText, lblMusicText;
+@synthesize lblLabelName, lblTimeName, lblRepeatName, lblMusicName, lblLaterName;
+@synthesize lblTimeText, lblRepeatText, lblMusicText;
 @synthesize tfLabelText;
 @synthesize swLater;
 @synthesize alarmClockID;
-@synthesize blAlarmClockState, isKeyboardShowFlag;
-@synthesize rememberTextView;
+@synthesize blAlarmClockState;
+@synthesize dpTimePicker;
+@synthesize dicAlarmClock;
+@synthesize isAddNewAlarm, isFromAddAlarm;
+@synthesize intAlarmIndex;
+
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -50,7 +56,45 @@
     return self;
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+   [super viewWillAppear:animated];
+    
+    if (self.isFromAddAlarm) {
+        self.isFromAddAlarm = NO;
+        if (self.isAddNewAlarm) {
+            //self.tfLabelText.text = @"None";
+            self.lblRepeatText.text = @"Never";
+            self.lblMusicText.text = @"None";
+            self.isAddNewAlarm = NO;
+        }else{
+            if ([self.dicAlarmClock count] > 0) {
+                
+                self.tfLabelText.text = [self.dicAlarmClock objectForKey:@"ClockLabel"];
+                self.lblTimeText.text = [self.dicAlarmClock objectForKey:@"ClockTime"];
+                self.lblRepeatText.text = [self.dicAlarmClock objectForKey:@"ClockRepeat"];
+                self.lblMusicText.text = [self.dicAlarmClock objectForKey:@"ClockMusic"];
+            }else{
+                //self.tfLabelText.text = @"None";
+                self.lblRepeatText.text = @"Never";
+                self.lblMusicText.text =@"None";
+            }
+        }
+    }else{
+        //重复设置参数
+        NSArray *arrRepeat = [[NSUserDefaults standardUserDefaults] objectForKey:@"Repeat"];
+        if ([arrRepeat count] == 7) {
+            self.lblRepeatText.text = NSLocalizedString(@"Everyday", nil);
+        }else{
+            NSString *strTmp = @"";
+            for (NSString *str in arrRepeat) {
+                strTmp = [strTmp stringByAppendingFormat:@"%@ ", str];
+            }
+            self.lblRepeatText.text = strTmp;
+        }
+    
+    }
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -67,112 +111,169 @@
     [self.view addSubview:self.tbAlarmContent];
     
     //UILabel name
-    CGRect lblRect = CGRectMake(10.0, 0.0, 100.0, ADDALARM_CELL_HEIGHT);
+    CGRect lblRect = CGRectMake(10.0, 0.0, 60.0, ADDALARM_CELL_HEIGHT);
     UIColor *lblColor = [UIColor clearColor];
     
     self.lblLabelName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblLabelName.text = NSLocalizedString(@"Label", nil);
     self.lblLabelName.backgroundColor = lblColor;
+    self.lblLabelName.font = [UIFont boldSystemFontOfSize:14.0];
     
     self.lblTimeName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblTimeName.text = NSLocalizedString(@"Time", nil);
     self.lblTimeName.backgroundColor = lblColor;
+    self.lblTimeName.font = [UIFont boldSystemFontOfSize:14.0];
     
     self.lblRepeatName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblRepeatName.text = NSLocalizedString(@"Repeat", nil);
     self.lblRepeatName.backgroundColor = lblColor;
+    self.lblRepeatName.font = [UIFont boldSystemFontOfSize:14.0];
     
     self.lblMusicName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblMusicName.text = NSLocalizedString(@"Music", nil);
     self.lblMusicName.backgroundColor = lblColor;
+    self.lblMusicName.font = [UIFont boldSystemFontOfSize:14.0];
     
     self.lblLaterName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblLaterName.text = NSLocalizedString(@"Later", nil);
     self.lblLaterName.backgroundColor = lblColor;
+    self.lblLaterName.font = [UIFont boldSystemFontOfSize:14.0];
     
     //UILabel text
-    CGRect lblRectText = CGRectMake(200.0, 0.0, 100.0, ADDALARM_CELL_HEIGHT);
-    
-    self.lblLabelText = [[UILabel alloc] initWithFrame:lblRectText];
-    self.lblLabelText.backgroundColor = lblColor;
-    self.lblLabelText.text = @"起床";
+    CGRect lblRectText = CGRectMake(120.0, 0.0, 155.0, ADDALARM_CELL_HEIGHT - 3);
     
     self.lblTimeText = [[UILabel alloc] initWithFrame:lblRectText];
     self.lblTimeText.backgroundColor = lblColor;
+    self.lblTimeText.textAlignment = UITextAlignmentRight;
+    self.lblTimeText.font = [UIFont systemFontOfSize:14.0];
     self.lblTimeText.text = @"10:00";
     
-    self.lblRepeatText = [[UILabel alloc] initWithFrame:lblRectText];
-    self.lblRepeatText.backgroundColor = lblColor;
+    CGRect lblRectRepeat = CGRectMake(80.0, 0.0, 195.0, ADDALARM_CELL_HEIGHT - 3);
+    self.lblRepeatText = [[UILabel alloc] initWithFrame:lblRectRepeat];
+    self.lblRepeatText.backgroundColor = [UIColor clearColor];
+    //self.lblRepeatText.textColor = [UIColor colorWithRed:50.0 green:100.0 blue:150.0 alpha:1.0];
+    self.lblRepeatText.textAlignment = UITextAlignmentRight;
+    self.lblRepeatText.font = [UIFont systemFontOfSize:14.0];
     self.lblRepeatText.text = @"每天";
     
     self.lblMusicText = [[UILabel alloc] initWithFrame:lblRectText];
     self.lblMusicText.backgroundColor = lblColor;
-    self.lblMusicText.text = @"竖琴";
+    self.lblMusicText.textAlignment = UITextAlignmentRight;
+    self.lblMusicText.font =[UIFont systemFontOfSize:14.0];
+    self.lblMusicText.text = @"";
     
-    CGRect swRect = CGRectMake(180.0, (ADDALARM_CELL_HEIGHT - 27.0) / 2.0 , 0.0, 0.0);
+    CGRect swRect = CGRectMake(202.0, (ADDALARM_CELL_HEIGHT - 27.0) / 2.0 , 0.0, 0.0);
     self.swLater = [[UISwitch alloc] initWithFrame:swRect];
     
     //UITextFeild
-    CGRect tfRect = CGRectMake(150.0, 2.0, 100.0, ADDALARM_CELL_HEIGHT - 2);
+    CGRect tfRect = CGRectMake(120.0, 2.0, 155.0, ADDALARM_CELL_HEIGHT - 2);
     self.tfLabelText = [[UITextField alloc] initWithFrame:tfRect];
+    self.tfLabelText.delegate = self;
     self.tfLabelText.backgroundColor = [UIColor clearColor];
+    self.tfLabelText.font = [UIFont systemFontOfSize:14.0];
+    self.tfLabelText.placeholder = NSLocalizedString(@"起床", nil);
+    self.tfLabelText.textAlignment = UITextAlignmentRight;
     self.tfLabelText.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 
 
+    //UIDatePicker
+    CGRect dpRect = CGRectMake(0.0, 200.0 + kDATEPICKER_HEIGHT + kBTN_DATEPICKER_HEIGHT, 
+                               kDATPICKER_WIDTH, kDATEPICKER_HEIGHT);
+    self.dpTimePicker = [[LLDatePickerView alloc] initWithFrame:dpRect];
+    self.dpTimePicker.datePickerMode = UIDatePickerModeCountDownTimer;
+    self.dpTimePicker.minuteInterval = 1;
+    [self.dpTimePicker addTarget:self action:@selector(datePick:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:self.dpTimePicker];
+    NSLog(@"x = %f, y = %f", self.dpTimePicker.frame.size.width, self.dpTimePicker.frame.size.height);
     
-    //hidden keyboard
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+    //button for hidden datePicker
+    CGRect btnRect = CGRectMake(kDATPICKER_WIDTH - kBTN_DATEPICKER_WIDTH, 
+                                200.0 + kDATEPICKER_HEIGHT, 
+                                kBTN_DATEPICKER_WIDTH, kBTN_DATEPICKER_HEIGHT);
+    self.btnHidden = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.btnHidden.frame = btnRect;
+    [self.btnHidden addTarget:self action:@selector(actionHiddenDatepicker) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.btnHidden];
     
 }
 
-
-- (void)keyboardWillShow:(NSNotification *)notification
+#pragma mark - UITextFeild delegate 隐藏键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-	 if ([rememberTextView isFirstResponder] == NO) {
-         return;
-	 }
-    
-	 //获取键盘的大小
-	 NSDictionary *dictionary=[notification userInfo];
-	 
-	 NSValue *aValue = [dictionary objectForKey:UIKeyboardFrameBeginUserInfoKey];
-	 CGSize keyboardSize = [aValue CGRectValue].size;
-	 [UIView beginAnimations:@"showKeyboard" context:nil];
-	 [UIView setAnimationDuration:0.3f];
-	 //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	 //[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:toolbar cache:YES];
-	 CGRect frame=[self.view frame];
-	 frame.origin.y -= keyboardSize.height;
-	 self.view.frame = frame;
-	 [UIView commitAnimations];
-    isKeyboardShowFlag = YES;
+    [self.tfLabelText resignFirstResponder];
+    return YES;
 }
 
-- (void)keyboardWillHidden:(NSNotification *)notification
+#pragma mark - DatePicker Methods
+
+/**
+ * 显示时间选择器
+ */
+
+- (void)actionShowDatepicker
 {
-	//获取键盘的大小
-	NSDictionary *dictionary=[notification userInfo];
-	NSValue *aValue=[dictionary objectForKey:UIKeyboardFrameBeginUserInfoKey];
-	CGSize keyboardSize=[aValue CGRectValue].size;
-	[UIView beginAnimations:@"showKeyboard" context:nil];
-	[UIView setAnimationDuration:0.3f];
-	//[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	//[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:toolbar cache:YES];
-	CGRect frame=[self.view frame];
-	frame.origin.y += keyboardSize.height;
-	self.view.frame = frame;
-	[UIView commitAnimations];
-    isKeyboardShowFlag = NO;
+   
+    [UIView beginAnimations:@"animationID" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.5];
+    self.dpTimePicker.frame = CGRectMake(0.0, 200.0, kDATPICKER_WIDTH, kDATEPICKER_HEIGHT);
+    self.btnHidden.frame = CGRectMake(kDATPICKER_WIDTH - kBTN_DATEPICKER_WIDTH, 
+                                      200.0 - kBTN_DATEPICKER_HEIGHT, 
+                                      kBTN_DATEPICKER_WIDTH, kBTN_DATEPICKER_HEIGHT);
+    [UIView commitAnimations];
+    
+   
+}
+/**
+ * 隐藏时间选择器
+ */
+- (void)actionHiddenDatepicker
+{
+    [UIView beginAnimations:@"animationID" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.5];
+    self.dpTimePicker.frame = CGRectMake(0.0, 200.0 + kDATEPICKER_HEIGHT + kBTN_DATEPICKER_HEIGHT, 
+                                         kDATPICKER_WIDTH, kDATEPICKER_HEIGHT);
+    self.btnHidden.frame = CGRectMake(kDATPICKER_WIDTH - kBTN_DATEPICKER_WIDTH, 
+                                      200.0 + kDATEPICKER_HEIGHT, 
+                                      kBTN_DATEPICKER_WIDTH, kBTN_DATEPICKER_HEIGHT);
+    [UIView commitAnimations];
 }
 
+/**
+ * 时间选择器 设置时间
+ */
+- (void)datePick:(UIDatePicker *)sender
+{
+	NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *comps = [[NSDateComponents alloc] init];
+	//[calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+	NSInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit;
+	comps = [calendar components:unitFlags fromDate:sender.date];
+    
+    if ([comps hour] < 10) {
+        if ([comps minute] < 10)
+            self.lblTimeText.text = [NSString stringWithFormat:@"0%d:0%d", [comps hour], [comps minute]];
+        else 
+            self.lblTimeText.text = [NSString stringWithFormat:@"0%d:%d", [comps hour], [comps minute]];
+    }else{
+        if ([comps minute] < 10)
+            self.lblTimeText.text = [NSString stringWithFormat:@"%d:0%d", [comps hour], [comps minute]];
+        else 
+            self.lblTimeText.text = [NSString stringWithFormat:@"%d:%d", [comps hour], [comps minute]];
+    }
+
+    [self performSelector:@selector(actionHiddenDatepicker) withObject:nil afterDelay:3];
+}
+
+
+#pragma mark - Save & Back Methods
 /**
  * 返回
  */
 - (void)backToMainUI:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-    [self.alarmViewCopntroller restoreMainGUI];
 }
 
 /**
@@ -180,22 +281,25 @@
  */
 - (void)saveClockData
 {
-	NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:4];
+    NSMutableDictionary *clockDictionary = [[NSMutableDictionary alloc] initWithCapacity:4];
     [clockDictionary setObject:self.tfLabelText.text forKey:@"ClockLabel"];
 	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
 	[clockDictionary setObject:self.lblRepeatText.text forKey:@"ClockRepeat"];
     [clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
-    
     NSLog(@"clockDic = %@", clockDictionary);
     
-	NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-	[userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
-    NSLog(@"self.alarmClockID = %d", self.alarmClockID);
-    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if (!self.isAddNewAlarm) {
+        [userDefault removeObjectForKey:[NSString stringWithFormat:@"%d", self.intAlarmIndex]];
+        [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.intAlarmIndex]];
+    }else{
+        [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.alarmClockID]];
+        NSLog(@"self.alarmClockID = %d", self.alarmClockID);
+    }
+	
 	if (self.alarmClockID > self.alarmViewCopntroller.alarmClockCount)
 		++self.alarmViewCopntroller.alarmClockCount;
     NSLog(@"self.alarmViewCopntroller.alarmClockCount = %d", self.alarmViewCopntroller.alarmClockCount);
-    
 	[userDefault setObject:[NSNumber numberWithInt:self.alarmViewCopntroller.alarmClockCount] forKey:@"ClockCount"];
 	
 //	if (self.blAlarmClockState) {
@@ -207,61 +311,26 @@
 }
 
 
+#pragma mark - Action View Methods
 
-
-- (void)showSetClockTimeController
-{
-	setClockTimeController = [[SetClockTimeController alloc] initWithNibName:@"SetClockTimeController" bundle:nil];
-	setClockTimeController.delegate = self;
-	[self.navigationController pushViewController:setClockTimeController animated:YES];
-    self.alarmViewCopntroller.tbAlarmView.scrollEnabled = NO;
-}
-
+/**
+ *  设置闹铃重复
+ */
 - (void)showSetClockRepeatController
 {
     self.setRepeatViewController = [[SetRepeatViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:self.setRepeatViewController animated:YES];
 }
 
+/**
+ *  设置闹铃音乐
+ */
 - (void)showSetClockMusicController
 {
-//	setClockMusicController = [[SetClockMusicController alloc] initWithNibName:@"SetClockMusicController" bundle:nil];
-//	setClockMusicController.delegate = self;
-//	
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	animation.subtype = kCATransitionFromLeft;
-//	[[self.view layer] addAnimation:animation forKey:@"ShowSetMusic"];
-//	[self.view addSubview:setClockMusicController.view];
-//	delegate.mainTableView.scrollEnabled = NO;
+    self.setMusicViewController = [[SetMusicViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.setMusicViewController.delegate = self;
+    [self.navigationController pushViewController:self.setMusicViewController animated:YES];
 }
-
-- (void)showSetClockSceneController
-{
-//	setClockSceneController = [[SetClockSceneController alloc] initWithNibName:@"SetClockSceneController" bundle:nil];
-//	setClockSceneController.delegate = self;
-//	
-//	CATransition *animation = [CATransition animation];
-//	animation.duration = 0.4f;
-//	animation.delegate = self;
-//	animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//	animation.type = kCATransitionPush;
-//	animation.subtype = kCATransitionFromLeft;
-//	[[self.view layer] addAnimation:animation forKey:@"ShowSetScene"];
-//	[self.view addSubview:setClockSceneController.view];
-//	delegate.mainTableView.scrollEnabled = NO;
-}
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 
 - (void)didReceiveMemoryWarning {
@@ -274,6 +343,15 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+#pragma mark - Custom delegate
+//返回选择的音乐
+- (NSString *)setAlarmMusic:(NSString *)alarmMusic
+{
+    self.lblMusicText.text = alarmMusic;
+
+    return self.lblMusicText.text;
 }
 
 #pragma mark - UITableView Delegate
@@ -321,10 +399,12 @@
     }
 	
 
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
     switch (indexPath.row) {
         case 0:
             [cell.contentView addSubview:self.lblLabelName];
-            [cell.contentView addSubview:self.lblLabelText];
             [cell.contentView addSubview:self.tfLabelText];
             break;
         case 1:
@@ -342,6 +422,7 @@
         case 4:
             [cell.contentView addSubview:self.lblLaterName];
             [cell.contentView addSubview:self.swLater];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         default:
             break;
@@ -358,8 +439,9 @@
 			
 			break;
 		case 1:
-			[self showSetClockTimeController];
-			break;
+			//[self showSetClockTimeController];
+			[self actionShowDatepicker];
+            break;
 		case 2:
 			[self showSetClockRepeatController];
 			break;
