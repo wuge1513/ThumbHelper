@@ -66,7 +66,6 @@
             //self.tfLabelText.text = @"None";
             self.lblRepeatText.text = @"Never";
             self.lblMusicText.text = @"None";
-            self.isAddNewAlarm = NO;
         }else{
             if ([self.dicAlarmClock count] > 0) {
                 
@@ -76,8 +75,8 @@
                 self.lblMusicText.text = [self.dicAlarmClock objectForKey:@"ClockMusic"];
             }else{
                 //self.tfLabelText.text = @"None";
-                self.lblRepeatText.text = @"Never";
-                self.lblMusicText.text =@"None";
+                self.lblRepeatText.text = NSLocalizedString(@"Never", nil);
+                self.lblMusicText.text = NSLocalizedString(@"None", nil);
             }
         }
     }else{
@@ -85,6 +84,8 @@
         NSArray *arrRepeat = [[NSUserDefaults standardUserDefaults] objectForKey:@"Repeat"];
         if ([arrRepeat count] == 7) {
             self.lblRepeatText.text = NSLocalizedString(@"Everyday", nil);
+        }else if ([arrRepeat count] == 0){
+            self.lblRepeatText.text = NSLocalizedString(@"Never", nil);
         }else{
             NSString *strTmp = @"";
             for (NSString *str in arrRepeat) {
@@ -273,6 +274,7 @@
  */
 - (void)backToMainUI:(id)sender
 {
+    self.isAddNewAlarm = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -318,7 +320,12 @@
  */
 - (void)showSetClockRepeatController
 {
+    NSArray *arrCurWeeks = [self.lblRepeatText.text componentsSeparatedByString:@" "];
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:arrCurWeeks];
+    [arr removeLastObject];
+    NSLog(@"arr = %@", arr);
     self.setRepeatViewController = [[SetRepeatViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.setRepeatViewController.arrLastWeeks = [NSArray arrayWithArray:arr];
     [self.navigationController pushViewController:self.setRepeatViewController animated:YES];
 }
 

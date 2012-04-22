@@ -12,6 +12,7 @@
 		CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */; };
 		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
 		CE5600B61539FDF1005E2E36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B51539FDF1005E2E36 /* QuartzCore.framework */; };
+		CE857D0115445D4400CE2D59 /* PlaceMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */; };
 		CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A711535D94200C67344 /* UIKit.framework */; };
 		CEC66A741535D94200C67344 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A731535D94200C67344 /* Foundation.framework */; };
 		CEC66A761535D94200C67344 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A751535D94200C67344 /* CoreGraphics.framework */; };
@@ -70,6 +71,8 @@
 		CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetRepeatViewController.m; path = AlarmClock/SetRepeatViewController.m; sourceTree = "<group>"; };
 		CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		CE5600B51539FDF1005E2E36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CE857CFF15445D4400CE2D59 /* PlaceMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceMainViewController.h; path = GooglePlace/PlaceMainViewController.h; sourceTree = "<group>"; };
+		CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceMainViewController.m; path = GooglePlace/PlaceMainViewController.m; sourceTree = "<group>"; };
 		CEC66A6D1535D94200C67344 /* ThumbHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThumbHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC66A711535D94200C67344 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEC66A731535D94200C67344 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +168,15 @@
 			name = LLFileManage;
 			sourceTree = "<group>";
 		};
+		CE857CFD15445CD600CE2D59 /* GooglePlace */ = {
+			isa = PBXGroup;
+			children = (
+				CE857CFF15445D4400CE2D59 /* PlaceMainViewController.h */,
+				CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */,
+			);
+			name = GooglePlace;
+			sourceTree = "<group>";
+		};
 		CEC66A621535D94200C67344 = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +212,7 @@
 				CE0A6C7D15432BBF00008231 /* Utils */,
 				CE1BC2E6153F17CC000613C7 /* LLFileManage */,
 				CEC66AC91535E5FC00C67344 /* AlarmClock */,
+				CE857CFD15445CD600CE2D59 /* GooglePlace */,
 				CEC66ABF1535DE9600C67344 /* Consts.h */,
 				CEC66B351535E9DF00C67344 /* UIColor_Random.h */,
 				CEC66B361535E9E000C67344 /* UIColor_Random.m */,
@@ -427,6 +440,7 @@
 				CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */,
 				CED8C5431540709900B78F12 /* SetMusicViewController.m in Sources */,
 				CECBCD2A15429EE500ED964F /* LLDatePickerView.m in Sources */,
+				CE857D0115445D4400CE2D59 /* PlaceMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

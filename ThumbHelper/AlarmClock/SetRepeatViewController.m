@@ -11,7 +11,7 @@
 
 @implementation SetRepeatViewController
 
-@synthesize arrWeeks, arrShortweeks, arrSelectedWeek, arrWorkingDay;
+@synthesize arrWeeks, arrShortweeks, arrSelectedWeek, arrWorkingDay, arrLastWeeks, arrCurWeeks;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,6 +23,7 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionBack)]; 
         
         self.arrSelectedWeek = [[NSMutableArray alloc] initWithCapacity:1];
+        self.arrLastWeeks = [[NSMutableArray alloc] initWithCapacity:1];
         
         NSString *strSun = NSLocalizedString(@"Sunday", nil);
         NSString *strMon = NSLocalizedString(@"Monday", nil);
@@ -74,6 +75,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //NSLog(@"self.arrSelectWeeks = %@",self.arrSelectedWeek);
+    NSLog(@"self.arrLastWeeks = %@", self.arrLastWeeks);
+    self.arrCurWeeks = [[NSMutableArray alloc] initWithArray:self.arrLastWeeks];
+    NSLog(@"self.arrCurWeeks = %@", self.arrCurWeeks);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -129,7 +134,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
+    
     cell.textLabel.text = [self.arrWeeks objectAtIndex:indexPath.row];
+    
+    for (NSString *str in self.arrCurWeeks) {
+        if ([[self.arrShortweeks objectAtIndex:indexPath.row] isEqualToString:str]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     if (indexPath.row == 0 || indexPath.row == 6) {
         cell.textLabel.textColor = [UIColor redColor];
@@ -147,15 +159,18 @@
         
     if (Cell.accessoryType == UITableViewCellAccessoryNone) {
         Cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.arrSelectedWeek addObject:[self.arrShortweeks objectAtIndex:indexPath.row]];
-        NSLog(@"self.arrselect1 = %@", self.arrSelectedWeek);
+        [self.arrCurWeeks addObject:[self.arrShortweeks objectAtIndex:indexPath.row]];
+        NSLog(@"self.arrselect0 = %@", self.arrSelectedWeek);
     }else{
         Cell.accessoryType = UITableViewCellAccessoryNone;
         NSString *strTmp = [self.arrShortweeks objectAtIndex:indexPath.row];
-        [self.arrSelectedWeek removeObject:strTmp];
-        NSLog(@"self.arrselect2 = %@", self.arrSelectedWeek);
+        NSLog(@"self.arrselect1 = %@", self.arrCurWeeks);
+        [self.arrCurWeeks removeObject:strTmp];
+        NSLog(@"self.arrselect2 = %@", self.arrCurWeeks);
     }
-
+    [self.arrSelectedWeek removeAllObjects];
+    [self.arrSelectedWeek addObjectsFromArray:self.arrCurWeeks];
+    NSLog(@"self.arrselect3 = %@", self.arrSelectedWeek);
     [[NSUserDefaults standardUserDefaults] setObject:self.arrSelectedWeek forKey:@"Repeat"];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

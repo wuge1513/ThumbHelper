@@ -68,7 +68,7 @@
     
     
     
-    CGRect rect = CGRectMake(0.0, 0.0, SCREEN_FRAM_WIDTH, SCREEN_FRAM_HEIGHT);
+    CGRect rect = CGRectMake(0.0, 0.0, SCREEN_FRAM_WIDTH, SCREEN_FRAM_HEIGHT - 20.0 - 44.0 - 49.0);
     self.tbAlarmView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     self.tbAlarmView.delegate = self;
     self.tbAlarmView.dataSource = self;
@@ -201,6 +201,7 @@
         addClockViewController.dicAlarmClock = dic;
 	}else{//新建闹铃
         addClockViewController.isAddNewAlarm = YES;
+        //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isAddNewAlarm"];
         addClockViewController.alarmClockID = self.alarmClockCount + 1;
     }
     
