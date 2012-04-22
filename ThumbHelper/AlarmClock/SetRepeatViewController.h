@@ -11,6 +11,9 @@
 
 @interface SetRepeatViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *arrLastWeeks;
+@property (strong, nonatomic) NSMutableArray *arrCurWeeks;
+
 @property (strong, nonatomic) NSMutableArray *arrSelectedWeek;
 @property (strong, nonatomic) NSArray *arrWeeks;
 @property (strong, nonatomic) NSArray *arrShortweeks;

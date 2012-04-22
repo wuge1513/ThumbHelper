@@ -9,17 +9,22 @@
 #import "MasterViewController.h"
 
 #import "AlarmViewController.h"
+#import "PlaceMainViewController.h"
 
 @implementation MasterViewController
 
-@synthesize alarmViewController;
+@synthesize alarmViewController, placeMainViewController;
 @synthesize btnAlarm, btnPlace, btnToDo;
+@synthesize tab;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Master", @"Master");
+        
+//        UITabBarController *rabc = [[UITabBarController alloc] init];
+//        [self.view addSubview:rabc.view];
     }
     return self;
 }
@@ -51,7 +56,7 @@
     self.btnPlace = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.btnPlace.frame = CGRectMake(220.0, 60.0 + 57.0 + 20.0, 57.0, 57.0);
     [self.btnPlace setTitle:NSLocalizedString(@"Place", nil) forState:UIControlStateNormal];
-    [self.btnPlace addTarget:self action:@selector(actionBtnAlarm) forControlEvents:UIControlEventTouchUpInside];
+    [self.btnPlace addTarget:self action:@selector(actionBtnPlace) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnPlace];
     
     //Set a Todo button
@@ -105,6 +110,14 @@
     }
     [self.navigationController pushViewController:self.alarmViewController animated:YES];
 
+}
+
+- (void)actionBtnPlace
+{
+    if (!self.placeMainViewController) {
+        self.placeMainViewController = [[PlaceMainViewController alloc] init];
+    }
+    [self.navigationController pushViewController:self.placeMainViewController animated:YES];
 }
 
 

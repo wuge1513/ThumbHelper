@@ -12,7 +12,7 @@
 @class ClockCell;
 @class AddClockViewController;
 
-@interface AlarmViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface AlarmViewController : UITabBarController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tbAlarmView;
 @property (strong, nonatomic) AddClockViewController *addClockViewController; //add alarm clock

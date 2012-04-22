@@ -9,13 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @class AlarmViewController;
+@class PlaceMainViewController;
 
-@interface MasterViewController : UIViewController
+@interface MasterViewController : UITabBarController
+
+@property (strong, nonatomic) UITabBarItem *tab;
 
 @property (strong, nonatomic) UIButton *btnAlarm;
 @property (strong, nonatomic) UIButton *btnPlace;
 @property (strong, nonatomic) UIButton *btnToDo;
 
 @property (strong, nonatomic) AlarmViewController *alarmViewController;
+@property (strong, nonatomic) PlaceMainViewController *placeMainViewController;
 
+- (void)actionBtnAlarm;
+- (void)actionBtnPlace;
 @end
