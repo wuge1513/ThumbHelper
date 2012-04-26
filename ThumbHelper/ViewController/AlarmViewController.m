@@ -28,17 +28,17 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        //self.navigationController.navigationBar.barStyle = UIBarStyleBlack; 
         self.title = NSLocalizedString(@"Add Alarm", @"Add Alarm");
         
         //the add btn for alarm
         UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddClockView)];
         self.navigationItem.rightBarButtonItem = addButtonItem;//
         
-//        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
-        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionBack)];
-        
+        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
         self.navigationItem.leftBarButtonItem = editButtonItem;
-
+        
     }
     return self;
 }
@@ -65,8 +65,6 @@
     [self initData];
     [self initClockCount];
 	[self updateActivityClockCount];
-    
-    
     
     CGRect rect = CGRectMake(0.0, 0.0, SCREEN_FRAM_WIDTH, SCREEN_FRAM_HEIGHT - 20.0 - 44.0 - 49.0);
     self.tbAlarmView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
@@ -164,10 +162,6 @@
     [self showAddClockView:nil index:0];
 }
 
-- (void)actionBack
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)actionEdit
 {
@@ -314,10 +308,10 @@
 }
 
 -(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-//	if(self.doneState){
+	if(self.doneState){
 		return YES;
-//	}
-//	return NO;
+	}
+	return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

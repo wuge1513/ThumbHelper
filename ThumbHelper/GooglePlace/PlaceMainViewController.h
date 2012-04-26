@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlaceMainViewController : UITabBarController
-
-
-- (void)actionToBack;
+@interface PlaceMainViewController : UIViewController
 
 @end

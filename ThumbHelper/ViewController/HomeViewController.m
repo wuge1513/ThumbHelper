@@ -1,23 +1,21 @@
 //
-//  PlaceMainViewController.m
+//  HomeViewController.m
 //  ThumbHelper
 //
-//  Created by LiuLei on 12-4-22.
+//  Created by LiuLei on 12-4-24.
 //  Copyright (c) 2012年 LiuLei. All rights reserved.
 //
 
-#import "PlaceMainViewController.h"
+#import "HomeViewController.h"
 
-@implementation PlaceMainViewController
+@implementation HomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Google Place", nil);
-        
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionToBack)]; 
+        self.title = NSLocalizedString(@"Home", nil);
     }
     return self;
 }
@@ -32,11 +30,11 @@
 
 #pragma mark - View lifecycle
 
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
@@ -53,6 +51,5 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 @end

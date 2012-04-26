@@ -8,21 +8,63 @@
 
 #import "AppDelegate.h"
 
-#import "MasterViewController.h"
-
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize navigationController = _navigationController;
+@synthesize rootTabBarConreoller = _rootTabBarConreoller;
+
+@synthesize homeViewController = _homeViewController;
+@synthesize tasksViewController = _tasksViewController;
+@synthesize placeMainViewController = _placeMainViewController;
+@synthesize alarmViewController = _alarmViewController;
+@synthesize settingsViewController = _settingsViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-    self.window.rootViewController = self.navigationController;
+    self.rootTabBarConreoller = [[RootTabbarViewController alloc] init];
+    
+    
+    //Home View 
+    self.homeViewController = [[HomeViewController alloc] init];
+    UINavigationController *HomeView = [[UINavigationController alloc] initWithRootViewController:
+                                         self.homeViewController];
+    HomeView.navigationBar.tintColor = [UIColor orangeColor];
+    HomeView.title = @"Home";
+    
+    //Tasks View 
+    self.tasksViewController = [[TasksViewController alloc] init];
+    UINavigationController *TasksView = [[UINavigationController alloc] initWithRootViewController:
+                                         self.tasksViewController];
+    TasksView.navigationBar.tintColor = [UIColor orangeColor];
+    TasksView.title = @"Tasks";
+    
+    //alarm clock
+    self.alarmViewController = [[AlarmViewController alloc] init];
+    UINavigationController *AlarmView = [[UINavigationController alloc] initWithRootViewController:
+                                         self.alarmViewController];
+    AlarmView.navigationBar.tintColor = [UIColor orangeColor];
+    AlarmView.title = @"Alarms";
+    
+    // google place
+    self.placeMainViewController = [[PlaceMainViewController alloc] init];
+    UINavigationController *PlaceView = [[UINavigationController alloc] initWithRootViewController:
+                                         self.placeMainViewController];
+    PlaceView.navigationBar.tintColor = [UIColor orangeColor];
+    PlaceView.title = @"Place";
+    
+    //Settings View
+    self.settingsViewController = [[SettingsViewController alloc] init];
+    UINavigationController *Settings = [[UINavigationController alloc] initWithRootViewController:
+                                         self.settingsViewController];
+    Settings.navigationBar.tintColor = [UIColor orangeColor];
+    Settings.title = @"Settings";
+    
+    self.rootTabBarConreoller.viewControllers = [NSArray arrayWithObjects:HomeView, TasksView, AlarmView, PlaceView, Settings,nil];
+    
+    self.window.rootViewController = self.rootTabBarConreoller;
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -48,10 +48,11 @@
 		self.title = NSLocalizedString(@"Set AlarmClock", nil);
         
         //left button go back
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backToMainUI:)]; 
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backToMainUI:)]; 
 
         //right button save data
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveClockData)];
+    
     }
     return self;
 }

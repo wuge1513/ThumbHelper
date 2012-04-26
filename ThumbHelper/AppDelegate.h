@@ -7,11 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootTabbarViewController.h"
+
+#import "HomeViewController.h"
+#import "TasksViewController.h"
+#import "AlarmViewController.h"
+#import "PlaceMainViewController.h"
+#import "SettingsViewController.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) RootTabbarViewController *rootTabBarConreoller;
+
+@property (strong, nonatomic) HomeViewController *homeViewController;
+@property (strong, nonatomic) TasksViewController *tasksViewController;
+@property (strong, nonatomic) AlarmViewController *alarmViewController;
+@property (strong, nonatomic) PlaceMainViewController *placeMainViewController;
+@property (strong, nonatomic) SettingsViewController *settingsViewController;
+
 
 @end

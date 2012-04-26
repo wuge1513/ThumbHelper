@@ -1,23 +1,25 @@
 //
-//  PlaceMainViewController.m
+//  RootTabbarViewController.m
 //  ThumbHelper
 //
-//  Created by LiuLei on 12-4-22.
+//  Created by LiuLei on 12-4-23.
 //  Copyright (c) 2012年 LiuLei. All rights reserved.
 //
 
-#import "PlaceMainViewController.h"
+#import "RootTabbarViewController.h"
 
-@implementation PlaceMainViewController
+#define kTABBAR_HEIGHT      49.0
+
+
+@implementation RootTabbarViewController
+
+@synthesize imgTabBarViewBg;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Google Place", nil);
-        
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionToBack)]; 
     }
     return self;
 }
@@ -37,7 +39,8 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.imgTabBarViewBg = [UIImage imageNamed:@"background.png"];
+    //self.tabBar.tintColor = [UIColor grayColor];//colorWithPatternImage:self.imgTabBarViewBg
 }
 
 
@@ -53,6 +56,5 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 @end

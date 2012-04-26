@@ -12,7 +12,7 @@
 @class ClockCell;
 @class AddClockViewController;
 
-@interface AlarmViewController : UITabBarController<UITableViewDelegate, UITableViewDataSource>
+@interface AlarmViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tbAlarmView;
 @property (strong, nonatomic) AddClockViewController *addClockViewController; //add alarm clock
@@ -35,8 +35,7 @@
 @property (strong, nonatomic) NSString *strAlarmClockLabel;
 @property (strong, nonatomic) NSString *strAlarmClockRepeat;
 
-
-- (void)actionBack;
+- (void)actionEdit;
 - (void)restoreMainGUI;
 - (void)initClockCount;
 - (NSString *)updateHeaderTitle;
