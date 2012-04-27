@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
+
+@property (strong, nonatomic) UITableView *tbSettingsView; 
 @end

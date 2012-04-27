@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootTabbarViewController.h"
+#import "UICustomTabController.h"
 
 #import "HomeViewController.h"
 #import "TasksViewController.h"
@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) RootTabbarViewController *rootTabBarConreoller;
+@property (strong, nonatomic) UICustomTabController *rootTabBarConreoller;
 
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) TasksViewController *tasksViewController;

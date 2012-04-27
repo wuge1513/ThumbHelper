@@ -29,20 +29,18 @@
 
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+     self.view.backgroundColor = [UIColor colorWithWhite:220/255.0 alpha:1];
+    
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(80.0, 40.0, 180.0, 30.0)];
+    lbl.backgroundColor = [UIColor clearColor];
+    lbl.text= @"The first view.";
+    [self.view addSubview:lbl];
 }
-*/
+
 
 - (void)viewDidUnload
 {

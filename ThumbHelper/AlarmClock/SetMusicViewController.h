@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) id <SetMusicDelegate> delegate;// 定义委托对象
 @property (strong, nonatomic) NSIndexPath *lastIndexPath;
-@property (assign, nonatomic) NSString *strSelectedMusic;
+@property (strong, nonatomic) NSString *strSelectedMusic;
 @property (strong, nonatomic) NSArray *arrMusics;
 
 @end

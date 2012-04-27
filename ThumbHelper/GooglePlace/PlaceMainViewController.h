@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BHTabsViewController.h"
+#import "DefaultPlaceViewController.h"
+#import "CustomPlaceViewController.h"
 
 @interface PlaceMainViewController : UIViewController
 
+@property (strong, nonatomic) BHTabsViewController *bhTabsViewController;
+@property (strong, nonatomic) DefaultPlaceViewController *defaultView;
+@property (strong, nonatomic) CustomPlaceViewController *customView;
 @end

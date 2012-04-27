@@ -7,8 +7,12 @@
 //
 
 #import "PlaceMainViewController.h"
+#import "BHTabStyle.h"
 
 @implementation PlaceMainViewController
+
+@synthesize bhTabsViewController;
+@synthesize defaultView, customView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +42,18 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    self.defaultView = [[DefaultPlaceViewController alloc] init];
+    self.defaultView.view.bounds = CGRectMake(0.0, -40.0, 320.0, 50.0);
+    
+    self.customView = [[CustomPlaceViewController alloc] init];
+    self.customView.view.bounds = CGRectMake(0.0, -40.0, 320.0, 62.0);
+    
+    self.bhTabsViewController = [[BHTabsViewController alloc] 
+                                 initWithViewControllers:[[NSArray alloc] initWithObjects:self.defaultView, self.customView, nil]
+                                 style:[BHTabStyle defaultStyle]];
+    
+    [self.view addSubview:self.bhTabsViewController.view];
 }
 
 

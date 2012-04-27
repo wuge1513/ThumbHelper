@@ -24,45 +24,60 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    self.rootTabBarConreoller = [[RootTabbarViewController alloc] init];
-    
-    
     //Home View 
     self.homeViewController = [[HomeViewController alloc] init];
     UINavigationController *HomeView = [[UINavigationController alloc] initWithRootViewController:
                                          self.homeViewController];
-    HomeView.navigationBar.tintColor = [UIColor orangeColor];
+    HomeView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     HomeView.title = @"Home";
+    HomeView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+
     
     //Tasks View 
     self.tasksViewController = [[TasksViewController alloc] init];
     UINavigationController *TasksView = [[UINavigationController alloc] initWithRootViewController:
                                          self.tasksViewController];
-    TasksView.navigationBar.tintColor = [UIColor orangeColor];
+    TasksView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     TasksView.title = @"Tasks";
+    TasksView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
     
     //alarm clock
     self.alarmViewController = [[AlarmViewController alloc] init];
     UINavigationController *AlarmView = [[UINavigationController alloc] initWithRootViewController:
                                          self.alarmViewController];
-    AlarmView.navigationBar.tintColor = [UIColor orangeColor];
+    AlarmView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     AlarmView.title = @"Alarms";
+    AlarmView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
     
     // google place
     self.placeMainViewController = [[PlaceMainViewController alloc] init];
     UINavigationController *PlaceView = [[UINavigationController alloc] initWithRootViewController:
                                          self.placeMainViewController];
-    PlaceView.navigationBar.tintColor = [UIColor orangeColor];
+    PlaceView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     PlaceView.title = @"Place";
+    PlaceView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
     
     //Settings View
     self.settingsViewController = [[SettingsViewController alloc] init];
     UINavigationController *Settings = [[UINavigationController alloc] initWithRootViewController:
                                          self.settingsViewController];
-    Settings.navigationBar.tintColor = [UIColor orangeColor];
+    Settings.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     Settings.title = @"Settings";
+    Settings.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+
+    NSMutableArray *view_manager = [[NSMutableArray alloc] initWithObjects:HomeView, TasksView, AlarmView, PlaceView, Settings, nil];
     
-    self.rootTabBarConreoller.viewControllers = [NSArray arrayWithObjects:HomeView, TasksView, AlarmView, PlaceView, Settings,nil];
+    /*请按照上面的方法添加其他的tab控制器*/
+    self.rootTabBarConreoller = [[UICustomTabController alloc] init];
+    [self.rootTabBarConreoller setNeed_to_custom:YES];
+    [self.rootTabBarConreoller setTab_bar_bg:[UIImage imageNamed:@"tools_bar_bg.png"]];
+    [self.rootTabBarConreoller setNormal_image:[UIImage imageNamed:@"NavBar_01.png"]];
+    [self.rootTabBarConreoller setSelect_image:[UIImage imageNamed:@"NavBar_01_s.png"]];
+    [self.rootTabBarConreoller setShow_style:UItabbarControllerShowStyleIconAndText];
+    [self.rootTabBarConreoller setSelectedIndex:0];
+    [self.rootTabBarConreoller setShow_size:49];
+    [self.rootTabBarConreoller setViewControllers:view_manager];
+    self.rootTabBarConreoller.font = [UIFont systemFontOfSize:12.0];
     
     self.window.rootViewController = self.rootTabBarConreoller;
     [self.window makeKeyAndVisible];
