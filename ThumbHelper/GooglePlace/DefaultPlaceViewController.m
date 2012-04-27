@@ -1,19 +1,14 @@
 //
-//  RootTabbarViewController.m
+//  DefaultPlaceViewController.m
 //  ThumbHelper
 //
-//  Created by LiuLei on 12-4-23.
+//  Created by LiuLei on 12-4-27.
 //  Copyright (c) 2012年 LiuLei. All rights reserved.
 //
 
-#import "RootTabbarViewController.h"
+#import "DefaultPlaceViewController.h"
 
-#define kTABBAR_HEIGHT      49.0
-
-
-@implementation RootTabbarViewController
-
-@synthesize imgTabBarViewBg;
+@implementation DefaultPlaceViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,15 +29,20 @@
 
 #pragma mark - View lifecycle
 
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+}
+*/
+
+/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.imgTabBarViewBg = [UIImage imageNamed:@"background.png"];
-    //self.tabBar.tintColor = [UIColor grayColor];//colorWithPatternImage:self.imgTabBarViewBg
 }
-
+*/
 
 - (void)viewDidUnload
 {
