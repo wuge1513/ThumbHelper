@@ -21,6 +21,7 @@
 		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
 		CE5600B61539FDF1005E2E36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B51539FDF1005E2E36 /* QuartzCore.framework */; };
 		CE857D0115445D4400CE2D59 /* PlaceMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */; };
+		CE97A421155187260070BE11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE97A420155187260070BE11 /* CoreLocation.framework */; };
 		CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A711535D94200C67344 /* UIKit.framework */; };
 		CEC66A741535D94200C67344 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A731535D94200C67344 /* Foundation.framework */; };
 		CEC66A761535D94200C67344 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A751535D94200C67344 /* CoreGraphics.framework */; };
@@ -103,6 +104,7 @@
 		CE5600B51539FDF1005E2E36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE857CFF15445D4400CE2D59 /* PlaceMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceMainViewController.h; path = GooglePlace/PlaceMainViewController.h; sourceTree = "<group>"; };
 		CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceMainViewController.m; path = GooglePlace/PlaceMainViewController.m; sourceTree = "<group>"; };
+		CE97A420155187260070BE11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CEC66A6D1535D94200C67344 /* ThumbHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThumbHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC66A711535D94200C67344 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEC66A731535D94200C67344 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -177,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE97A421155187260070BE11 /* CoreLocation.framework in Frameworks */,
 				CE5600B61539FDF1005E2E36 /* QuartzCore.framework in Frameworks */,
 				CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */,
 				CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */,
@@ -235,6 +238,21 @@
 			name = GooglePlace;
 			sourceTree = "<group>";
 		};
+		CE97A42B15518ED30070BE11 /* SVGeocoder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SVGeocoder;
+			sourceTree = "<group>";
+		};
+		CE97A42C15518ED60070BE11 /* JsonKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = JsonKit;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		CEC66A621535D94200C67344 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +275,7 @@
 			children = (
 				CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */,
 				CE53467C154AD896006D1D5F /* libUITab.a */,
+				CE97A420155187260070BE11 /* CoreLocation.framework */,
 				CE5600B51539FDF1005E2E36 /* QuartzCore.framework */,
 				CEC66A711535D94200C67344 /* UIKit.framework */,
 				CEC66A731535D94200C67344 /* Foundation.framework */,
@@ -268,6 +287,8 @@
 		CEC66A771535D94200C67344 /* ThumbHelper */ = {
 			isa = PBXGroup;
 			children = (
+				CE97A42C15518ED60070BE11 /* JsonKit */,
+				CE97A42B15518ED30070BE11 /* SVGeocoder */,
 				CE5346C2154AF628006D1D5F /* CustomTabView */,
 				CE0A6C7D15432BBF00008231 /* Utils */,
 				CE1BC2E6153F17CC000613C7 /* LLFileManage */,
