@@ -16,4 +16,11 @@
 @property (strong, nonatomic) BHTabsViewController *bhTabsViewController;
 @property (strong, nonatomic) DefaultPlaceViewController *defaultView;
 @property (strong, nonatomic) CustomPlaceViewController *customView;
+
+
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UILabel *lblTopText;
+@property (strong, nonatomic) UIScrollView *scrollView;
+
+
 @end
