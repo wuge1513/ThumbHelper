@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSArray *arrShortweeks;
 
 @property (strong, nonatomic) NSArray *arrWorkingDay;
-
+@property (strong, nonatomic) NSArray *arrDayEn;
 - (void)actionBack;
 
 @end

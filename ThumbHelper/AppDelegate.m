@@ -21,6 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+	for(UILocalNotification *notification in localNotifications)
+	{
+		//if ([[[notification userInfo] objectForKey:@"ActivatyClock"] intValue] == clockID) {
+			NSLog(@"Shutdown localNotification:%@", [notification fireDate]);
+			[[UIApplication sharedApplication] cancelLocalNotification:notification];
+		//}
+	}
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 

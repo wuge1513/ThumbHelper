@@ -43,6 +43,7 @@
 
 - (void)showAddClockView:(NSDictionary *)dic index:(NSInteger)idx;
 
+- (void)postLocalNotification:(NSString *)clockID isFirst:(BOOL)flag;
 - (void)startClock:(int)clockID;
 - (void)shutdownClock:(int)clockID;
 

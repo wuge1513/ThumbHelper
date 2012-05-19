@@ -214,7 +214,7 @@
 
 - (void)actionShowDatepicker
 {
-   
+
     [UIView beginAnimations:@"animationID" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.5];
@@ -224,7 +224,6 @@
                                       kBTN_DATEPICKER_WIDTH, kBTN_DATEPICKER_HEIGHT);
     [UIView commitAnimations];
     
-   
 }
 /**
  * 隐藏时间选择器
@@ -305,9 +304,9 @@
     NSLog(@"self.alarmViewCopntroller.alarmClockCount = %d", self.alarmViewCopntroller.alarmClockCount);
 	[userDefault setObject:[NSNumber numberWithInt:self.alarmViewCopntroller.alarmClockCount] forKey:@"ClockCount"];
 	
-//	if (self.blAlarmClockState) {
-//		[self.alarmViewCopntroller startClock:self.alarmClockID];
-//	}
+	if (YES) {//self.blAlarmClockState
+		[self.alarmViewCopntroller startClock:self.alarmClockID];
+	}
 	[userDefault synchronize];
     
     [self backToMainUI:nil];
@@ -462,13 +461,6 @@
 			break;
     }
 }
-
-
-
-
-
-
-
 
 
 

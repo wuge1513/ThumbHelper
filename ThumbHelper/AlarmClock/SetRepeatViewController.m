@@ -10,8 +10,7 @@
 
 
 @implementation SetRepeatViewController
-
-@synthesize arrWeeks, arrShortweeks, arrSelectedWeek, arrWorkingDay, arrLastWeeks, arrCurWeeks;
+@synthesize arrWeeks, arrShortweeks, arrSelectedWeek, arrWorkingDay, arrLastWeeks, arrCurWeeks, arrDayEn;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,14 +34,16 @@
         self.arrWeeks = [[NSArray alloc] initWithObjects: strSun, strMon, strTues, strWed, strThurs, strFri, strSat, nil];
         
         
-        NSString *strSuns = NSLocalizedString(@"Sun", nil);
-        NSString *strMons = NSLocalizedString(@"Mon", nil);
-        NSString *strTuess = NSLocalizedString(@"Tues", nil);
-        NSString *strWeds = NSLocalizedString(@"Wed", nil);
-        NSString *strThurss = NSLocalizedString(@"Thurs", nil);
-        NSString *strFris = NSLocalizedString(@"Fri", nil);
-        NSString *strSats = NSLocalizedString(@"Sat", nil);
+        NSString *strSuns = @"Sun";//NSLocalizedString(@"Sun", nil);
+        NSString *strMons = @"Mon";//NSLocalizedString(@"Mon", nil);
+        NSString *strTuess = @"Tues";//NSLocalizedString(@"Tues", nil);
+        NSString *strWeds = @"Wed";//NSLocalizedString(@"Wed", nil);
+        NSString *strThurss = @"Thurs";//NSLocalizedString(@"Thurs", nil);
+        NSString *strFris = @"Fri";//NSLocalizedString(@"Fri", nil);
+        NSString *strSats = @"Sat";//NSLocalizedString(@"Sat", nil);
         self.arrShortweeks = [[NSArray alloc] initWithObjects:strSuns, strMons, strTuess, strWeds, strThurss, strFris, strSats, nil];
+        
+        self.arrDayEn = [[NSArray alloc] initWithObjects:@"Sun", @"Mon", @"Tues", @"Wed", @"Thurs", @"Fri", @"Sat", nil];
         //weeking day
         self.arrWorkingDay = [[NSArray alloc] initWithObjects:strSun, strSat, nil];
         

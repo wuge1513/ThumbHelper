@@ -72,8 +72,19 @@
     self.tbAlarmView.dataSource = self;
     [self.view addSubview:self.tbAlarmView];
     
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [btn setTitle:@"Ok" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(280, 300, 60, 40);
+    [self.tbAlarmView addSubview:btn];
+    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
+- (void)btnAction
+{
+    //设置定时器
+    [self startClock:self.alarmClockCount];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -129,6 +140,9 @@
     }
     
 	[self.tbAlarmView reloadData];
+    
+    //设置定时器
+    //[self startClock:self.alarmClockCount];
 }
 
 - (void)initClockCount
@@ -204,12 +218,10 @@
 
 - (void)startClock:(int)clockID
 {
-	//首先查找以前是否存在此本地通知,若存在,则删除以前的该本地通知,
-	//再重新发出新的本地通知
-	
-	[self shutdownClock:clockID];
-	//NSString *clockIDString = [NSString stringWithFormat:@"%d", clockID];
-//	[(GeiniableClockAppDelegate *)[[UIApplication sharedApplication] delegate] postLocalNotification:clockIDString isFirst:YES];
+	//首先查找以前是否存在此本地通知,若存在,则删除以前的该本地通知,再重新发出新的本地通知
+    [self shutdownClock:clockID];
+    NSString *clockIDString = [NSString stringWithFormat:@"%d", clockID];
+    [self postLocalNotification:clockIDString isFirst:YES];
     
 }
 
@@ -346,8 +358,97 @@
 	}   
 }
 
+#pragma mark - 设定闹铃
+- (void)postLocalNotification:(NSString *)clockID isFirst:(BOOL)flag
+{
+	//-----获取闹钟数据---------------------------------------------------------
+	NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+	NSMutableDictionary *clockDictionary = [userDefault objectForKey:clockID];
+    NSLog(@"clockDictionary = %@", clockDictionary);
+	
+	NSString *clockTime = [clockDictionary objectForKey:@"ClockTime"];
+    NSLog(@"clockTime = %@", clockTime);
+    
+    NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"Repeat"];
+    NSLog(@"array = %@", array);
+    
+	//NSString *clockScene = [clockDictionary objectForKey:@"ClockScene"];
+	NSString *clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
+    NSLog(@"clockMusic = %@", clockMusic);
+    
+    NSString *ClockLabelText = [clockDictionary objectForKey:@"ClockLabel"];
+	NSString *clockRemember = ClockLabelText;//[clockDictionary objectForKey:@"ClockRemember"];
+    NSLog(@"clockRemember = %@", clockRemember);
+    
+	//-----组建本地通知的fireDate-----------------------------------------------
+	
+	NSArray *clockTimeArray = [clockTime componentsSeparatedByString:@":"];
+	NSDate *dateNow = [NSDate date];
+	NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *comps = [[NSDateComponents alloc] init];
+	//[calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    //[comps setTimeZone:[NSTimeZone timeZoneWithName:@"CMT"]];
+	NSInteger unitFlags = NSEraCalendarUnit | 
+	NSYearCalendarUnit | 
+	NSMonthCalendarUnit | 
+	NSDayCalendarUnit | 
+	NSHourCalendarUnit | 
+	NSMinuteCalendarUnit | 
+	NSSecondCalendarUnit | 
+	NSWeekCalendarUnit | 
+	NSWeekdayCalendarUnit | 
+	NSWeekdayOrdinalCalendarUnit | 
+	NSQuarterCalendarUnit;
+	
+	comps = [calendar components:unitFlags fromDate:dateNow];
+	[comps setHour:[[clockTimeArray objectAtIndex:0] intValue]];
+	[comps setMinute:[[clockTimeArray objectAtIndex:1] intValue]];
+	[comps setSecond:0];
+	
+	//------------------------------------------------------------------------
+	Byte weekday = 2;//[comps weekday];
+    NSLog(@"weekday = %d", weekday);
 
-
-
+    
+	Byte i = 0;
+	Byte j = 0;
+	int days = 0;
+	int	temp = 0;
+	Byte count = [array count];
+    NSLog(@"count = %d", count);
+	Byte clockDays[7];
+	
+	NSArray *tempWeekdays = [NSArray arrayWithObjects:@"Sun", @"Mon", @"Tues", @"Wed", @"Thurs", @"Fri", @"Sat", nil];
+	//查找设定的周期模式
+	for (i = 0; i < count; i++) {
+		for (j = 0; j < 7; j++) {
+			if ([[array objectAtIndex:i] isEqualToString:[tempWeekdays objectAtIndex:j]]) {
+				clockDays[i] = j + 1;
+                NSLog(@"====%d", clockDays[i]);
+				break;
+			}
+		}
+	}
+	
+	for (i = 0; i < count; i++) {
+	    temp = clockDays[i] - weekday;
+		days = (temp >= 0 ? temp : temp + 7);
+		NSDate *newFireDate = [[calendar dateFromComponents:comps] dateByAddingTimeInterval:3600 * 24 * days];
+		
+		UILocalNotification *newNotification = [[UILocalNotification alloc] init];
+		if (newNotification) {
+			newNotification.fireDate = newFireDate;
+			newNotification.alertBody = clockRemember;
+			newNotification.soundName = UILocalNotificationDefaultSoundName;//clockMusic;
+			newNotification.alertAction = @"查看闹钟";
+			newNotification.repeatInterval = NSWeekCalendarUnit;
+			NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockID forKey:@"ActivityClock"];
+			newNotification.userInfo = userInfo;
+			[[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+		}
+		NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+	}
+}
 							
 @end
