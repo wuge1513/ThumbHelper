@@ -1,3 +1,4 @@
+
 //
 //  AddClockViewController.m
 //  GeiniableClock
@@ -11,6 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LLDatePickerView.h"
 
+#import "Utility.h"
+
 #define kBTN_DATEPICKER_WIDTH       60.0
 #define kBTN_DATEPICKER_HEIGHT      40.0
 #define kDATPICKER_WIDTH            320.0
@@ -23,6 +26,7 @@
 @synthesize setRepeatViewController;
 @synthesize setMusicViewController;
 
+@synthesize strRepeatEN;
 @synthesize btnHidden;
 @synthesize strMusic;
 @synthesize tbAlarmContent;
@@ -72,8 +76,24 @@
                 
                 self.tfLabelText.text = [self.dicAlarmClock objectForKey:@"ClockLabel"];
                 self.lblTimeText.text = [self.dicAlarmClock objectForKey:@"ClockTime"];
-                self.lblRepeatText.text = [self.dicAlarmClock objectForKey:@"ClockRepeat"];
                 self.lblMusicText.text = [self.dicAlarmClock objectForKey:@"ClockMusic"];
+                
+                //显示本地化字符串
+                
+                NSString *strLocalOld = @"";
+                NSString *str = [self.dicAlarmClock objectForKey:@"ClockRepeat"];
+                self.strRepeatEN = str;
+                NSArray *arrTemp = [str componentsSeparatedByString:@" "];
+                for (NSInteger i = 0; i < [arrTemp count]; i++) {
+                    NSString *strLocalTmp = @"";
+                    NSString *strTmp = [arrTemp objectAtIndex:i];
+                    strLocalTmp = [Utility getLocalString:strTmp];
+                    
+                    strLocalOld = [strLocalOld stringByAppendingFormat:@" %@", strLocalTmp];
+                    //strLocalOld = [strLocalOld substringFromIndex:1];
+                }
+                self.lblRepeatText.text = strLocalOld;
+                
             }else{
                 //self.tfLabelText.text = @"None";
                 self.lblRepeatText.text = NSLocalizedString(@"Never", nil);
@@ -83,16 +103,24 @@
     }else{
         //重复设置参数
         NSArray *arrRepeat = [[NSUserDefaults standardUserDefaults] objectForKey:@"Repeat"];
+        
         if ([arrRepeat count] == 7) {
             self.lblRepeatText.text = NSLocalizedString(@"Everyday", nil);
         }else if ([arrRepeat count] == 0){
             self.lblRepeatText.text = NSLocalizedString(@"Never", nil);
         }else{
             NSString *strTmp = @"";
+            NSString *strEN = @"";
             for (NSString *str in arrRepeat) {
-                strTmp = [strTmp stringByAppendingFormat:@"%@ ", str];
+                //获取本地化字符串
+                NSString *strLocal = [Utility getLocalString:str];
+                strTmp = [strTmp stringByAppendingFormat:@"%@ ", strLocal];
+                //英文原始字符串
+                strEN = [strEN stringByAppendingFormat:@"%@ ", str];
             }
             self.lblRepeatText.text = strTmp;
+            self.strRepeatEN = strEN;
+            NSLog(@"测试 = %@", self.strRepeatEN);
         }
     
     }
@@ -119,27 +147,27 @@
     self.lblLabelName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblLabelName.text = NSLocalizedString(@"Label", nil);
     self.lblLabelName.backgroundColor = lblColor;
-    self.lblLabelName.font = [UIFont boldSystemFontOfSize:14.0];
+    self.lblLabelName.font = [UIFont boldSystemFontOfSize:16.0];
     
     self.lblTimeName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblTimeName.text = NSLocalizedString(@"Time", nil);
     self.lblTimeName.backgroundColor = lblColor;
-    self.lblTimeName.font = [UIFont boldSystemFontOfSize:14.0];
+    self.lblTimeName.font = [UIFont boldSystemFontOfSize:16.0];
     
     self.lblRepeatName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblRepeatName.text = NSLocalizedString(@"Repeat", nil);
     self.lblRepeatName.backgroundColor = lblColor;
-    self.lblRepeatName.font = [UIFont boldSystemFontOfSize:14.0];
+    self.lblRepeatName.font = [UIFont boldSystemFontOfSize:16.0];
     
     self.lblMusicName = [[UILabel alloc] initWithFrame:lblRect];
     self.lblMusicName.text = NSLocalizedString(@"Music", nil);
     self.lblMusicName.backgroundColor = lblColor;
-    self.lblMusicName.font = [UIFont boldSystemFontOfSize:14.0];
+    self.lblMusicName.font = [UIFont boldSystemFontOfSize:16.0];
     
-    self.lblLaterName = [[UILabel alloc] initWithFrame:lblRect];
-    self.lblLaterName.text = NSLocalizedString(@"Later", nil);
-    self.lblLaterName.backgroundColor = lblColor;
-    self.lblLaterName.font = [UIFont boldSystemFontOfSize:14.0];
+//    self.lblLaterName = [[UILabel alloc] initWithFrame:lblRect];
+//    self.lblLaterName.text = NSLocalizedString(@"Later", nil);
+//    self.lblLaterName.backgroundColor = lblColor;
+//    self.lblLaterName.font = [UIFont boldSystemFontOfSize:16.0];
     
     //UILabel text
     CGRect lblRectText = CGRectMake(120.0, 0.0, 155.0, ADDALARM_CELL_HEIGHT - 3);
@@ -150,7 +178,7 @@
     self.lblTimeText.font = [UIFont systemFontOfSize:14.0];
     self.lblTimeText.text = @"10:00";
     
-    CGRect lblRectRepeat = CGRectMake(80.0, 0.0, 195.0, ADDALARM_CELL_HEIGHT - 3);
+    CGRect lblRectRepeat = CGRectMake(60.0, 2.0, 210.0, ADDALARM_CELL_HEIGHT - 2);
     self.lblRepeatText = [[UILabel alloc] initWithFrame:lblRectRepeat];
     self.lblRepeatText.backgroundColor = [UIColor clearColor];
     //self.lblRepeatText.textColor = [UIColor colorWithRed:50.0 green:100.0 blue:150.0 alpha:1.0];
@@ -168,7 +196,7 @@
     self.swLater = [[UISwitch alloc] initWithFrame:swRect];
     
     //UITextFeild
-    CGRect tfRect = CGRectMake(120.0, 2.0, 155.0, ADDALARM_CELL_HEIGHT - 2);
+    CGRect tfRect = CGRectMake(120.0, 1.0, 155.0, ADDALARM_CELL_HEIGHT - 2);
     self.tfLabelText = [[UITextField alloc] initWithFrame:tfRect];
     self.tfLabelText.delegate = self;
     self.tfLabelText.backgroundColor = [UIColor clearColor];
@@ -192,10 +220,10 @@
     CGRect btnRect = CGRectMake(kDATPICKER_WIDTH - kBTN_DATEPICKER_WIDTH, 
                                 200.0 + kDATEPICKER_HEIGHT, 
                                 kBTN_DATEPICKER_WIDTH, kBTN_DATEPICKER_HEIGHT);
-    self.btnHidden = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.btnHidden.frame = btnRect;
-    [self.btnHidden addTarget:self action:@selector(actionHiddenDatepicker) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.btnHidden];
+//    self.btnHidden = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    self.btnHidden.frame = btnRect;
+//    [self.btnHidden addTarget:self action:@selector(actionHiddenDatepicker) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:self.btnHidden];
     
 }
 
@@ -286,7 +314,7 @@
     NSMutableDictionary *clockDictionary = [[NSMutableDictionary alloc] initWithCapacity:4];
     [clockDictionary setObject:self.tfLabelText.text forKey:@"ClockLabel"];
 	[clockDictionary setObject:self.lblTimeText.text forKey:@"ClockTime"];
-	[clockDictionary setObject:self.lblRepeatText.text forKey:@"ClockRepeat"];
+	[clockDictionary setObject:self.strRepeatEN forKey:@"ClockRepeat"];
     [clockDictionary setObject:self.lblMusicText.text forKey:@"ClockMusic"];
     NSLog(@"clockDic = %@", clockDictionary);
     
@@ -320,7 +348,8 @@
  */
 - (void)showSetClockRepeatController
 {
-    NSArray *arrCurWeeks = [self.lblRepeatText.text componentsSeparatedByString:@" "];
+    NSString *str = [self.dicAlarmClock objectForKey:@"ClockRepeat"];
+    NSArray *arrCurWeeks = [str componentsSeparatedByString:@" "];
     NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:arrCurWeeks];
     [arr removeLastObject];
     NSLog(@"arr = %@", arr);
@@ -370,7 +399,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -426,11 +455,11 @@
             [cell.contentView addSubview:self.lblMusicName];
             [cell.contentView addSubview:self.lblMusicText];
             break;
-        case 4:
-            [cell.contentView addSubview:self.lblLaterName];
-            [cell.contentView addSubview:self.swLater];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            break;
+//        case 4:
+//            [cell.contentView addSubview:self.lblLaterName];
+//            [cell.contentView addSubview:self.swLater];
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            break;
         default:
             break;
     }

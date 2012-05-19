@@ -8,6 +8,7 @@
 
 #import "AlarmViewController.h"
 #import "AddClockViewController.h"
+#import "Utility.h"
 
 @implementation AlarmViewController
 
@@ -19,8 +20,9 @@
 //Cell content
 @synthesize lblAlarmClockTime, lblAlarmClockLabel, lblAlarmClockRepeat;
 @synthesize strAlarnClockTime, strAlarmClockLabel, strAlarmClockRepeat;
-@synthesize numberID, alarmClockSwitch;
+@synthesize numberID;
 @synthesize arrAlarmClock;
+@synthesize alarmSwitch, isAlarmOn;
 
 #pragma mark - Managing the detail item
 
@@ -71,12 +73,6 @@
     self.tbAlarmView.delegate = self;
     self.tbAlarmView.dataSource = self;
     [self.view addSubview:self.tbAlarmView];
-    
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    [btn setTitle:@"Ok" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(280, 300, 60, 40);
-    [self.tbAlarmView addSubview:btn];
-    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -163,7 +159,7 @@
 
 - (NSString *)updateHeaderTitle
 {
-	return [NSString stringWithFormat:@"Total: %d  Activity: %d", self.alarmClockCount, self.activatyClockCount];
+	return [NSString stringWithFormat:@"Total: %d", self.alarmClockCount];
 }
 
 - (void)updateActivityClockCount
@@ -183,11 +179,49 @@
     
 	if (doneState) {
 		[self.tbAlarmView setEditing:YES animated:YES];
+        self.alarmSwitch.hidden = YES;
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionEdit)];
+        
+        for (id cellX in [self.tbAlarmView subviews]) {
+            if ([[[cellX class] description] isEqualToString:@"UITableViewCell"]) {
+                
+                for (UISwitch *swTmp in [[cellX contentView] subviews]){ 
+                    if ([[[swTmp class] description] isEqualToString:@"UISwitch"]) { 
+                        
+                        [UIView beginAnimations:@"animation" context:nil];
+                        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:swTmp cache:NO];
+               
+                        [UIView setAnimationDuration:0.7];
+                        swTmp.hidden = YES;
+                        [UIView commitAnimations];
+                        break;
+                    }
+                }
+            }
+        }
+        
 	}else {
+        
 		[self.tbAlarmView setEditing:NO animated:YES];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
+        
+        for (id cellX in [self.tbAlarmView subviews]) {
+            if ([[[cellX class] description] isEqualToString:@"UITableViewCell"]) {
+               
+                for (UISwitch *swTmp in [[cellX contentView] subviews]){ 
+                    if ([[[swTmp class] description] isEqualToString:@"UISwitch"]) { 
+                        [UIView beginAnimations:@"animation" context:nil];
+                        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:swTmp cache:NO];
+                        //[UIView setAnimationDelay:0.2];
+                        [UIView setAnimationDuration:0.7];
+                        swTmp.hidden = NO;
+                        [UIView commitAnimations];
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
 - (void)showAddClockView:(NSDictionary *)dic index:(NSInteger)idx
@@ -218,11 +252,13 @@
 
 - (void)startClock:(int)clockID
 {
-	//首先查找以前是否存在此本地通知,若存在,则删除以前的该本地通知,再重新发出新的本地通知
-    [self shutdownClock:clockID];
-    NSString *clockIDString = [NSString stringWithFormat:@"%d", clockID];
-    [self postLocalNotification:clockIDString isFirst:YES];
     
+	//首先查找以前是否存在此本地通知,若存在,则删除以前的该本地通知,再重新发出新的本地通知
+    [self shutdownClock:clockID]; 
+    NSString *clockIDString = [NSString stringWithFormat:@"%d", clockID];
+    NSLog(@"clockIDString = %@", clockIDString);
+    [self postLocalNotification:clockIDString isFirst:YES];
+
 }
 
 - (void)shutdownClock:(int)clockID
@@ -230,11 +266,14 @@
 	NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
 	for(UILocalNotification *notification in localNotifications)
 	{
-		if ([[[notification userInfo] objectForKey:@"ActivatyClock"] intValue] == clockID) {
+       NSInteger index = [[[notification userInfo] objectForKey:@"ActivatyClock"] intValue]; 
+        NSLog(@"关闭定时：%d",index);
+		if (index == clockID) {
 			NSLog(@"Shutdown localNotification:%@", [notification fireDate]);
 			[[UIApplication sharedApplication] cancelLocalNotification:notification];
 		}
 	}
+
 }
 
 #pragma mark - UITableView 
@@ -252,14 +291,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0;
+    return 58.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 	
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier://
 							 SimpleTableIdentifier];
     //if (cell == nil) {
         cell = [[UITableViewCell alloc]
@@ -277,26 +316,79 @@
         self.lblAlarmClockTime.backgroundColor = lblbbColor;
         self.lblAlarmClockTime.font = [UIFont boldSystemFontOfSize:25.0];
         
-        CGRect lblRectLabel = CGRectMake(100.0, 0.0, 150.0, 20.0);
+        CGRect lblRectLabel = CGRectMake(80.0, 12.0, 150.0, 20.0);
         self.lblAlarmClockLabel = [[UILabel alloc] initWithFrame:lblRectLabel];
         self.lblAlarmClockLabel.backgroundColor = lblbbColor;
         self.lblAlarmClockLabel.font = [UIFont systemFontOfSize:16.0];
         
-        CGRect lblRectRepeat = CGRectMake(100.0, 22.0, 180.0, 20.0);
+        CGRect lblRectRepeat = CGRectMake(8.0, 36.0, 200.0, 20.0);
         self.lblAlarmClockRepeat = [[UILabel alloc] initWithFrame:lblRectRepeat];
         self.lblAlarmClockRepeat.backgroundColor = lblbbColor;
-        self.lblAlarmClockRepeat.font = [UIFont systemFontOfSize:13.0];
+        self.lblAlarmClockRepeat.font = [UIFont systemFontOfSize:12.0];
         
         self.lblAlarmClockTime.text = [dic objectForKey:@"ClockTime"];
         self.lblAlarmClockLabel.text = [dic objectForKey:@"ClockLabel"];
-        self.lblAlarmClockRepeat.text = [dic objectForKey:@"ClockRepeat"];
+        
+        //显示本地化字符串
+        NSString *strLocal = @"";
+        NSString *str = [dic objectForKey:@"ClockRepeat"];
+        NSArray *arrTemp = [str componentsSeparatedByString:@" "];
+        for (NSInteger i = 0; i < [arrTemp count]; i++) {
+            NSString *strLocalTmp = @"";
+            NSString *strTmp = [arrTemp objectAtIndex:i];
+            strLocalTmp = [Utility getLocalString:strTmp];
+            
+            strLocal = [strLocal stringByAppendingFormat:@" %@", strLocalTmp];
+            // strLocal = [strLocal substringFromIndex:1];
+        }
+        self.lblAlarmClockRepeat.text = strLocal;
         
         [cell.contentView addSubview:self.lblAlarmClockTime];
         [cell.contentView addSubview:self.lblAlarmClockLabel];
         [cell.contentView addSubview:self.lblAlarmClockRepeat];
+        
+        self.alarmSwitch = [[UISwitch alloc] init];
+        self.alarmSwitch.center = CGPointMake(270.0, 29.0);
+        self.alarmSwitch.tag = indexPath.row + 1000;
+        [self.alarmSwitch setOn:NO];
+        [self.alarmSwitch addTarget:self action:@selector(actionAlarmSwitch:) forControlEvents:UIControlEventValueChanged];
+        [cell.contentView addSubview:self.alarmSwitch];
+        
+
     }
     
 	return cell;
+}
+
+- (void)actionAlarmSwitch:(id)sender
+{
+    UISwitch *sw = (UISwitch *)sender;
+    
+//    for (id cellX in [self.tbAlarmView subviews]) {
+//        if ([[[cellX class] description] isEqualToString:@"UITableViewCell"]) {
+//            NSLog(@"xxx = %@", [[cellX class] description]);
+//            for (UISwitch *swTmp in [[cellX contentView] subviews]){ 
+//                if ([[[swTmp class] description] isEqualToString:@"UISwitch"]) { 
+//                    NSLog(@"yyy = %@", [[swTmp class] description]);
+//                    if (swTmp.tag == sw.tag) {
+//                        NSLog(@"123");
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+
+
+    if (sw.on == YES) {
+        NSLog(@"开启%d", sw.tag - 1000 + 1);
+        [self startClock:sw.tag - 1000 + 1];
+    }else{
+        NSLog(@"关闭%d", sw.tag - 1000 + 1);
+        [self shutdownClock:sw.tag - 1000 + 1];
+    }
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -370,15 +462,15 @@
 	NSString *clockTime = [clockDictionary objectForKey:@"ClockTime"];
     NSLog(@"clockTime = %@", clockTime);
     
-    NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"Repeat"];
+    NSString *str = [clockDictionary objectForKey:@"ClockRepeat"];
+    NSArray *array = [str componentsSeparatedByString:@" "];
     NSLog(@"array = %@", array);
     
-	//NSString *clockScene = [clockDictionary objectForKey:@"ClockScene"];
 	NSString *clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
     NSLog(@"clockMusic = %@", clockMusic);
     
     NSString *ClockLabelText = [clockDictionary objectForKey:@"ClockLabel"];
-	NSString *clockRemember = ClockLabelText;//[clockDictionary objectForKey:@"ClockRemember"];
+	NSString *clockRemember = ClockLabelText;
     NSLog(@"clockRemember = %@", clockRemember);
     
 	//-----组建本地通知的fireDate-----------------------------------------------
@@ -407,7 +499,7 @@
 	[comps setSecond:0];
 	
 	//------------------------------------------------------------------------
-	Byte weekday = 2;//[comps weekday];
+	Byte weekday = [comps weekday];
     NSLog(@"weekday = %d", weekday);
 
     
@@ -415,7 +507,7 @@
 	Byte j = 0;
 	int days = 0;
 	int	temp = 0;
-	Byte count = [array count];
+	Byte count = [array count] - 1;
     NSLog(@"count = %d", count);
 	Byte clockDays[7];
 	
@@ -443,7 +535,7 @@
 			newNotification.soundName = UILocalNotificationDefaultSoundName;//clockMusic;
 			newNotification.alertAction = @"查看闹钟";
 			newNotification.repeatInterval = NSWeekCalendarUnit;
-			NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockID forKey:@"ActivityClock"];
+			NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockID forKey:@"ActivatyClock"];
 			newNotification.userInfo = userInfo;
 			[[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
 		}

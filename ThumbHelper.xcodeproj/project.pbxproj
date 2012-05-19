@@ -20,6 +20,7 @@
 		CE5346D7154AF6F3006D1D5F /* CustomPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5346D6154AF6F3006D1D5F /* CustomPlaceViewController.m */; };
 		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
 		CE5600B61539FDF1005E2E36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B51539FDF1005E2E36 /* QuartzCore.framework */; };
+		CE736EA71567C3F80065BB98 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CE736EA61567C3F80065BB98 /* Utility.m */; };
 		CE857D0115445D4400CE2D59 /* PlaceMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */; };
 		CE97A421155187260070BE11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE97A420155187260070BE11 /* CoreLocation.framework */; };
 		CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC66A711535D94200C67344 /* UIKit.framework */; };
@@ -102,6 +103,8 @@
 		CE5346D6154AF6F3006D1D5F /* CustomPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPlaceViewController.m; path = GooglePlace/CustomPlaceViewController.m; sourceTree = "<group>"; };
 		CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		CE5600B51539FDF1005E2E36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CE736EA51567C3F80065BB98 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		CE736EA61567C3F80065BB98 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		CE857CFF15445D4400CE2D59 /* PlaceMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceMainViewController.h; path = GooglePlace/PlaceMainViewController.h; sourceTree = "<group>"; };
 		CE857D0015445D4400CE2D59 /* PlaceMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceMainViewController.m; path = GooglePlace/PlaceMainViewController.m; sourceTree = "<group>"; };
 		CE97A420155187260070BE11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -295,6 +298,8 @@
 				CEC66AC91535E5FC00C67344 /* AlarmClock */,
 				CE857CFD15445CD600CE2D59 /* GooglePlace */,
 				CEC66ABF1535DE9600C67344 /* Consts.h */,
+				CE736EA51567C3F80065BB98 /* Utility.h */,
+				CE736EA61567C3F80065BB98 /* Utility.m */,
 				CEC66B351535E9DF00C67344 /* UIColor_Random.h */,
 				CEC66B361535E9E000C67344 /* UIColor_Random.m */,
 				CEC66A801535D94200C67344 /* AppDelegate.h */,
@@ -546,6 +551,7 @@
 				CE5346D1154AF66E006D1D5F /* BHTabView.m in Sources */,
 				CE5346D4154AF6D8006D1D5F /* DefaultPlaceViewController.m in Sources */,
 				CE5346D7154AF6F3006D1D5F /* CustomPlaceViewController.m in Sources */,
+				CE736EA71567C3F80065BB98 /* Utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

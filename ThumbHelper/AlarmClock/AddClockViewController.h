@@ -48,6 +48,7 @@ SetMusicDelegate>
 //label content
 @property (strong, nonatomic) UILabel *lblTimeText;
 @property (strong, nonatomic) UILabel *lblRepeatText;
+@property (strong, nonatomic) NSString *strRepeatEN;
 @property (strong, nonatomic) UILabel *lblMusicText;
 //textFeild
 @property (strong, nonatomic) UITextField *tfLabelText;

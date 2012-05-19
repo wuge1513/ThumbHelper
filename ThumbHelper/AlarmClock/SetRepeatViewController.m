@@ -24,6 +24,7 @@
         self.arrSelectedWeek = [[NSMutableArray alloc] initWithCapacity:1];
         self.arrLastWeeks = [[NSMutableArray alloc] initWithCapacity:1];
         
+        //用于显示，本地化语言
         NSString *strSun = NSLocalizedString(@"Sunday", nil);
         NSString *strMon = NSLocalizedString(@"Monday", nil);
         NSString *strTues = NSLocalizedString(@"Tuesday", nil);
@@ -33,7 +34,7 @@
         NSString *strSat = NSLocalizedString(@"Saturday", nil);
         self.arrWeeks = [[NSArray alloc] initWithObjects: strSun, strMon, strTues, strWed, strThurs, strFri, strSat, nil];
         
-        
+        //用于存储 通用英语
         NSString *strSuns = @"Sun";//NSLocalizedString(@"Sun", nil);
         NSString *strMons = @"Mon";//NSLocalizedString(@"Mon", nil);
         NSString *strTuess = @"Tues";//NSLocalizedString(@"Tues", nil);
@@ -43,6 +44,7 @@
         NSString *strSats = @"Sat";//NSLocalizedString(@"Sat", nil);
         self.arrShortweeks = [[NSArray alloc] initWithObjects:strSuns, strMons, strTuess, strWeds, strThurss, strFris, strSats, nil];
         
+        //下面两个暂时未使用
         self.arrDayEn = [[NSArray alloc] initWithObjects:@"Sun", @"Mon", @"Tues", @"Wed", @"Thurs", @"Fri", @"Sat", nil];
         //weeking day
         self.arrWorkingDay = [[NSArray alloc] initWithObjects:strSun, strSat, nil];
@@ -141,6 +143,11 @@
     for (NSString *str in self.arrCurWeeks) {
         if ([[self.arrShortweeks objectAtIndex:indexPath.row] isEqualToString:str]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.arrSelectedWeek removeAllObjects];
+            //选择的星期
+            [self.arrSelectedWeek addObjectsFromArray:self.arrCurWeeks];
+            //本地化
+            [[NSUserDefaults standardUserDefaults] setObject:self.arrSelectedWeek forKey:@"Repeat"];
         }
     }
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
@@ -158,20 +165,19 @@
     // Navigation logic may go here. Create and push another view controller.
     UITableViewCell *Cell = [tableView cellForRowAtIndexPath:indexPath];
         
-    if (Cell.accessoryType == UITableViewCellAccessoryNone) {
+    if (Cell.accessoryType == UITableViewCellAccessoryNone) {//如果未标记，则标记
         Cell.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.arrCurWeeks addObject:[self.arrShortweeks objectAtIndex:indexPath.row]];
-        NSLog(@"self.arrselect0 = %@", self.arrSelectedWeek);
-    }else{
+    }else{//如果已经标记，则去除标记
         Cell.accessoryType = UITableViewCellAccessoryNone;
         NSString *strTmp = [self.arrShortweeks objectAtIndex:indexPath.row];
-        NSLog(@"self.arrselect1 = %@", self.arrCurWeeks);
         [self.arrCurWeeks removeObject:strTmp];
-        NSLog(@"self.arrselect2 = %@", self.arrCurWeeks);
     }
+    
     [self.arrSelectedWeek removeAllObjects];
+    //选择的星期
     [self.arrSelectedWeek addObjectsFromArray:self.arrCurWeeks];
-    NSLog(@"self.arrselect3 = %@", self.arrSelectedWeek);
+    //本地化
     [[NSUserDefaults standardUserDefaults] setObject:self.arrSelectedWeek forKey:@"Repeat"];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -25,7 +25,6 @@
 
 //Cell content
 @property (nonatomic) NSInteger numberID;
-@property (strong, nonatomic) UISwitch *alarmClockSwitch;
 
 @property (strong, nonatomic) UILabel *lblAlarmClockTime;
 @property (strong, nonatomic) UILabel *lblAlarmClockLabel;
@@ -34,6 +33,9 @@
 @property (strong, nonatomic) NSString *strAlarnClockTime;
 @property (strong, nonatomic) NSString *strAlarmClockLabel;
 @property (strong, nonatomic) NSString *strAlarmClockRepeat;
+
+@property (strong, nonatomic) UISwitch *alarmSwitch;
+@property (nonatomic) BOOL isAlarmOn;
 
 - (void)actionEdit;
 - (void)restoreMainGUI;
