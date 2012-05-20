@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-//#import "SVGeocoder.h"
-
 #import "BHTabsViewController.h"
 #import "DefaultPlaceViewController.h"
 #import "CustomPlaceViewController.h"
+
+@class DetailViewController;
 
 @interface PlaceMainViewController : UIViewController<UISearchBarDelegate, 
 CLLocationManagerDelegate>
@@ -20,15 +20,28 @@ CLLocationManagerDelegate>
 @property (strong, nonatomic) BHTabsViewController *bhTabsViewController;
 @property (strong, nonatomic) DefaultPlaceViewController *defaultView;
 @property (strong, nonatomic) CustomPlaceViewController *customView;
+@property (strong, nonatomic) DetailViewController *detailViewController;
 
 
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UILabel *lblTopText;
 @property (strong, nonatomic) UIScrollView *scrollView;
-//@property (strong, nonatomic) UIButton *btnAction;
 @property (strong, nonatomic) CLLocationManager *locationM;  
+@property (strong, nonatomic) CLLocation *curLocation;
+
+@property (strong, nonatomic) NSString *strLatitude;
+@property (strong, nonatomic) NSString *strLongitude;
+@property (strong, nonatomic) NSString *strAccuracy;
+
+
+@property (strong, nonatomic) NSMutableData *receivedData;
+@property (strong, nonatomic) NSMutableArray *arrItemText;
+@property (strong, nonatomic) NSMutableArray *arrItemImages;
+@property (strong, nonatomic) NSMutableArray *arrGeometry;
+
+
 
 - (void)actionBtnAction:(id)sender;
-- (IBAction)reverseGeocode;
-- (IBAction)geocode;
+- (void)btnAction:(id)sender;
+
 @end
