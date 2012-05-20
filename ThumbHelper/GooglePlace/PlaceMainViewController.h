@@ -11,6 +11,7 @@
 #import "BHTabsViewController.h"
 #import "DefaultPlaceViewController.h"
 #import "CustomPlaceViewController.h"
+#import "MBProgressHUD.h"
 
 @class DetailViewController;
 
@@ -35,9 +36,13 @@ CLLocationManagerDelegate>
 
 
 @property (strong, nonatomic) NSMutableData *receivedData;
-@property (strong, nonatomic) NSMutableArray *arrItemText;
-@property (strong, nonatomic) NSMutableArray *arrItemImages;
-@property (strong, nonatomic) NSMutableArray *arrGeometry;
+
+@property (strong, nonatomic) NSMutableArray *arrItemText;//位置信息
+@property (strong, nonatomic) NSMutableArray *arrItemImages;//类型 icon
+@property (strong, nonatomic) NSMutableArray *arrGeometry;//地理坐标
+
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 
 

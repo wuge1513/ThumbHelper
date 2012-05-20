@@ -14,13 +14,14 @@
 #import "AlarmViewController.h"
 #import "PlaceMainViewController.h"
 #import "SettingsViewController.h"
+#import "Ivan_UITabBar.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) UICustomTabController *rootTabBarConreoller;
+@property (strong, nonatomic) Ivan_UITabBar *rootTabBarConreoller;//UICustomTabController
 
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) TasksViewController *tasksViewController;
@@ -28,5 +29,8 @@
 @property (strong, nonatomic) PlaceMainViewController *placeMainViewController;
 @property (strong, nonatomic) SettingsViewController *settingsViewController;
 
+
+- (void)hidesBottomBarWhenPushed;
+- (void)noHidesBottomBarWhenPushed;
 
 @end

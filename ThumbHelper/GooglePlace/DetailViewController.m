@@ -14,6 +14,7 @@
 #import "NSString+SBJSON.h"
 
 #import "PlaceMainViewController.h"
+#import "AppDelegate.h"
 
 #define kCURRENT_ITEM_COUNT      5
 
@@ -22,10 +23,11 @@
 @synthesize curItemCount, totalItemCount;
 @synthesize btnLoadMoreItem;
 @synthesize tbPlaceList;
-@synthesize muArray, arrImage;
+@synthesize muArray, arrImage, arrReference;
 @synthesize mapView, mkMapView, lat, lng, arrGeometry, curLocation;
 @synthesize tbarMap;
 @synthesize isMapShowing, isShowSubPageView;
+@synthesize activityView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,11 +36,20 @@
     if (self) {
         self.title = NSLocalizedString(@"Places", @"Places");
         
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionGoBack)];
+        
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"地图" style:UIBarButtonItemStyleBordered target:self action:@selector(actionShowItemOnMap)];
+        
+        
         self.muArray = [[NSMutableArray alloc] initWithCapacity:1];
         
         NSMutableArray *_arrGeometry = [[NSMutableArray alloc] init];
         self.arrGeometry = _arrGeometry;
+        
+        NSMutableArray *_arrReference = [[NSMutableArray alloc] init];
+        self.arrReference = _arrReference;
+        
+        
     }
     return self;
 }
@@ -62,22 +73,20 @@
 	self.totalItemCount = [self.muArray count];
     NSLog(@"ddd = %d", self.totalItemCount);
     
-    //初始图片
-    for (NSInteger i = 0; i < kCURRENT_ITEM_COUNT; i++) {
-        NSDictionary *dic = [self.muArray objectAtIndex:i];
-        NSString *str1 = [dic objectForKey:@"icon"];
-        //获取图片
-        NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:str1]];
-        UIImage *img = [UIImage imageWithData:data];
-        [self.arrImage addObject:img];
-    }
+    //项目列表
+    CGRect tbRect = CGRectMake(0.0, 0.0, 320.0, 460.0 - 44.0);
+    self.tbPlaceList = [[UITableView alloc] initWithFrame:tbRect style:UITableViewStylePlain];
+    self.tbPlaceList.delegate = self;
+    self.tbPlaceList.dataSource = self;
+    [self.view addSubview:self.tbPlaceList];
 
     
     //add load more btn in last cell
-//    self.btnLoadMoreItem = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    self.btnLoadMoreItem.frame = CGRectMake(10.0, 0.0, 300.0, 40.0);
-//    [self.btnLoadMoreItem setTitle:@"加载更多..." forState:UIControlStateNormal];
-//    [self.btnLoadMoreItem addTarget:self action:@selector(actionBtnLoadMoreItem) forControlEvents:UIControlEventTouchUpInside];
+    self.btnLoadMoreItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnLoadMoreItem.frame = CGRectMake(10.0, 0.0, 300.0, 40.0);
+    [self.btnLoadMoreItem setImage:[UIImage imageNamed:@"btn_place_more.png"] forState:UIControlStateNormal];
+    [self.btnLoadMoreItem setTitle:@"加载更多..." forState:UIControlStateNormal];
+    [self.btnLoadMoreItem addTarget:self action:@selector(actionBtnLoadMoreItem) forControlEvents:UIControlEventTouchUpInside];
     
     //custom background view
     UIView *_mapView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 416.0)];
@@ -87,7 +96,7 @@
     [self.view addSubview:self.mapView];
     
     for (NSInteger i = 0; i < 4; i++) {
-        UIButton *btnForMap = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *btnForMap = [UIButton buttonWithType:UIButtonTypeCustom];
         btnForMap.frame = CGRectMake(40.0 + i * 60.0 , 330.0, 60.0, 30.0);
         [self.mapView addSubview:btnForMap];
     }
@@ -115,6 +124,16 @@
     segCtl.selectedSegmentIndex = 0;
     [segCtl addTarget:self action:@selector(actionSegmentCtl:) forControlEvents:UIControlEventValueChanged];
     [self.tbarMap addSubview:segCtl];
+    
+    //加载更多 进度
+    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(10.0, 10.0, 36.0, 36.0)];
+    self.activityView.center = CGPointMake(280.0, 22.0);
+    
+//    for (NSInteger i = 0; <#condition#>; <#increment#>) {
+//        <#statements#>
+//    }
+//    [NSThread detachNewThreadSelector:@selector(loadImages:) toTarget:self withObject:[NSNumber numberWithInteger:i]];
+
     
 }
 
@@ -153,9 +172,18 @@
 
 #pragma mark -
 #pragma mark List action methods
+- (void)actionGoBack
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate noHidesBottomBarWhenPushed];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)actionBtnLoadMoreItem
 {
+    [self.activityView startAnimating];
+    [self.tbPlaceList reloadData];
+    
     for (NSInteger i = self.curItemCount; i < self.curItemCount + kCURRENT_ITEM_COUNT; i++) {
         NSDictionary *dic = [self.muArray objectAtIndex:i];
         NSString *str1 = [dic objectForKey:@"icon"];
@@ -168,6 +196,7 @@
         NSDictionary *dicGeometry = [dic objectForKey:@"geometry"];
         [self.arrGeometry addObject:dicGeometry];
     }
+    sleep(1);
     
     self.curItemCount += kCURRENT_ITEM_COUNT;
     
@@ -176,6 +205,7 @@
     
     [self.tbPlaceList reloadData];  //重新加载表视图
     [self.tbPlaceList scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.curItemCount - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    //[self.activityView stopAnimating];
 }
 
 - (void)showItemDetailView
@@ -254,6 +284,11 @@
     
     [self setCurrentLocation:self.curLocation];
     
+    [self performSelector:@selector(actionShowItems) withObject:nil afterDelay:0.8];
+}
+
+- (void)actionShowItems
+{
     for (NSInteger i = 0; i < self.curItemCount; i++) {
         NSDictionary *dic = [self.muArray objectAtIndex:i];
         NSString *name = [dic objectForKey:@"name"];
@@ -274,7 +309,7 @@
         annotation.title = name;//@"Drag to Move Pin";
         annotation.subtitle = address;//[NSString	stringWithFormat:@"%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude];
         [self.mkMapView addAnnotation:annotation];
-    }      
+    }   
 }
 
 - (void)actionShowItemOnMap
@@ -350,6 +385,7 @@
         if (indexPath.row == self.curItemCount) {
             cell.accessoryType = UITableViewCellAccessoryNone;
             [cell.contentView addSubview:self.btnLoadMoreItem];
+            [cell.contentView addSubview:self.activityView];
         }else{
             
             NSDictionary *dic = [self.muArray objectAtIndex:indexPath.row];
@@ -357,7 +393,11 @@
             NSString *str2 = [dic objectForKey:@"name"];
             NSString *str3 = [dic objectForKey:@"vicinity"];
             
-            //cell.imageView.image = [self.arrImage objectAtIndex:indexPath.row];
+//            if ([self.arrImage count] == 5) {
+//                NSLog(@"123 = %@", self.arrImage);
+//                //cell.imageView.image = [self.arrImage objectAtIndex:indexPath.row];
+//            }
+            
             cell.textLabel.text = str2;
             
             UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(90.0, 55.0, 300, 20)];

@@ -13,9 +13,10 @@
 
 #import "SBJson.h" 
 #import "NSString+SBJSON.h"
+#import "AppDelegate.h"
 
 
-//#define USE_THREAD
+
 #define kLOAD_IMAGES_NUM_FIRST     5
 
 #define kSEARCH_BAR_HEIGHT      44.0
@@ -37,7 +38,7 @@
 @synthesize detailViewController = _detailViewController;
 @synthesize curLocation;
 @synthesize strLongitude, strAccuracy, strLatitude;
-
+@synthesize hud;
 @synthesize arrItemText, arrItemImages, receivedData, arrGeometry;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,7 +55,7 @@
         NSMutableArray *_arrItemText = [[NSMutableArray alloc] init];
         self.arrItemText = _arrItemText;
         
-        NSMutableArray *_arrItemImages = [[NSMutableArray alloc] initWithCapacity:kLOAD_IMAGES_NUM_FIRST];
+        NSMutableArray *_arrItemImages = [[NSMutableArray alloc] init];
         self.arrItemImages = _arrItemImages;
         
         for (NSInteger i = 0; i < kLOAD_IMAGES_NUM_FIRST; i++) {
@@ -66,6 +67,8 @@
         
         NSMutableArray *_arrGeometry = [[NSMutableArray alloc] init];
         self.arrGeometry = _arrGeometry;
+        
+
         
     }
     return self;
@@ -125,8 +128,9 @@
     //action button
     for (NSInteger row = 0; row < kITEM_ROW_NUM; row++) {
         for (NSInteger col = 0; col < kITEM_COL_NUM; col++) {
-            UIButton *btnAction = [UIButton buttonWithType:UIButtonTypeInfoLight];
+            UIButton *btnAction = [UIButton buttonWithType:UIButtonTypeCustom];
             btnAction.tag = 1000 + col + row * 3;
+            [btnAction setImage:[UIImage imageNamed:@"btn_place_atm.png"] forState:UIControlStateNormal];
             [btnAction setTitle:@"134" forState:UIControlStateNormal];
             [btnAction addTarget:self action:@selector(actionBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             btnAction.frame = CGRectMake(30.0 + 100.0 * col, 30.0 + 80.0 * row, 57.0, 57.0);
@@ -170,7 +174,7 @@
     UIButton *btnTemp = (UIButton *)sender;
    
     switch (btnTemp.tag) {
-        case 1000:
+        case 1000:            
             NSLog(@"123 = %d", btnTemp.tag); 
             [self btnAction:nil];
             break;
@@ -202,6 +206,11 @@
         default:
             break;
     }
+    
+    self.hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.hud];
+    self.hud.labelText = @"正在加载...";
+    [self.hud show:YES];
 }
 
 
@@ -228,8 +237,8 @@
     
     NSLog(@"===%@,%@", self.strLatitude, self.strLongitude);
     NSString *strLocation = [NSString stringWithFormat:@"%@,%@",self.strLatitude, self.strLongitude];
-    NSString *strRadius = @"500";
-    NSString *strTypes = @"bank"; 
+    NSString *strRadius = @"1000";
+    NSString *strTypes = @"food"; 
     NSString *strName = @"";
     NSString *strSensor = @"false";
     NSString *strKey = API_KEY;
@@ -245,23 +254,6 @@
 	[req setHTTPMethod:@"GET"];
 	[NSURLConnection connectionWithRequest:req delegate:self];
     
-}
-
-- (void)loadImages:(NSNumber *)index
-{
-    NSDictionary *dic = [self.arrItemText objectAtIndex:[index integerValue]];
-    
-    //图片
-    NSString *str1 = [dic objectForKey:@"icon"];
-    //获取图片
-    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:str1]];
-    UIImage *img = [UIImage imageWithData:data];
-    [self.arrItemImages replaceObjectAtIndex:[index integerValue] withObject:img];
-    
-    //位置坐标 前5个
-    NSDictionary *dicGeometry = [dic objectForKey:@"geometry"];
-    [self.arrGeometry addObject:dicGeometry];
-    NSLog(@"yes %d", [index integerValue]);
 }
 
 #pragma mark -
@@ -282,6 +274,7 @@
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection{
     
+    [self.hud removeFromSuperview];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     
@@ -297,24 +290,13 @@
     self.arrItemText = [NSArray arrayWithArray:arr];
     
     for (NSInteger i = 0; i < kLOAD_IMAGES_NUM_FIRST; i++) {
-        
-#ifdef USE_THREAD
-        [NSThread detachNewThreadSelector:@selector(loadImages:) toTarget:self withObject:[NSNumber numberWithInteger:i]];
-#else
+
         NSDictionary *dic = [self.arrItemText objectAtIndex:i];
-        
-        //图片
-        NSString *str1 = [dic objectForKey:@"icon"];
-        //获取图片
-        NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:str1]];
-        UIImage *img = [UIImage imageWithData:data];
-        [self.arrItemImages addObject:img];
         
         //位置坐标 前5个
         NSDictionary *dicGeometry = [dic objectForKey:@"geometry"];
         [self.arrGeometry addObject:dicGeometry];
         NSLog(@"no %d",i);
-#endif
         
     }
     
@@ -325,7 +307,11 @@
     dc.lng = [self.strLongitude floatValue];
     dc.arrGeometry = self.arrGeometry;
     dc.curLocation = self.curLocation;
+    dc.hidesBottomBarWhenPushed = YES;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate hidesBottomBarWhenPushed];
     [self.navigationController pushViewController:dc animated:YES];
+    
 }
 
 #pragma mark-
@@ -335,6 +321,9 @@
 - (void) locationManager: (CLLocationManager *) manager  
      didUpdateToLocation: (CLLocation *) newLocation  
             fromLocation: (CLLocation *) oldLocation{  
+    
+    self.curLocation = newLocation;
+    
     NSString *lat = [[NSString alloc] initWithFormat:@"%g",  
                      newLocation.coordinate.latitude];  
     //纬度

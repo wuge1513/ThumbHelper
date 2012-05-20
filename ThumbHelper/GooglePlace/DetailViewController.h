@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface DetailViewController : UIViewController<MKMapViewDelegate>
 
+@interface DetailViewController : UIViewController<MKMapViewDelegate, 
+UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 @property (assign, nonatomic) NSInteger curItemCount;
 @property (assign, nonatomic) NSInteger totalItemCount;
 @property (strong, nonatomic) UIButton *btnLoadMoreItem;
 
-@property (strong, nonatomic) IBOutlet UITableView *tbPlaceList;
+@property (strong, nonatomic) UITableView *tbPlaceList;//IBOutlet
 @property (nonatomic,copy) NSMutableArray *muArray; 
 @property (nonatomic, strong) NSMutableArray *arrImage;
 
@@ -31,7 +33,9 @@
 @property (assign, nonatomic) double lat;
 @property (assign, nonatomic) double lng;
 @property (strong, nonatomic) NSMutableArray *arrGeometry;
+@property (strong, nonatomic) NSMutableArray *arrReference;
 
+- (void)actionShowItems;
 - (void)showSubPageView;
 - (void)actionUpdateLocation;
 - (void)actionSegmentCtl:(id)sender;

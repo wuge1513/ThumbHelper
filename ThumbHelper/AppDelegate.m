@@ -19,6 +19,15 @@
 @synthesize alarmViewController = _alarmViewController;
 @synthesize settingsViewController = _settingsViewController;
 
+/*!
+ * 方法类型：系统方法
+ * 方法功能：委托类方法
+ */
+
++(AppDelegate *)App{
+	return (AppDelegate *)[[UIApplication sharedApplication]delegate];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -40,7 +49,7 @@
                                          self.homeViewController];
     HomeView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     HomeView.title = @"Home";
-    HomeView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+    HomeView.tabBarItem.image = [UIImage imageNamed:@"care.png"];
 
     
     //Tasks View 
@@ -49,7 +58,7 @@
                                          self.tasksViewController];
     TasksView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     TasksView.title = @"Tasks";
-    TasksView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+    TasksView.tabBarItem.image = [UIImage imageNamed:@"record.png"];
     
     //alarm clock
     self.alarmViewController = [[AlarmViewController alloc] init];
@@ -57,7 +66,7 @@
                                          self.alarmViewController];
     AlarmView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     AlarmView.title = @"Alarms";
-    AlarmView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+    AlarmView.tabBarItem.image = [UIImage imageNamed:@"care.png"];
     
     // google place
     self.placeMainViewController = [[PlaceMainViewController alloc] init];
@@ -65,7 +74,7 @@
                                          self.placeMainViewController];
     PlaceView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
     PlaceView.title = @"Place";
-    PlaceView.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+    PlaceView.tabBarItem.image = [UIImage imageNamed:@"record.png"];
     
     //Settings View
     self.settingsViewController = [[SettingsViewController alloc] init];
@@ -78,22 +87,24 @@
     NSMutableArray *view_manager = [[NSMutableArray alloc] initWithObjects:HomeView, TasksView, AlarmView, PlaceView, Settings, nil];
     
     /*请按照上面的方法添加其他的tab控制器*/
-    self.rootTabBarConreoller = [[UICustomTabController alloc] init];
-    [self.rootTabBarConreoller setNeed_to_custom:YES];
-    [self.rootTabBarConreoller setTab_bar_bg:[UIImage imageNamed:@"tools_bar_bg.png"]];
-    [self.rootTabBarConreoller setNormal_image:[UIImage imageNamed:@"NavBar_01.png"]];
-    [self.rootTabBarConreoller setSelect_image:[UIImage imageNamed:@"NavBar_01_s.png"]];
-    [self.rootTabBarConreoller setShow_style:UItabbarControllerShowStyleIconAndText];
+    self.rootTabBarConreoller = [[Ivan_UITabBar alloc] init];
     [self.rootTabBarConreoller setSelectedIndex:0];
-    [self.rootTabBarConreoller setShow_size:49];
-    [self.rootTabBarConreoller setViewControllers:view_manager];
-    self.rootTabBarConreoller.font = [UIFont systemFontOfSize:12.0];
+    [self.rootTabBarConreoller setViewControllers:view_manager]; 
     
     self.window.rootViewController = self.rootTabBarConreoller;
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+- (void)hidesBottomBarWhenPushed
+{
+    [self.rootTabBarConreoller hideCustomTabBar];
+}
+
+- (void)noHidesBottomBarWhenPushed
+{
+    [self.rootTabBarConreoller bringCustomTabBarToFront];
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*
