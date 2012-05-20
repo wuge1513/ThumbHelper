@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "UINavigationBar+Custom.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -47,7 +47,9 @@
     self.homeViewController = [[HomeViewController alloc] init];
     UINavigationController *HomeView = [[UINavigationController alloc] initWithRootViewController:
                                          self.homeViewController];
-    HomeView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
+    [HomeView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    //[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner.png"]];
     HomeView.title = @"Home";
     HomeView.tabBarItem.image = [UIImage imageNamed:@"care.png"];
 
@@ -56,7 +58,7 @@
     self.tasksViewController = [[TasksViewController alloc] init];
     UINavigationController *TasksView = [[UINavigationController alloc] initWithRootViewController:
                                          self.tasksViewController];
-    TasksView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
+    [TasksView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     TasksView.title = @"Tasks";
     TasksView.tabBarItem.image = [UIImage imageNamed:@"record.png"];
     
@@ -64,7 +66,7 @@
     self.alarmViewController = [[AlarmViewController alloc] init];
     UINavigationController *AlarmView = [[UINavigationController alloc] initWithRootViewController:
                                          self.alarmViewController];
-    AlarmView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
+    [AlarmView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     AlarmView.title = @"Alarms";
     AlarmView.tabBarItem.image = [UIImage imageNamed:@"care.png"];
     
@@ -72,7 +74,7 @@
     self.placeMainViewController = [[PlaceMainViewController alloc] init];
     UINavigationController *PlaceView = [[UINavigationController alloc] initWithRootViewController:
                                          self.placeMainViewController];
-    PlaceView.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
+    [PlaceView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     PlaceView.title = @"Place";
     PlaceView.tabBarItem.image = [UIImage imageNamed:@"record.png"];
     
@@ -80,7 +82,7 @@
     self.settingsViewController = [[SettingsViewController alloc] init];
     UINavigationController *Settings = [[UINavigationController alloc] initWithRootViewController:
                                          self.settingsViewController];
-    Settings.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tools_bar_bg.png"]];
+    [Settings.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     Settings.title = @"Settings";
     Settings.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
 
@@ -105,6 +107,7 @@
 {
     [self.rootTabBarConreoller bringCustomTabBarToFront];
 }
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UICustomTabController.h"
-
 #import "HomeViewController.h"
 #import "TasksViewController.h"
 #import "AlarmViewController.h"
@@ -21,7 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) Ivan_UITabBar *rootTabBarConreoller;//UICustomTabController
+@property (strong, nonatomic) Ivan_UITabBar *rootTabBarConreoller;
 
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) TasksViewController *tasksViewController;

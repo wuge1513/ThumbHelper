@@ -23,7 +23,7 @@
 #define kTOPLABEL_HEIGHT        30.0
 
 #define kITEM_NUM               4
-#define kITEM_ROW_NUM           3
+#define kITEM_ROW_NUM           2
 #define kITEM_COL_NUM           3
 
 @implementation PlaceMainViewController
@@ -129,8 +129,10 @@
     for (NSInteger row = 0; row < kITEM_ROW_NUM; row++) {
         for (NSInteger col = 0; col < kITEM_COL_NUM; col++) {
             UIButton *btnAction = [UIButton buttonWithType:UIButtonTypeCustom];
+            btnAction.backgroundColor = [UIColor clearColor];
             btnAction.tag = 1000 + col + row * 3;
-            [btnAction setImage:[UIImage imageNamed:@"btn_place_atm.png"] forState:UIControlStateNormal];
+            NSString *imgName = [NSString stringWithFormat:@"index%d.png", col + row * 3];
+            [btnAction setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
             [btnAction setTitle:@"134" forState:UIControlStateNormal];
             [btnAction addTarget:self action:@selector(actionBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             btnAction.frame = CGRectMake(30.0 + 100.0 * col, 30.0 + 80.0 * row, 57.0, 57.0);

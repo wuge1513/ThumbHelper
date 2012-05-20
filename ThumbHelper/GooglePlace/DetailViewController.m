@@ -84,7 +84,7 @@
     //add load more btn in last cell
     self.btnLoadMoreItem = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btnLoadMoreItem.frame = CGRectMake(10.0, 0.0, 300.0, 40.0);
-    [self.btnLoadMoreItem setImage:[UIImage imageNamed:@"btn_place_more.png"] forState:UIControlStateNormal];
+    //[self.btnLoadMoreItem setImage:[UIImage imageNamed:@"banner_top.png"] forState:UIControlStateNormal];
     [self.btnLoadMoreItem setTitle:@"加载更多..." forState:UIControlStateNormal];
     [self.btnLoadMoreItem addTarget:self action:@selector(actionBtnLoadMoreItem) forControlEvents:UIControlEventTouchUpInside];
     
@@ -385,6 +385,7 @@
         if (indexPath.row == self.curItemCount) {
             cell.accessoryType = UITableViewCellAccessoryNone;
             [cell.contentView addSubview:self.btnLoadMoreItem];
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"banner_top.png"]];;
             [cell.contentView addSubview:self.activityView];
         }else{
             

@@ -12,8 +12,10 @@
 		CE0785041568DA1B00BD7A43 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0785031568DA1B00BD7A43 /* SystemConfiguration.framework */; };
 		CE0785061568DA2A00BD7A43 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0785051568DA2A00BD7A43 /* Security.framework */; };
 		CE0A6C7B154319B800008231 /* AlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE0A6C7A154319B800008231 /* AlarmClock.plist */; };
+		CE12561E15696BE300F44FEC /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12561D15696BE200F44FEC /* UINavigationBar+Custom.m */; };
+		CE12562115696F8300F44FEC /* banner_top.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12561F15696F8300F44FEC /* banner_top.png */; };
+		CE12562215696F8300F44FEC /* banner_top@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12562015696F8300F44FEC /* banner_top@2X.png */; };
 		CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */; };
-		CE53467D154AD896006D1D5F /* libUITab.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53467C154AD896006D1D5F /* libUITab.a */; };
 		CE5346D4154AF6D8006D1D5F /* DefaultPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5346D3154AF6D8006D1D5F /* DefaultPlaceViewController.m */; };
 		CE5346D7154AF6F3006D1D5F /* CustomPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5346D6154AF6F3006D1D5F /* CustomPlaceViewController.m */; };
 		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
@@ -110,10 +112,12 @@
 		CE0785031568DA1B00BD7A43 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE0785051568DA2A00BD7A43 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE0A6C7A154319B800008231 /* AlarmClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlarmClock.plist; sourceTree = "<group>"; };
+		CE12561C15696BE200F44FEC /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+Custom.h"; path = "Tools/UINavigationBar+Custom.h"; sourceTree = "<group>"; };
+		CE12561D15696BE200F44FEC /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+Custom.m"; path = "Tools/UINavigationBar+Custom.m"; sourceTree = "<group>"; };
+		CE12561F15696F8300F44FEC /* banner_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner_top.png; path = Resource/images/banner_top.png; sourceTree = "<group>"; };
+		CE12562015696F8300F44FEC /* banner_top@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "banner_top@2X.png"; path = "Resource/images/banner_top@2X.png"; sourceTree = "<group>"; };
 		CE1BC2EE153F1F8D000613C7 /* SetRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetRepeatViewController.h; path = AlarmClock/SetRepeatViewController.h; sourceTree = "<group>"; };
 		CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetRepeatViewController.m; path = AlarmClock/SetRepeatViewController.m; sourceTree = "<group>"; };
-		CE53467A154AD889006D1D5F /* UICustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICustomTabController.h; path = ViewController/UICustomTabController.h; sourceTree = "<group>"; };
-		CE53467C154AD896006D1D5F /* libUITab.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUITab.a; path = ThumbHelper/libUITab.a; sourceTree = "<group>"; };
 		CE5346D2154AF6D8006D1D5F /* DefaultPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefaultPlaceViewController.h; path = GooglePlace/DefaultPlaceViewController.h; sourceTree = "<group>"; };
 		CE5346D3154AF6D8006D1D5F /* DefaultPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultPlaceViewController.m; path = GooglePlace/DefaultPlaceViewController.m; sourceTree = "<group>"; };
 		CE5346D5154AF6F2006D1D5F /* CustomPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPlaceViewController.h; path = GooglePlace/CustomPlaceViewController.h; sourceTree = "<group>"; };
@@ -249,7 +253,6 @@
 				CEC66A721535D94200C67344 /* UIKit.framework in Frameworks */,
 				CEC66A741535D94200C67344 /* Foundation.framework in Frameworks */,
 				CEC66A761535D94200C67344 /* CoreGraphics.framework in Frameworks */,
-				CE53467D154AD896006D1D5F /* libUITab.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +271,8 @@
 				CE8395571568999E00E758B0 /* LLDatePickerView.m */,
 				CEF017A915689B2100AB5D9D /* LLFileManage.h */,
 				CEF017AA15689B2100AB5D9D /* LLFileManage.m */,
+				CE12561C15696BE200F44FEC /* UINavigationBar+Custom.h */,
+				CE12561D15696BE200F44FEC /* UINavigationBar+Custom.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -380,7 +385,6 @@
 			isa = PBXGroup;
 			children = (
 				CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */,
-				CE53467C154AD896006D1D5F /* libUITab.a */,
 				CE0785051568DA2A00BD7A43 /* Security.framework */,
 				CE0785031568DA1B00BD7A43 /* SystemConfiguration.framework */,
 				CE0785011568DA0900BD7A43 /* CFNetwork.framework */,
@@ -425,7 +429,6 @@
 			children = (
 				CEC66A801535D94200C67344 /* AppDelegate.h */,
 				CEC66A811535D94200C67344 /* AppDelegate.m */,
-				CE53467A154AD889006D1D5F /* UICustomTabController.h */,
 				CEDE39621545B702006763C3 /* HomeViewController.h */,
 				CEDE39631545B702006763C3 /* HomeViewController.m */,
 				CEDE395F1545B610006763C3 /* TasksViewController.h */,
@@ -469,6 +472,8 @@
 			children = (
 				CEC97D6F156948D30081C42B /* banner.png */,
 				CEC97D70156948D30081C42B /* banner@2X.png */,
+				CE12561F15696F8300F44FEC /* banner_top.png */,
+				CE12562015696F8300F44FEC /* banner_top@2X.png */,
 				CEC97D71156948D30081C42B /* btn_place_atm.png */,
 				CEC97D72156948D40081C42B /* btn_place_more.png */,
 				CEC97D73156948D40081C42B /* care.png */,
@@ -652,6 +657,8 @@
 				CEC97D82156948D50081C42B /* slide.png in Resources */,
 				CEC97D83156948D50081C42B /* slide@2x.png in Resources */,
 				CEC97D84156948D50081C42B /* split.png in Resources */,
+				CE12562115696F8300F44FEC /* banner_top.png in Resources */,
+				CE12562215696F8300F44FEC /* banner_top@2X.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +702,7 @@
 				CEE432EB1569025D00C0E65D /* MBProgressHUD.m in Sources */,
 				CEC97D8A15694B350081C42B /* Ivan_UITabBar.m in Sources */,
 				CEC97D8B15694B350081C42B /* UIBadgeView.m in Sources */,
+				CE12561E15696BE300F44FEC /* UINavigationBar+Custom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
