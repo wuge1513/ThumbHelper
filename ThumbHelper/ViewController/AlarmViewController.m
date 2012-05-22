@@ -35,7 +35,16 @@
         self.title = NSLocalizedString(@"Add Alarm", @"Add Alarm");
         
         //the add btn for alarm
-        UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddClockView)];
+        UIImage *imgAdd = [UIImage imageNamed:@"icon_add.png"];
+        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [addButton setImage:imgAdd forState:UIControlStateNormal];
+        [addButton setFrame:CGRectMake(0.f, 0.f, imgAdd.size.width, imgAdd.size.height)];
+        [addButton addTarget:self action:@selector(showAddClockView) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+        self.navigationItem.leftBarButtonItem = addButtonItem;
+  
+        
         self.navigationItem.rightBarButtonItem = addButtonItem;//
         
         UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];

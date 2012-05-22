@@ -19,7 +19,14 @@
         // Custom initialization
         
         //left button go back
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionBack)]; 
+        UIImage *imgBack = [UIImage imageNamed:@"icon_left.png"];
+        UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btnBack setImage:imgBack forState:UIControlStateNormal];
+        [btnBack setFrame:CGRectMake(0.f, 0.f, imgBack.size.width, imgBack.size.height)];
+        [btnBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
+        self.navigationItem.leftBarButtonItem = backButtonItem;
+
         
         self.arrSelectedWeek = [[NSMutableArray alloc] initWithCapacity:1];
         self.arrLastWeeks = [[NSMutableArray alloc] initWithCapacity:1];

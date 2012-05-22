@@ -52,10 +52,25 @@
 		self.title = NSLocalizedString(@"Set AlarmClock", nil);
         
         //left button go back
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backToMainUI:)]; 
+        UIImage *imgBack = [UIImage imageNamed:@"icon_left.png"];
+        UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btnBack setImage:imgBack forState:UIControlStateNormal];
+        [btnBack setFrame:CGRectMake(0.f, 0.f, imgBack.size.width, imgBack.size.height)];
+        [btnBack addTarget:self action:@selector(backToMainUI:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
+        self.navigationItem.leftBarButtonItem = backButtonItem;
+        
 
         //right button save data
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveClockData)];
+        
+        UIImage *imgSave = [UIImage imageNamed:@"icon_right.png"];
+        UIButton *btnSave = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [btnSave setImage:imgSave forState:UIControlStateNormal];
+        [btnSave setFrame:CGRectMake(0.f, 0.f, imgSave.size.width, imgSave.size.height)];
+        [btnSave addTarget:self action:@selector(saveClockData:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
+        self.navigationItem.rightBarButtonItem = saveButtonItem;
     
     }
     return self;

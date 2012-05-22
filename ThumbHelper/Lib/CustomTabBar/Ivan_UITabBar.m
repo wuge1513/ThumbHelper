@@ -132,37 +132,51 @@ static BOOL FIRSTTIME =YES;
 
 //将自定义的tabbar显示出来
 - (void)bringCustomTabBarToFront{
-    [self performSelector:@selector(hideRealTabBar)];
-    [cusTomTabBarView setHidden:NO];
-    CAKeyframeAnimation * animation; 
-	animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"]; 
-	animation.duration = 0.25;
-	animation.delegate = self;
-	animation.removedOnCompletion = YES;
-	animation.fillMode = kCAFillModeForwards;
-	NSMutableArray *values = [NSMutableArray array];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.5, 0.5, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-	animation.values = values;
-	[cusTomTabBarView.layer addAnimation:animation forKey:nil];
+    //[self performSelector:@selector(hideRealTabBar)];
+
+    //    [cusTomTabBarView setHidden:NO];
+//    CAKeyframeAnimation * animation; 
+//	animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"]; 
+//	animation.duration = 0.25;
+//	animation.delegate = self;
+//	animation.removedOnCompletion = YES;
+//	animation.fillMode = kCAFillModeForwards;
+//	NSMutableArray *values = [NSMutableArray array];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.5, 0.5, 1.0)]];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+//	animation.values = values;
+//	[cusTomTabBarView.layer addAnimation:animation forKey:nil];
+    
+    [UIView beginAnimations:@"Animation" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];;
+    [UIView setAnimationDuration:0.25];
+    cusTomTabBarView.frame = CGRectMake(0.0, 480.0 - 49.0, 320.0, 49.0);
+    [UIView commitAnimations];
 }
 
 //隐藏自定义tabbar
 - (void)hideCustomTabBar{
-	[self performSelector:@selector(hideRealTabBar)];
-    CAKeyframeAnimation * animation; 
-	animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"]; 
-	animation.duration = 0.1;
-	animation.delegate = self;
-	animation.removedOnCompletion = YES;
-	animation.fillMode = kCAFillModeForwards;
-	NSMutableArray *values = [NSMutableArray array];
-	[values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.5, 0.5, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]];
-	animation.values = values;
-	[cusTomTabBarView.layer addAnimation:animation forKey:nil];
+ 	//[self performSelector:@selector(hideRealTabBar)];
+    
+//    CAKeyframeAnimation * animation; 
+//	animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"]; 
+//	animation.duration = 0.1;
+//	animation.delegate = self;
+//	animation.removedOnCompletion = YES;
+//	animation.fillMode = kCAFillModeForwards;
+//	NSMutableArray *values = [NSMutableArray array];
+//	[values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.5, 0.5, 1.0)]];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]];
+//	animation.values = values;
+//	[cusTomTabBarView.layer addAnimation:animation forKey:nil];
+    
+    [UIView beginAnimations:@"Animation" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];;
+    [UIView setAnimationDuration:0.3];
+    cusTomTabBarView.frame = CGRectMake(-320.0, 480.0 - 49.0, 320.0, 49.0);
+    [UIView commitAnimations];
 }
 
 //动画结束回调

@@ -38,7 +38,6 @@ CLLocationManagerDelegate>
 @property (strong, nonatomic) NSMutableData *receivedData;
 
 @property (strong, nonatomic) NSMutableArray *arrItemText;//位置信息
-@property (strong, nonatomic) NSMutableArray *arrItemImages;//类型 icon
 @property (strong, nonatomic) NSMutableArray *arrGeometry;//地理坐标
 
 

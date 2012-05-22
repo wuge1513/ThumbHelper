@@ -39,7 +39,7 @@
 @synthesize curLocation;
 @synthesize strLongitude, strAccuracy, strLatitude;
 @synthesize hud;
-@synthesize arrItemText, arrItemImages, receivedData, arrGeometry;
+@synthesize arrItemText, receivedData, arrGeometry;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,13 +54,6 @@
         //初始化存储数组
         NSMutableArray *_arrItemText = [[NSMutableArray alloc] init];
         self.arrItemText = _arrItemText;
-        
-        NSMutableArray *_arrItemImages = [[NSMutableArray alloc] init];
-        self.arrItemImages = _arrItemImages;
-        
-        for (NSInteger i = 0; i < kLOAD_IMAGES_NUM_FIRST; i++) {
-            [self.arrItemImages addObject:[NSNull null]];
-        }
         
         NSMutableData *_data = [[NSMutableData alloc] init];
         self.receivedData = _data;
@@ -304,11 +297,11 @@
     
     DetailViewController *dc = [[DetailViewController alloc] init];
     dc.muArray = self.arrItemText;
-    dc.arrImage = self.arrItemImages;
     dc.lat = [self.strLatitude floatValue];
     dc.lng = [self.strLongitude floatValue];
     dc.arrGeometry = self.arrGeometry;
     dc.curLocation = self.curLocation;
+    
     dc.hidesBottomBarWhenPushed = YES;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate hidesBottomBarWhenPushed];

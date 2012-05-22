@@ -49,6 +49,7 @@
         NSMutableArray *_arrReference = [[NSMutableArray alloc] init];
         self.arrReference = _arrReference;
         
+       
         
     }
     return self;
@@ -66,6 +67,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
@@ -134,7 +137,7 @@
 //    }
 //    [NSThread detachNewThreadSelector:@selector(loadImages:) toTarget:self withObject:[NSNumber numberWithInteger:i]];
 
-    
+
 }
 
 - (void)viewDidUnload

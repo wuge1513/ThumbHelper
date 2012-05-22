@@ -51,7 +51,7 @@
     
     //[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner.png"]];
     HomeView.title = @"Home";
-    HomeView.tabBarItem.image = [UIImage imageNamed:@"care.png"];
+    HomeView.tabBarItem.image = [UIImage imageNamed:@"icon_home.png"];
 
     
     //Tasks View 
@@ -60,7 +60,7 @@
                                          self.tasksViewController];
     [TasksView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     TasksView.title = @"Tasks";
-    TasksView.tabBarItem.image = [UIImage imageNamed:@"record.png"];
+    TasksView.tabBarItem.image = [UIImage imageNamed:@"icon_write.png"];
     
     //alarm clock
     self.alarmViewController = [[AlarmViewController alloc] init];
@@ -68,7 +68,7 @@
                                          self.alarmViewController];
     [AlarmView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     AlarmView.title = @"Alarms";
-    AlarmView.tabBarItem.image = [UIImage imageNamed:@"care.png"];
+    AlarmView.tabBarItem.image = [UIImage imageNamed:@"icon_alarm.png"];
     
     // google place
     self.placeMainViewController = [[PlaceMainViewController alloc] init];
@@ -76,7 +76,7 @@
                                          self.placeMainViewController];
     [PlaceView.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     PlaceView.title = @"Place";
-    PlaceView.tabBarItem.image = [UIImage imageNamed:@"record.png"];
+    PlaceView.tabBarItem.image = [UIImage imageNamed:@"icon_place.png"];
     
     //Settings View
     self.settingsViewController = [[SettingsViewController alloc] init];
@@ -84,7 +84,7 @@
                                          self.settingsViewController];
     [Settings.navigationBar setBackgroundImage:[UIImage imageNamed:@"banner_top.png"] forBarMetrics:UIBarMetricsDefault];
     Settings.title = @"Settings";
-    Settings.tabBarItem.image = [UIImage imageNamed:@"change_it.png"];
+    Settings.tabBarItem.image = [UIImage imageNamed:@"icon_settings.png"];
 
     NSMutableArray *view_manager = [[NSMutableArray alloc] initWithObjects:HomeView, TasksView, AlarmView, PlaceView, Settings, nil];
     

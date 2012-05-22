@@ -21,6 +21,13 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        UIImage *imgBack = [UIImage imageNamed:@"icon_left.png"];
+        UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btnBack setImage:imgBack forState:UIControlStateNormal];
+        [btnBack setFrame:CGRectMake(0.f, 0.f, imgBack.size.width, imgBack.size.height)];
+        [btnBack addTarget:self action:@selector(actionBack) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
+        self.navigationItem.leftBarButtonItem = backButtonItem;
         
         NSString *strSun = NSLocalizedString(@"音乐一", nil);
         NSString *strMon = NSLocalizedString(@"音乐二", nil);
@@ -81,6 +88,11 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)actionBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
