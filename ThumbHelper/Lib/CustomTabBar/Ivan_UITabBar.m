@@ -12,6 +12,7 @@
 @implementation Ivan_UITabBar
 @synthesize currentSelectedIndex;
 @synthesize buttons;
+@synthesize titleLabel;
 
 static BOOL FIRSTTIME =YES;
 
@@ -56,7 +57,7 @@ static BOOL FIRSTTIME =YES;
 	UIButton *btn = [self.buttons objectAtIndex:self.selectedIndex];
 	UIBadgeView *badgeView = [[UIBadgeView alloc] initWithFrame:CGRectMake(btn.bounds.size.width/2, 0, 30, 20)];
 	badgeView.badgeString = badgeValue;
-	badgeView.badgeColor = [UIColor blueColor];
+	badgeView.badgeColor = [UIColor orangeColor];
 	badgeView.tag = self.selectedIndex;
 	badgeView.delegate = self;
 	[btn addSubview:badgeView];
@@ -89,12 +90,19 @@ static BOOL FIRSTTIME =YES;
 		[btn setImage:v.tabBarItem.image forState:UIControlStateNormal];
 		[btn setImageEdgeInsets:UIEdgeInsetsMake(-10, 0, 0, 0)];
 		//添加标题
-		UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _height-18, _width, _height-30)];
+		titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _height-18, _width, _height-30)];
 		titleLabel.backgroundColor = [UIColor clearColor];
 		titleLabel.text = v.tabBarItem.title;
 		[titleLabel setFont:[UIFont systemFontOfSize:12]];
 		titleLabel.textAlignment = 1;
-		titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.tag = i;
+        
+        if (i == 0) {
+            titleLabel.textColor = [UIColor redColor];
+        }else{
+            titleLabel.textColor = [UIColor whiteColor];
+        }
+		
 		[btn addSubview:titleLabel];
 		
 		[self.buttons addObject:btn];
@@ -127,6 +135,24 @@ static BOOL FIRSTTIME =YES;
 	}
 	self.currentSelectedIndex = button.tag;
 	self.selectedIndex = self.currentSelectedIndex;
+    NSLog(@"index = %d", self.selectedIndex);
+    
+	//add by liulei 2012.05.23
+    for (UIButton *btn in self.buttons) {
+        NSLog(@"xxx = %@", [btn subviews].description);
+        for (id lblTmp in [btn subviews]) {
+            if ([[[lblTmp class] description] isEqualToString:@"UILabel"]) {
+                
+                UILabel *lbl = (UILabel *)lblTmp;
+                if (lbl.tag == self.selectedIndex) {
+                    lbl.textColor = [UIColor redColor];
+                }else{
+                    lbl.textColor = [UIColor whiteColor];
+                }
+            }
+
+        }
+    }    
 	[self performSelector:@selector(slideTabBg:) withObject:button];
 }
 

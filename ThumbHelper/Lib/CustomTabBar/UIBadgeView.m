@@ -257,8 +257,6 @@
 - (void) dealloc
 {
 	parent = nil;
-	
-	
 }
 
 

@@ -63,7 +63,7 @@
 
         //right button save data
         
-        UIImage *imgSave = [UIImage imageNamed:@"icon_right.png"];
+        UIImage *imgSave = [UIImage imageNamed:@"icon_check.png"];
         UIButton *btnSave = [UIButton buttonWithType:UIButtonTypeCustom];
         
         [btnSave setImage:imgSave forState:UIControlStateNormal];

@@ -17,9 +17,9 @@
 	UIImageView *backGroundImageView;
 }
 
-@property (nonatomic, assign) int				currentSelectedIndex;
-
+@property (nonatomic, assign) int currentSelectedIndex;
 @property (nonatomic,strong) NSMutableArray *buttons;
+@property (strong, nonatomic) UILabel *titleLabel;
 
 - (void)hideRealTabBar;
 - (void)hideCustomTabBar;
