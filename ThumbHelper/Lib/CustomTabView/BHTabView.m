@@ -176,7 +176,7 @@ static inline CGFloat radians(CGFloat degrees) {
   CGGradientRelease(gradient);
   CGColorSpaceRelease(colorSpace);
 
-  CFRelease(path);
+  //CFRelease(path);
 
   [self _configureTitleLabel];
 }

@@ -140,6 +140,8 @@
 		CEF017B915689BE100AB5D9D /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF017B615689BE100AB5D9D /* DDAnnotation.m */; };
 		CEF017BA15689BE100AB5D9D /* DDAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF017B815689BE100AB5D9D /* DDAnnotationView.m */; };
 		CEF017BC15689D7300AB5D9D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF017BB15689D7300AB5D9D /* MapKit.framework */; };
+		CEF0C2ED156D376C00A90315 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF0C2EB156D376C00A90315 /* compass.png */; };
+		CEF0C2EE156D376C00A90315 /* needle.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF0C2EC156D376C00A90315 /* needle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -307,6 +309,8 @@
 		CEF017B715689BE100AB5D9D /* DDAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDAnnotationView.h; path = Lib/MapAnimation/DDAnnotationView.h; sourceTree = "<group>"; };
 		CEF017B815689BE100AB5D9D /* DDAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDAnnotationView.m; path = Lib/MapAnimation/DDAnnotationView.m; sourceTree = "<group>"; };
 		CEF017BB15689D7300AB5D9D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CEF0C2EB156D376C00A90315 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = compass.png; path = Resource/map_images/compass.png; sourceTree = "<group>"; };
+		CEF0C2EC156D376C00A90315 /* needle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = needle.png; path = Resource/map_images/needle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				CE83952C1568968700E758B0 /* Pin.png */,
+				CEF0C2EB156D376C00A90315 /* compass.png */,
+				CEF0C2EC156D376C00A90315 /* needle.png */,
 				CE83952D1568968700E758B0 /* PinDown1.png */,
 				CE83952E1568968700E758B0 /* PinDown2.png */,
 				CE83952F1568968700E758B0 /* PinDown3.png */,
@@ -811,6 +817,8 @@
 				CEB05543156BEC540010A824 /* icon_write@2x.png in Resources */,
 				CEB05546156BED380010A824 /* icon_chart@2x.png in Resources */,
 				CEB05547156BED380010A824 /* icon_stop@2x.png in Resources */,
+				CEF0C2ED156D376C00A90315 /* compass.png in Resources */,
+				CEF0C2EE156D376C00A90315 /* needle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
