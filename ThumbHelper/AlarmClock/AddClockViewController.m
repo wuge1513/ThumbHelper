@@ -68,7 +68,7 @@
         
         [btnSave setImage:imgSave forState:UIControlStateNormal];
         [btnSave setFrame:CGRectMake(0.f, 0.f, imgSave.size.width, imgSave.size.height)];
-        [btnSave addTarget:self action:@selector(saveClockData:) forControlEvents:UIControlEventTouchUpInside];
+        [btnSave addTarget:self action:@selector(saveClockData) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
         self.navigationItem.rightBarButtonItem = saveButtonItem;
     
@@ -146,11 +146,15 @@
     [super viewDidLoad];
     
     // Set background color
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 416.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];
     
     //UITableView
     CGRect rect = CGRectMake(0.0, 0.0, SCREEN_FRAM_WIDTH, SCREEN_FRAM_HEIGHT);
     self.tbAlarmContent = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
+    self.tbAlarmContent.backgroundColor = [UIColor clearColor];
     self.tbAlarmContent.delegate = self;
     self.tbAlarmContent.dataSource = self;
     [self.view addSubview:self.tbAlarmContent];
@@ -368,7 +372,7 @@
     NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:arrCurWeeks];
     [arr removeLastObject];
     NSLog(@"arr = %@", arr);
-    self.setRepeatViewController = [[SetRepeatViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.setRepeatViewController = [[SetRepeatViewController alloc] init];
     self.setRepeatViewController.arrLastWeeks = [NSArray arrayWithArray:arr];
     [self.navigationController pushViewController:self.setRepeatViewController animated:YES];
 }
@@ -378,7 +382,7 @@
  */
 - (void)showSetClockMusicController
 {
-    self.setMusicViewController = [[SetMusicViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.setMusicViewController = [[SetMusicViewController alloc] init];
     self.setMusicViewController.delegate = self;
     [self.navigationController pushViewController:self.setMusicViewController animated:YES];
 }

@@ -82,7 +82,10 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 367.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];
     
 //    //Default View
 //    self.defaultView = [[DefaultPlaceViewController alloc] init];

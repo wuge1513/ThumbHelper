@@ -35,10 +35,25 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Places", @"Places");
+        //返回
+        UIImage *imgBack = [UIImage imageNamed:@"icon_left.png"];
+        UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(actionGoBack)];
+        [btnBack setImage:imgBack forState:UIControlStateNormal];
+        [btnBack setFrame:CGRectMake(0.f, 0.f, imgBack.size.width, imgBack.size.height)];
+        [btnBack addTarget:self action:@selector(actionGoBack) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
+        self.navigationItem.leftBarButtonItem = backButtonItem;
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"地图" style:UIBarButtonItemStyleBordered target:self action:@selector(actionShowItemOnMap)];
+        //地图
+        UIImage *imgMap = [UIImage imageNamed:@"icon_place.png"];
+        UIButton *btnMap = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [btnMap setImage:imgMap forState:UIControlStateNormal];
+        [btnMap setFrame:CGRectMake(0.f, 0.f, imgMap.size.width, imgMap.size.height)];
+        [btnMap addTarget:self action:@selector(actionShowItemOnMap) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *mapButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnMap];
+        self.navigationItem.rightBarButtonItem = mapButtonItem;
         
         
         self.muArray = [[NSMutableArray alloc] initWithCapacity:1];
@@ -70,15 +85,20 @@
     
 
 	// Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+
     
     self.curItemCount = kCURRENT_ITEM_COUNT;
 	self.totalItemCount = [self.muArray count];
     NSLog(@"ddd = %d", self.totalItemCount);
     
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 416.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];
     //项目列表
     CGRect tbRect = CGRectMake(0.0, 0.0, 320.0, 460.0 - 44.0);
     self.tbPlaceList = [[UITableView alloc] initWithFrame:tbRect style:UITableViewStylePlain];
+    self.tbPlaceList.backgroundColor = [UIColor clearColor];
     self.tbPlaceList.delegate = self;
     self.tbPlaceList.dataSource = self;
     [self.view addSubview:self.tbPlaceList];
@@ -382,6 +402,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
    // }
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if ([self.muArray count] >= 1) {
         

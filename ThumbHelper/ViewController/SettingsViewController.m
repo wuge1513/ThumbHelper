@@ -37,10 +37,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 367.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];   
     
     CGRect tbRect = CGRectMake(0.0, 0.0, 320.0, 400.0);
     self.tbSettingsView = [[UITableView alloc] initWithFrame:tbRect style:UITableViewStyleGrouped];
+    self.tbSettingsView.backgroundColor = [UIColor clearColor];
     self.tbSettingsView.delegate = self;
     self.tbSettingsView.dataSource = self;
     [self.view addSubview:self.tbSettingsView];
@@ -96,7 +100,7 @@
             reuseIdentifier:SimpleTableIdentifier];
     }
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {

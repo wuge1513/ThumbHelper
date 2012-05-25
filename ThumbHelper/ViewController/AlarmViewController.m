@@ -42,10 +42,8 @@
         [addButton setFrame:CGRectMake(0.f, 0.f, imgAdd.size.width, imgAdd.size.height)];
         [addButton addTarget:self action:@selector(showAddClockView) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-        self.navigationItem.leftBarButtonItem = addButtonItem;
-  
-        
-        self.navigationItem.rightBarButtonItem = addButtonItem;//
+        self.navigationItem.rightBarButtonItem = addButtonItem;
+
         
         UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEdit)];
         self.navigationItem.leftBarButtonItem = editButtonItem;
@@ -71,7 +69,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 367.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];
     
     [self initData];
     [self initClockCount];
@@ -79,6 +80,8 @@
     
     CGRect rect = CGRectMake(0.0, 0.0, SCREEN_FRAM_WIDTH, SCREEN_FRAM_HEIGHT - 20.0 - 44.0 - 49.0);
     self.tbAlarmView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+    self.tbAlarmView.backgroundColor = [UIColor clearColor];
+    //self.tbAlarmView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tbAlarmView.delegate = self;
     self.tbAlarmView.dataSource = self;
     [self.view addSubview:self.tbAlarmView];
@@ -315,6 +318,12 @@
                 reuseIdentifier:SimpleTableIdentifier];
     //}
     if ([self.arrAlarmClock count] > 0) {
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        //cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell_alarm.png"]];
+        cell.backgroundColor = [UIColor clearColor];
+        
         NSDictionary *dic = [self.arrAlarmClock objectAtIndex:indexPath.row];
         
         //Cell content
@@ -357,7 +366,7 @@
         [cell.contentView addSubview:self.lblAlarmClockRepeat];
         
         self.alarmSwitch = [[UISwitch alloc] init];
-        self.alarmSwitch.center = CGPointMake(270.0, 29.0);
+        self.alarmSwitch.center = CGPointMake(260.0, 29.0);
         self.alarmSwitch.tag = indexPath.row + 1000;
         [self.alarmSwitch setOn:NO];
         [self.alarmSwitch addTarget:self action:@selector(actionAlarmSwitch:) forControlEvents:UIControlEventValueChanged];

@@ -15,10 +15,11 @@
 @synthesize lastIndexPath;
 @synthesize strSelectedMusic;
 @synthesize arrMusics;
+@synthesize tbMusicList;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         UIImage *imgBack = [UIImage imageNamed:@"icon_left.png"];
@@ -55,6 +56,19 @@
 {
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
+    
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 367.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];    
+    
+    //UITableView
+    CGRect rect = CGRectMake(0.0, 0.0, 320.0, 367.0);
+    self.tbMusicList = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
+    self.tbMusicList.backgroundColor = [UIColor clearColor];
+    self.tbMusicList.delegate = self;
+    self.tbMusicList.dataSource = self;
+    [self.view addSubview:self.tbMusicList];
 }
 
 - (void)viewDidUnload
@@ -121,7 +135,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.text = [self.arrMusics objectAtIndex:indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14.0];
         

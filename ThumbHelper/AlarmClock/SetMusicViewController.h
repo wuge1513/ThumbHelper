@@ -12,8 +12,9 @@
 - (NSString *)setAlarmMusic:(NSString *)alarmMusic;
 @end
 
-@interface SetMusicViewController : UITableViewController
+@interface SetMusicViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) UITableView *tbMusicList;
 @property (strong, nonatomic) id <SetMusicDelegate> delegate;// 定义委托对象
 @property (strong, nonatomic) NSIndexPath *lastIndexPath;
 @property (strong, nonatomic) NSString *strSelectedMusic;

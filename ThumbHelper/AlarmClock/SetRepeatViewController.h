@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SetRepeatViewController : UITableViewController
+@interface SetRepeatViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) UITableView *tbWeeklist;
 @property (strong, nonatomic) NSMutableArray *arrLastWeeks;
 @property (strong, nonatomic) NSMutableArray *arrCurWeeks;
 

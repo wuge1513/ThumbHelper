@@ -11,10 +11,12 @@
 
 @implementation SetRepeatViewController
 @synthesize arrWeeks, arrShortweeks, arrSelectedWeek, arrWorkingDay, arrLastWeeks, arrCurWeeks, arrDayEn;
+@synthesize tbWeeklist;
 
-- (id)initWithStyle:(UITableViewStyle)style
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         
@@ -73,6 +75,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 367.0)];
+    bgImageView.image = [UIImage imageNamed:@"bg_main_bg.png"];
+    [self.view addSubview:bgImageView];
+    
+
+    //UITableView
+    CGRect rect = CGRectMake(0.0, 0.0, 320.0, 367.0);
+    self.tbWeeklist = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
+    self.tbWeeklist.backgroundColor = [UIColor clearColor];
+    self.tbWeeklist.delegate = self;
+    self.tbWeeklist.dataSource = self;
+    [self.view addSubview:self.tbWeeklist];
+    
 }
 
 - (void)viewDidUnload
@@ -144,7 +161,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.text = [self.arrWeeks objectAtIndex:indexPath.row];
     
     for (NSString *str in self.arrCurWeeks) {

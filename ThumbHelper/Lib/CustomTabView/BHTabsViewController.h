@@ -21,7 +21,10 @@
 
 @interface BHTabsViewController : UIViewController <BHTabViewDelegate> {
   NSArray *viewControllers;
+    
   UIView *__weak contentView;
+
+  
   BHTabsView *tabsContainerView;
   BHTabsFooterView *footerView;
   BHTabStyle *tabStyle;
