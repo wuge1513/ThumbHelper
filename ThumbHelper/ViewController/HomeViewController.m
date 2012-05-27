@@ -8,6 +8,9 @@
 
 #import "HomeViewController.h"
 
+#import "DDAnnotation.h"
+#import "DDAnnotationView.h"
+
 #import <CoreLocation/CLHeading.h>
 #import "math.h"
 
@@ -23,7 +26,8 @@
 @synthesize arrTipItems;
 @synthesize lblMyLocation;
 @synthesize btnMyLocation, btnAddTips;
-@synthesize clGeocoder, mkRG;
+@synthesize clGeocoder;
+@synthesize mapView, mkMapView, curLocation, isMapShowing;
 
 - (void)customInitialize
 {
@@ -98,6 +102,7 @@
     self.btnMyLocation.frame = CGRectMake(0.0, 0.0, 130.0, 30.0);
     self.btnMyLocation.center = CGPointMake(120.0 / 2 + 20.0, 120.0 + 90.0);
     [self.btnMyLocation setTitle:@"On Map" forState:UIControlStateNormal];
+    [self.btnMyLocation addTarget:self action:@selector(actionShowItemOnMap) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnMyLocation ];
     
     //快速备忘
@@ -115,6 +120,15 @@
     self.tbTipList.delegate = self;
     self.tbTipList.dataSource = self;
     [self.view addSubview:self.tbTipList];
+    
+    
+    //地图视图
+    self.mapView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 372.0)];//320.0, 400.0
+    //self.mapView.backgroundColor = [UIColor clearColor];
+    //self.mapView.center = CGPointMake(320.0 / 2, 367.0 / 2);
+    self.mapView.hidden = YES;
+    [self.view addSubview:self.mapView];
+    
 }
 
 
@@ -182,7 +196,7 @@
     //}
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell_small.png"]];
     cell.backgroundColor = [UIColor clearColor];
         
@@ -209,6 +223,7 @@
                              CGAffineTransform headingRotation;
                              headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity, (CGFloat)-toRad(currentHeading));
                              self.imgCompassView.transform = headingRotation;
+                             //self.mkMapView.transform = headingRotation;
                          }
                          completion:^(BOOL finished) {
                              
@@ -250,6 +265,7 @@
           newLocation.coordinate.latitude,
           newLocation.coordinate.longitude);
     currentLocation = newLocation.coordinate;
+    self.curLocation = newLocation;
     [self updateHeadingDisplays];
 
     // else skip the event and process the next one.
@@ -259,29 +275,11 @@
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
         [self locationAddressWithLocation:newLocation];
-    }else {
-        [self startedReverseGeoderWithLatitude:newLocation.coordinate];
     }
 }
 
 #pragma mark -
 #pragma mark 反向地理
-//   iso  5.0 以下版本使用此方法
-- (void)startedReverseGeoderWithLatitude:(CLLocationCoordinate2D)coordinate2d{
-    self.mkRG = [[MKReverseGeocoder alloc] initWithCoordinate:coordinate2d];   
-    self.mkRG.delegate = self;
-    [self.mkRG start];
-}
-#pragma mark -
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
-{
-    NSLog(@"地址1：%@", placemark.addressDictionary);
-}
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
-{
-    NSLog(@"获取失败");
-}
-
 //  IOS 5.0 及以上版本使用此方法
 - (void)locationAddressWithLocation:(CLLocation *)locationGps
 {
@@ -292,10 +290,6 @@
          NSLog(@"error %@ placemarks count %d",error.localizedDescription,placemarks.count);
          for (CLPlacemark *placeMark in placemarks) 
          {
-//             NSLog(@"地址：%@",placeMark.locality);
-//             NSLog(@"地址：%@",placeMark.thoroughfare);
-//             NSLog(@"地址：%@",placeMark.subLocality);
-             
              self.lblMyLocation.text = [NSString stringWithFormat:@"%@,%@,%@", placeMark.thoroughfare, placeMark.subLocality, placeMark.locality];
          }
      }];
@@ -350,6 +344,102 @@
     brng = (brng>360)? (brng-360) : brng;
     
     return brng;
+}
+
+#pragma mark -
+#pragma mark 显示地图视图
+
+- (void)setCurrentLocation:(CLLocation *)location
+{
+    MKCoordinateRegion region = {{0.0f, 0.0f}, {0.0f, 0.0f}};
+    region.center = location.coordinate;
+    region.span.longitudeDelta = 0.05f;
+    region.span.latitudeDelta = 0.05f;
+    [self.mkMapView setRegion:region animated:YES];
+}
+//地图标注
+- (void)showMap
+{
+    MKMapView *_mkMapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 372.0)];// 320.0, 372.0
+    self.mkMapView = _mkMapView;
+    //self.mkMapView.center = CGPointMake(320.0 / 2, 372.0 / 2);
+    self.mkMapView.delegate = self;
+    self.mkMapView.showsUserLocation = YES;
+    self.mkMapView.autoresizesSubviews = YES;
+    [self.mapView addSubview:self.mkMapView];
+    
+    [self setCurrentLocation:self.curLocation];
+}
+    
+- (void)actionShowItemOnMap
+{
+    if (!self.isMapShowing) {
+        [UIView beginAnimations:@"Animation" context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDelay:0.5];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:NO];
+        self.mapView.hidden = NO;
+        [UIView commitAnimations];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"列表" style:UIBarButtonItemStyleBordered target:self action:@selector(actionShowItemOnMap)];
+        
+        [self showMap];
+    }else{
+        [UIView beginAnimations:@"Animation" context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDelay:0.5];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:NO];
+        self.mapView.hidden = YES;
+            [UIView commitAnimations];
+        self.navigationItem.rightBarButtonItem = nil; 
+    }
+    self.isMapShowing = !self.isMapShowing;
+}
+
+
+#pragma mark -
+#pragma mark MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+	
+	if (oldState == MKAnnotationViewDragStateDragging) {
+		DDAnnotation *annotation = (DDAnnotation *)annotationView.annotation;
+		annotation.subtitle = [NSString	stringWithFormat:@"%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude];		
+	}
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    
+    //当前位置自定义，可以更改
+    //if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        //return nil;
+        static NSString * const kPinAnnotationIdentifier = @"PinIdentifier";
+        MKAnnotationView *draggablePinView = [self.mkMapView dequeueReusableAnnotationViewWithIdentifier:kPinAnnotationIdentifier];
+        
+        
+//        draggablePinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kPinAnnotationIdentifier];
+//        draggablePinView.canShowCallout = YES;
+//        draggablePinView.dragState = MKAnnotationViewDragStateStarting;
+//        draggablePinView.annotation = annotation;
+//        draggablePinView.selected = YES;
+//        
+        return draggablePinView;
+	//}
+    
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    NSLog(@"123");
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+    NSLog(@"456");
 }
 
 @end

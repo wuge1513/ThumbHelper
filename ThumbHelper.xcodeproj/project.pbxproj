@@ -16,6 +16,10 @@
 		CE12562115696F8300F44FEC /* banner_top.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12561F15696F8300F44FEC /* banner_top.png */; };
 		CE12562215696F8300F44FEC /* banner_top@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12562015696F8300F44FEC /* banner_top@2X.png */; };
 		CE1BC2F0153F1F8E000613C7 /* SetRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */; };
+		CE4418E11571D238000CB6D4 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4418DE1571D238000CB6D4 /* DataBase.m */; };
+		CE4418E21571D238000CB6D4 /* ManageDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4418E01571D238000CB6D4 /* ManageDB.m */; };
+		CE4418E41571D252000CB6D4 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4418E31571D252000CB6D4 /* libsqlite3.0.dylib */; };
+		CE4418EB1571D5E3000CB6D4 /* Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4418EA1571D5E3000CB6D4 /* Notes.m */; };
 		CE5346D4154AF6D8006D1D5F /* DefaultPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5346D3154AF6D8006D1D5F /* DefaultPlaceViewController.m */; };
 		CE5346D7154AF6F3006D1D5F /* CustomPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5346D6154AF6F3006D1D5F /* CustomPlaceViewController.m */; };
 		CE5600B41539FA9B005E2E36 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */; };
@@ -161,6 +165,13 @@
 		CE12562015696F8300F44FEC /* banner_top@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "banner_top@2X.png"; path = "Resource/images/banner_top@2X.png"; sourceTree = "<group>"; };
 		CE1BC2EE153F1F8D000613C7 /* SetRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetRepeatViewController.h; path = AlarmClock/SetRepeatViewController.h; sourceTree = "<group>"; };
 		CE1BC2EF153F1F8D000613C7 /* SetRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetRepeatViewController.m; path = AlarmClock/SetRepeatViewController.m; sourceTree = "<group>"; };
+		CE4418DD1571D238000CB6D4 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; name = DataBase.h; path = DataBase/DataBase.h; sourceTree = "<group>"; };
+		CE4418DE1571D238000CB6D4 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataBase.m; path = DataBase/DataBase.m; sourceTree = "<group>"; };
+		CE4418DF1571D238000CB6D4 /* ManageDB.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ManageDB.h; path = DataBase/ManageDB.h; sourceTree = "<group>"; };
+		CE4418E01571D238000CB6D4 /* ManageDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageDB.m; path = DataBase/ManageDB.m; sourceTree = "<group>"; };
+		CE4418E31571D252000CB6D4 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		CE4418E91571D5E3000CB6D4 /* Notes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Notes.h; path = DataBase/Notes.h; sourceTree = "<group>"; };
+		CE4418EA1571D5E3000CB6D4 /* Notes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Notes.m; path = DataBase/Notes.m; sourceTree = "<group>"; };
 		CE5346D2154AF6D8006D1D5F /* DefaultPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefaultPlaceViewController.h; path = GooglePlace/DefaultPlaceViewController.h; sourceTree = "<group>"; };
 		CE5346D3154AF6D8006D1D5F /* DefaultPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultPlaceViewController.m; path = GooglePlace/DefaultPlaceViewController.m; sourceTree = "<group>"; };
 		CE5346D5154AF6F2006D1D5F /* CustomPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPlaceViewController.h; path = GooglePlace/CustomPlaceViewController.h; sourceTree = "<group>"; };
@@ -328,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4418E41571D252000CB6D4 /* libsqlite3.0.dylib in Frameworks */,
 				CE0785061568DA2A00BD7A43 /* Security.framework in Frameworks */,
 				CE0785041568DA1B00BD7A43 /* SystemConfiguration.framework in Frameworks */,
 				CE0785021568DA0900BD7A43 /* CFNetwork.framework in Frameworks */,
@@ -361,6 +373,19 @@
 				CE12561D15696BE200F44FEC /* UINavigationBar+Custom.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		CE4418D71571CFD4000CB6D4 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CE4418DD1571D238000CB6D4 /* DataBase.h */,
+				CE4418DE1571D238000CB6D4 /* DataBase.m */,
+				CE4418DF1571D238000CB6D4 /* ManageDB.h */,
+				CE4418E01571D238000CB6D4 /* ManageDB.m */,
+				CE4418E91571D5E3000CB6D4 /* Notes.h */,
+				CE4418EA1571D5E3000CB6D4 /* Notes.m */,
+			);
+			name = DataBase;
 			sourceTree = "<group>";
 		};
 		CE5346C2154AF628006D1D5F /* CustomTabView */ = {
@@ -474,6 +499,7 @@
 		CEC66A701535D94200C67344 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE4418E31571D252000CB6D4 /* libsqlite3.0.dylib */,
 				CE5600B31539FA9B005E2E36 /* libz.1.2.5.dylib */,
 				CE0785051568DA2A00BD7A43 /* Security.framework */,
 				CE0785031568DA1B00BD7A43 /* SystemConfiguration.framework */,
@@ -492,6 +518,7 @@
 		CEC66A771535D94200C67344 /* ThumbHelper */ = {
 			isa = PBXGroup;
 			children = (
+				CE4418D71571CFD4000CB6D4 /* DataBase */,
 				CEF017B315689B7900AB5D9D /* Lib */,
 				CE0A6C7D15432BBF00008231 /* Utils */,
 				CEC66AC91535E5FC00C67344 /* AlarmClock */,
@@ -883,6 +910,9 @@
 				CEC97D8A15694B350081C42B /* Ivan_UITabBar.m in Sources */,
 				CEC97D8B15694B350081C42B /* UIBadgeView.m in Sources */,
 				CE12561E15696BE300F44FEC /* UINavigationBar+Custom.m in Sources */,
+				CE4418E11571D238000CB6D4 /* DataBase.m in Sources */,
+				CE4418E21571D238000CB6D4 /* ManageDB.m in Sources */,
+				CE4418EB1571D5E3000CB6D4 /* Notes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,12 +13,16 @@
 #import <CoreLocation/CLLocationManagerDelegate.h>
 #import <CoreLocation/CLGeocoder.h>
 #import <CoreLocation/CLPlacemark.h>
-#import <MapKit/MKReverseGeocoder.h>
-#import <MapKit/MKPlacemark.h>
-
+#import <MapKit/MapKit.h>
 
 @interface HomeViewController : UIViewController<CLLocationManagerDelegate,
-UITableViewDelegate, UITableViewDataSource, MKReverseGeocoderDelegate>
+UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
+
+//显示地图视图
+@property (assign, nonatomic) BOOL isMapShowing;
+@property (strong, nonatomic) UIView *mapView;
+@property (strong, nonatomic) MKMapView *mkMapView;
+@property (strong, nonatomic) CLLocation *curLocation;
 
 //定位
 @property (strong, nonatomic) CLLocationManager       *locationManager;
@@ -32,7 +36,6 @@ UITableViewDelegate, UITableViewDataSource, MKReverseGeocoderDelegate>
 @property (strong, nonatomic) UIScrollView   *cityArrowView;
 
 //显示地址 反向地理编码
-@property (strong, nonatomic) MKReverseGeocoder *mkRG;
 @property (strong, nonatomic) CLGeocoder *clGeocoder;
 
 @property (strong, nonatomic) UITextView *lblMyLocation;
@@ -49,6 +52,9 @@ UITableViewDelegate, UITableViewDataSource, MKReverseGeocoderDelegate>
 - (void)startLocationHeadingEvents;  
 - (void)updateHeadingDisplays;
 
-- (void)startedReverseGeoderWithLatitude:(CLLocationCoordinate2D)coordinate2d;// < 5.0
+//地图标注
+- (void)showMap;
+- (void)actionShowItemOnMap;
+- (void)setCurrentLocation:(CLLocation *)location;
 - (void)locationAddressWithLocation:(CLLocation *)locationGps; //>=5.0
 @end

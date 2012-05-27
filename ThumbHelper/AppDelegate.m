@@ -86,7 +86,7 @@
     Settings.title = @"Settings";
     Settings.tabBarItem.image = [UIImage imageNamed:@"icon_settings.png"];
 
-    NSMutableArray *view_manager = [[NSMutableArray alloc] initWithObjects:HomeView, AlarmView, PlaceView, Settings, nil];//TasksView
+    NSMutableArray *view_manager = [[NSMutableArray alloc] initWithObjects:HomeView, PlaceView, AlarmView, Settings, nil];//TasksView
     
     /*请按照上面的方法添加其他的tab控制器*/
     self.rootTabBarConreoller = [[Ivan_UITabBar alloc] init];
